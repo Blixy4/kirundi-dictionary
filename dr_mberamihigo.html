@@ -1,140 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dr. Mberamihigo — Kirundi Dictionary</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family:'Plus Jakarta Sans',sans-serif;
-    background:#f4f7fc; color:#0d1a16;
-    min-height:100vh; overflow-x:hidden;
-  }
-  body::before {
-    content:''; position:fixed; inset:0;
-    background: radial-gradient(ellipse 80% 60% at 20% -10%, rgba(26,58,106,0.12) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 90% 100%, rgba(26,58,106,0.07) 0%, transparent 50%);
-    pointer-events:none; z-index:0;
-  }
-  .wrap { position:relative; z-index:1; max-width:680px; margin:0 auto; padding:0 24px 80px; }
-
-  .hero-band {
-    background: linear-gradient(135deg, #0a1e3d 0%, #1a3a6a 100%);
-    margin:0 -24px; padding:56px 40px 44px;
-    text-align:center; position:relative; overflow:hidden;
-    opacity:0; animation:fadeDown 0.7s 0.1s ease forwards;
-  }
-  .hero-band::before {
-    content:''; position:absolute; inset:0;
-    background:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
-  }
-  .photo-wrap { position:relative; display:inline-block; margin-bottom:20px; z-index:1; }
-  .photo {
-    width:110px; height:110px; border-radius:50%; object-fit:cover;
-    border:4px solid rgba(255,255,255,0.35);
-    box-shadow:0 10px 40px rgba(0,0,0,0.3); display:block;
-  }
-  .avatar-initials {
-    width:110px; height:110px; border-radius:50%;
-    background:rgba(255,255,255,0.2);
-    border:4px solid rgba(255,255,255,0.35);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'EB Garamond',serif; font-size:38px; color:#fff; font-weight:700;
-    box-shadow:0 10px 40px rgba(0,0,0,0.25);
-  }
-  .hero-band h1 {
-    font-family:'EB Garamond',serif;
-    font-size:clamp(26px,6vw,38px); font-weight:700;
-    color:#fff; letter-spacing:-0.3px; margin-bottom:8px;
-    position:relative; z-index:1;
-  }
-  .role-pill {
-    display:inline-block;
-    background:rgba(255,255,255,0.18); color:#fff;
-    border:1px solid rgba(255,255,255,0.3);
-    font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
-    padding:5px 14px; border-radius:20px; margin-bottom:8px;
-    position:relative; z-index:1;
-  }
-  .uni-line { font-size:12.5px; color:rgba(255,255,255,0.7); position:relative; z-index:1; }
-  .quote-card {
-    margin:24px 0 0;
-    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
-    border-radius:14px; padding:20px 24px;
-    position:relative; z-index:1; overflow:hidden;
-  }
-  .quote-card::before {
-    content:'"'; font-family:'EB Garamond',serif; font-size:80px;
-    color:rgba(255,255,255,0.12); position:absolute; top:-14px; left:10px; line-height:1;
-  }
-  .quote-card p {
-    font-family:'EB Garamond',serif; font-size:16px;
-    font-style:italic; line-height:1.7; color:#fff; position:relative;
-  }
-
-  .content { padding-top:20px; }
-  .section {
-    background:#fff; border-radius:18px; padding:24px;
-    margin-bottom:14px; box-shadow:0 2px 16px rgba(0,0,0,0.05);
-    opacity:0; transform:translateY(18px);
-  }
-  .section:nth-child(1){ animation:fadeUp 0.6s 0.35s ease forwards; }
-  .section:nth-child(2){ animation:fadeUp 0.6s 0.45s ease forwards; }
-  .section:nth-child(3){ animation:fadeUp 0.6s 0.55s ease forwards; }
-  .section:nth-child(4){ animation:fadeUp 0.6s 0.65s ease forwards; }
-  .sec-label {
-    font-size:10px; font-weight:700; text-transform:uppercase;
-    letter-spacing:1.8px; color:#1a3a6a; margin-bottom:13px;
-    display:flex; align-items:center; gap:7px;
-    padding-bottom:8px; border-bottom:1px solid rgba(0,0,0,0.07);
-  }
-  .section p { font-size:15px; line-height:1.8; color:#2a3830; }
-  .chips { display:flex; flex-wrap:wrap; gap:8px; }
-  .chip {
-    background:#d8e4f5; color:#1a3a6a;
-    font-size:12px; font-weight:600; padding:5px 14px; border-radius:20px;
-  }
-  .word-block {
-    background:#d8e4f5; border-left:4px solid #1a3a6a;
-    border-radius:0 14px 14px 0; padding:18px 22px;
-  }
-  .word-block p {
-    font-family:'EB Garamond',serif;
-    font-size:16px; line-height:1.8; font-style:italic; color:#0d1a16;
-  }
-  @keyframes fadeUp { to{ opacity:1; transform:none; } }
-  @keyframes fadeDown { from{ opacity:0; transform:translateY(-20px); } to{ opacity:1; transform:none; } }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400|DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script>
+(function(){
+  // detect system dark mode
+  if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)
+    document.documentElement.setAttribute('data-theme','dark');
+  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',e=>
+    document.documentElement.setAttribute('data-theme', e.matches?'dark':'light'));
+  // detect language from browser
+  var lang = (navigator.language||navigator.userLanguage||'en').slice(0,2).toLowerCase();
+  if(!['en','fr','rn'].includes(lang)) lang='en';
+  document.documentElement.setAttribute('lang', lang);
+  window._lang = lang;
+})();
+</script>
 </head>
+<style>
+:root{--a:#1a3a6a;--bg:#f4f7fc;--card:#ffffff;--txt:#0a1020;--muted:#7a7870;--border:rgba(0,0,0,0.09);--alight:#1a3a6a18}
+[data-theme=dark]{--a:#4a6aaa;--bg:#0a1020;--card:#141e38;--txt:#d8e4f5;--muted:#8a8880;--border:rgba(255,255,255,0.09);--alight:#4a6aaa28}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);transition:background .3s,color .3s}
+
+/* top strip */
+.top-strip{height:5px;background:var(--a);animation:growx .8s ease both}
+
+/* header */
+.header{max-width:760px;margin:0 auto;padding:56px 40px 0;text-align:center;animation:fadedown .7s .1s ease both}
+.h-role{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--a);margin-bottom:20px;
+}
+.h-role span{width:28px;height:2px;background:var(--a)}
+.header h1{
+  font-family:'EB Garamond',serif;
+  font-size:clamp(34px,6vw,58px);font-weight:700;
+  line-height:1.05;letter-spacing:-1px;color:var(--txt);margin-bottom:10px;
+}
+.h-uni{font-size:13px;color:var(--muted);margin-bottom:36px}
+
+/* hero image */
+.hero-img-wrap{
+  max-width:760px;margin:0 auto 0;padding:0 40px;
+  animation:fadeup .7s .2s ease both;
+}
+.hero-img-wrap img{
+  width:100%;height:380px;object-fit:cover;
+  border-radius:20px;display:block;
+  filter:brightness(0.92);
+}
+
+/* pull quote */
+.pull{
+  max-width:600px;margin:48px auto;padding:0 40px;text-align:center;
+  animation:fadeup .7s .3s ease both;
+}
+.pull p{
+  font-family:'EB Garamond',serif;
+  font-size:clamp(18px,2.5vw,24px);font-style:italic;
+  line-height:1.65;color:var(--txt);position:relative;
+}
+.pull p::before{content:'"';font-size:60px;color:var(--a);opacity:.25;position:absolute;top:-10px;left:-20px;line-height:1}
+.pull-line{width:40px;height:3px;background:var(--a);margin:20px auto 0;border-radius:2px}
+
+/* rule */
+.rule{max-width:760px;margin:0 auto;padding:0 40px}
+.rule hr{border:none;border-top:1px solid var(--border)}
+
+/* cards */
+.cards{max-width:760px;margin:0 auto;padding:48px 40px 100px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{
+  background:var(--card);border-radius:16px;padding:24px;
+  border:1px solid var(--border);
+  opacity:0;transform:translateY(20px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.card.vis{opacity:1;transform:none}
+.card.full{grid-column:1/-1}
+.c-label{
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--a);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);
+}
+.card p{font-size:14px;line-height:1.85;color:var(--txt);opacity:.83}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{background:var(--alight);color:var(--a);font-size:12px;font-weight:600;padding:5px 13px;border-radius:16px}
+.word-card{
+  grid-column:1/-1;background:var(--txt);border-radius:16px;padding:36px;
+  opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;
+}
+.word-card.vis{opacity:1;transform:none}
+.wc-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bg);opacity:.6;margin-bottom:16px}
+.word-card p{
+  font-family:'EB Garamond',serif;font-size:19px;font-style:italic;
+  line-height:1.75;color:var(--bg);
+}
+
+@keyframes growx{from{width:0}to{width:100%}}
+@keyframes fadedown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+@keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:680px){
+  .header,.hero-img-wrap,.pull,.rule,.cards{padding-left:20px;padding-right:20px}
+  .hero-img-wrap img{height:240px}
+  .cards{grid-template-columns:1fr;padding-bottom:80px}
+  .card.full,.word-card{grid-column:1}
+}
+</style>
 <body>
-<div class="wrap">
-  <div class="hero-band">
-    <div class="photo-wrap"><div class="avatar-initials">DM</div></div>
-    <h1>Dr. Mberamihigo</h1>
-    <div class="role-pill">Academic Reviewer & Approver</div><br>
-    <div class="uni-line">🎓 Université du Burundi — Faculty of Letters & Humanities</div>
-    <div class="quote-card"><p>A language validated is a people affirmed. I reviewed this work with the same rigor I bring to the classroom.</p></div>
+<div class="top-strip"></div>
+<div class="header">
+  <div class="h-role"><span></span>Academic Reviewer & Approver<span></span></div>
+  <h1>Dr. Mberamihigo</h1>
+  <div class="h-uni">🎓 Université du Burundi — Faculty of Letters & Humanities</div>
+</div>
+<div class="hero-img-wrap">
+  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1000&q=80" alt="Dr. Mberamihigo" loading="lazy">
+</div>
+<div class="pull">
+  <p data-en="A language reviewed with rigor is a language respected. That is the standard applied to every definition in this dictionary." data-fr="Une langue révisée avec rigueur est une langue respectée. C'est la norme appliquée à chaque définition de ce dictionnaire." data-rn="A language reviewed with rigor is a language respected. That is the standard applied to every definition in this dictionary.">A language reviewed with rigor is a language respected. That is the standard applied to every definition in this dictionary.</p>
+  <div class="pull-line"></div>
+</div>
+<div class="rule"><hr></div>
+<div class="cards">
+  <div class="card">
+    <div class="c-label" data-en="🌍 Project &amp; Work" data-fr="🌍 Projets &amp; Expériences" data-rn="🌍 Ibikorwa">🌍 Project &amp; Work</div>
+    <p data-en="Dr. Mberamihigo of <strong>Université du Burundi</strong> served as the academic authority for this dictionary — reviewing and approving definitions to ensure linguistic accuracy, academic rigor, and cultural authenticity. His endorsement provides the project with scholarly credibility at the highest institutional level in Burundi." data-fr="Le Dr. Mberamihigo de l'<strong>Université du Burundi</strong> a servi d'autorité académique pour ce dictionnaire — révisant et approuvant les définitions pour assurer l'exactitude linguistique, la rigueur académique et l'authenticité culturelle." data-rn="Dr. Mberamihigo of <strong>Université du Burundi</strong> served as the academic authority for this dictionary — reviewing and approving definitions to ensure linguistic accuracy, academic rigor, and cultural authenticity. His endorsement provides the project with scholarly credibility at the highest institutional level in Burundi.">Dr. Mberamihigo of <strong>Université du Burundi</strong> served as the academic authority for this dictionary — reviewing and approving definitions to ensure linguistic accuracy, academic rigor, and cultural authenticity. His endorsement provides the project with scholarly credibility at the highest institutional level in Burundi.</p>
   </div>
-  <div class="content">
-    <div class="section">
-      <div class="sec-label">🌍 Project &amp; International Work</div>
-      <p>Dr. Mberamihigo of <strong>Université du Burundi</strong> served as the academic authority for the English–Kirundi Dictionary, reviewing and approving definitions to ensure linguistic accuracy, academic rigor, and cultural authenticity. His endorsement gives this project its scholarly credibility and institutional weight.</p>
-    </div>
-    <div class="section">
-      <div class="sec-label">🎓 Education</div>
-      <div class="chips"><span class="chip">Université du Burundi — Faculty of Letters & Humanities</span><span class="chip">Linguistics & Lexicography</span><span class="chip">Academic Research</span></div>
-    </div>
-    <div class="section">
-      <div class="sec-label">🎯 Hobbies &amp; Interests</div>
-      <div class="chips"><span class="chip">Kirundi Linguistics</span><span class="chip">Academic Research</span><span class="chip">Education</span></div>
-    </div>
-    <div class="section">
-      <div class="sec-label">💬 A Word to Our People</div>
-      <div class="word-block"><p>I reviewed this dictionary with great pride. The dedication of these young contributors is remarkable — and it was my honor to validate their work. This is the kind of scholarship that builds nations. Burundi has every reason to be proud.</p></div>
-    </div>
+  <div class="card">
+    <div class="c-label" data-en="🎓 Education" data-fr="🎓 Formation" data-rn="🎓 Amashure">🎓 Education</div>
+    <div class="chips"><span class="chip">Université du Burundi — Faculty of Letters & Humanities</span><span class="chip">Linguistics & Lexicography</span><span class="chip">Academic Research & Peer Review</span></div>
+  </div>
+  <div class="card">
+    <div class="c-label" data-en="🎯 Hobbies" data-fr="🎯 Loisirs" data-rn="🎯 Imyidagaduro">🎯 Hobbies</div>
+    <div class="chips"><span class="chip">Kirundi Linguistics</span><span class="chip">Academic Research</span><span class="chip">Education & Mentorship</span></div>
+  </div>
+  <div class="word-card">
+    <div class="wc-label" data-en="💬 A Word to Our People" data-fr="💬 Un Message à Notre Peuple" data-rn="💬 Ijambo kuri Abarundi">💬 A Word to Our People</div>
+    <p data-en="The dedication of these contributors is remarkable. They built something that the academic community of Burundi can be proud of. It was an honor to review their work — and an even greater honor to approve it." data-fr="Le dévouement de ces contributeurs est remarquable. Ils ont construit quelque chose dont la communauté académique du Burundi peut être fière. Ce fut un honneur de réviser leur travail — et un honneur encore plus grand de l'approuver." data-rn="The dedication of these contributors is remarkable. They built something that the academic community of Burundi can be proud of. It was an honor to review their work — and an even greater honor to approve it.">The dedication of these contributors is remarkable. They built something that the academic community of Burundi can be proud of. It was an honor to review their work — and an even greater honor to approve it.</p>
   </div>
 </div>
-</body>
-</html>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var lang = window._lang || 'en';
+  document.querySelectorAll('[data-en]').forEach(function(el) {
+    var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+    if (txt) el.innerHTML = txt;
+  });
+});
+</script>
+
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}}),{threshold:.1});
+document.querySelectorAll('.card,.word-card').forEach((el,i)=>{el.style.transitionDelay=i*.09+'s';obs.observe(el)});
+</script>
+</body></html>

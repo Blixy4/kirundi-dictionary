@@ -1,140 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blaise Ndayishimiye — Kirundi Dictionary</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family:'Plus Jakarta Sans',sans-serif;
-    background:#f4f7fc; color:#0d1a16;
-    min-height:100vh; overflow-x:hidden;
-  }
-  body::before {
-    content:''; position:fixed; inset:0;
-    background: radial-gradient(ellipse 80% 60% at 20% -10%, rgba(26,74,138,0.12) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 90% 100%, rgba(26,74,138,0.07) 0%, transparent 50%);
-    pointer-events:none; z-index:0;
-  }
-  .wrap { position:relative; z-index:1; max-width:680px; margin:0 auto; padding:0 24px 80px; }
-
-  .hero-band {
-    background: linear-gradient(135deg, #0f2d5e 0%, #1a4a8a 100%);
-    margin:0 -24px; padding:56px 40px 44px;
-    text-align:center; position:relative; overflow:hidden;
-    opacity:0; animation:fadeDown 0.7s 0.1s ease forwards;
-  }
-  .hero-band::before {
-    content:''; position:absolute; inset:0;
-    background:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
-  }
-  .photo-wrap { position:relative; display:inline-block; margin-bottom:20px; z-index:1; }
-  .photo {
-    width:110px; height:110px; border-radius:50%; object-fit:cover;
-    border:4px solid rgba(255,255,255,0.35);
-    box-shadow:0 10px 40px rgba(0,0,0,0.3); display:block;
-  }
-  .avatar-initials {
-    width:110px; height:110px; border-radius:50%;
-    background:rgba(255,255,255,0.2);
-    border:4px solid rgba(255,255,255,0.35);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'EB Garamond',serif; font-size:38px; color:#fff; font-weight:700;
-    box-shadow:0 10px 40px rgba(0,0,0,0.25);
-  }
-  .hero-band h1 {
-    font-family:'EB Garamond',serif;
-    font-size:clamp(26px,6vw,38px); font-weight:700;
-    color:#fff; letter-spacing:-0.3px; margin-bottom:8px;
-    position:relative; z-index:1;
-  }
-  .role-pill {
-    display:inline-block;
-    background:rgba(255,255,255,0.18); color:#fff;
-    border:1px solid rgba(255,255,255,0.3);
-    font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
-    padding:5px 14px; border-radius:20px; margin-bottom:8px;
-    position:relative; z-index:1;
-  }
-  .uni-line { font-size:12.5px; color:rgba(255,255,255,0.7); position:relative; z-index:1; }
-  .quote-card {
-    margin:24px 0 0;
-    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
-    border-radius:14px; padding:20px 24px;
-    position:relative; z-index:1; overflow:hidden;
-  }
-  .quote-card::before {
-    content:'"'; font-family:'EB Garamond',serif; font-size:80px;
-    color:rgba(255,255,255,0.12); position:absolute; top:-14px; left:10px; line-height:1;
-  }
-  .quote-card p {
-    font-family:'EB Garamond',serif; font-size:16px;
-    font-style:italic; line-height:1.7; color:#fff; position:relative;
-  }
-
-  .content { padding-top:20px; }
-  .section {
-    background:#fff; border-radius:18px; padding:24px;
-    margin-bottom:14px; box-shadow:0 2px 16px rgba(0,0,0,0.05);
-    opacity:0; transform:translateY(18px);
-  }
-  .section:nth-child(1){ animation:fadeUp 0.6s 0.35s ease forwards; }
-  .section:nth-child(2){ animation:fadeUp 0.6s 0.45s ease forwards; }
-  .section:nth-child(3){ animation:fadeUp 0.6s 0.55s ease forwards; }
-  .section:nth-child(4){ animation:fadeUp 0.6s 0.65s ease forwards; }
-  .sec-label {
-    font-size:10px; font-weight:700; text-transform:uppercase;
-    letter-spacing:1.8px; color:#1a4a8a; margin-bottom:13px;
-    display:flex; align-items:center; gap:7px;
-    padding-bottom:8px; border-bottom:1px solid rgba(0,0,0,0.07);
-  }
-  .section p { font-size:15px; line-height:1.8; color:#2a3830; }
-  .chips { display:flex; flex-wrap:wrap; gap:8px; }
-  .chip {
-    background:#dce8f8; color:#1a4a8a;
-    font-size:12px; font-weight:600; padding:5px 14px; border-radius:20px;
-  }
-  .word-block {
-    background:#dce8f8; border-left:4px solid #1a4a8a;
-    border-radius:0 14px 14px 0; padding:18px 22px;
-  }
-  .word-block p {
-    font-family:'EB Garamond',serif;
-    font-size:16px; line-height:1.8; font-style:italic; color:#0d1a16;
-  }
-  @keyframes fadeUp { to{ opacity:1; transform:none; } }
-  @keyframes fadeDown { from{ opacity:0; transform:translateY(-20px); } to{ opacity:1; transform:none; } }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700|Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<script>
+(function(){
+  // detect system dark mode
+  if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)
+    document.documentElement.setAttribute('data-theme','dark');
+  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',e=>
+    document.documentElement.setAttribute('data-theme', e.matches?'dark':'light'));
+  // detect language from browser
+  var lang = (navigator.language||navigator.userLanguage||'en').slice(0,2).toLowerCase();
+  if(!['en','fr','rn'].includes(lang)) lang='en';
+  document.documentElement.setAttribute('lang', lang);
+  window._lang = lang;
+})();
+</script>
 </head>
+<style>
+:root {
+  --a:#1a4a8a; --bg:#f4f7fc; --card:#ffffff; --txt:#0d1626;
+  --muted:#7a8070; --border:rgba(0,0,0,0.08);
+  --alight:#1a4a8a22; --shadow:0 4px 24px rgba(0,0,0,0.08);
+}
+[data-theme=dark] {
+  --a:#4a7fd4; --bg:#0d1626; --card:#1a2540; --txt:#e8edf8;
+  --muted:#8a9490; --border:rgba(255,255,255,0.08);
+  --alight:#4a7fd433; --shadow:0 4px 24px rgba(0,0,0,0.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;transition:background .3s,color .3s}
+
+/* ── HERO SPLIT ── */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;min-height:100vh;
+  position:relative;overflow:hidden;
+}
+.hero-img{
+  position:relative;overflow:hidden;
+}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.85)}
+.hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 60%,var(--bg) 100%);
+}
+.hero-text{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:60px 48px 60px 32px;
+  animation:slideLeft .8s .1s ease both;
+}
+.eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--a);margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:'';width:32px;height:2px;background:var(--a)}
+.hero-text h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;
+  color:var(--txt);margin-bottom:12px;
+}
+.role-tag{
+  display:inline-block;background:var(--alight);color:var(--a);
+  font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  padding:6px 14px;border-radius:4px;margin-bottom:20px;
+  border-left:3px solid var(--a);
+}
+.uni{font-size:13px;color:var(--muted);margin-bottom:28px}
+.quote-pull{
+  font-family:'Playfair Display',serif;font-size:17px;font-style:italic;
+  line-height:1.7;color:var(--txt);
+  border-top:1px solid var(--border);padding-top:24px;
+  position:relative;
+}
+.quote-pull::before{
+  content:'"';font-size:64px;color:var(--a);opacity:.3;
+  position:absolute;top:-16px;left:-8px;line-height:1;font-style:normal;
+}
+
+/* ── CONTENT ── */
+.content{max-width:900px;margin:0 auto;padding:60px 40px 100px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.section{
+  background:var(--card);border-radius:20px;padding:28px;
+  border:1px solid var(--border);
+  opacity:0;transform:translateY(24px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.section.vis{opacity:1;transform:none}
+.sec-label{
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--a);margin-bottom:16px;display:flex;align-items:center;gap:8px;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.section p{font-size:14.5px;line-height:1.85;color:var(--txt);opacity:.85}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--alight);color:var(--a);font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px}
+.word-box{
+  grid-column:1/-1;
+  background:var(--a);border-radius:20px;padding:32px 36px;color:#fff;
+  position:relative;overflow:hidden;
+}
+.word-box::before{
+  content:'"';font-family:'Playfair Display',serif;font-size:160px;
+  position:absolute;top:-40px;right:20px;color:rgba(255,255,255,0.08);line-height:1;
+}
+.word-box .wlabel{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-bottom:14px}
+.word-box p{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;line-height:1.75;position:relative}
+
+@keyframes slideLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-img{height:300px}
+  .hero-img::after{background:linear-gradient(0deg,var(--bg) 0%,transparent 60%)}
+  .hero-text{padding:32px 24px}
+  .content{padding:40px 20px 80px}
+  .grid-2{grid-template-columns:1fr}
+}
+</style>
 <body>
-<div class="wrap">
-  <div class="hero-band">
-    <div class="photo-wrap"><div class="avatar-initials">BN</div></div>
+<div class="hero">
+  <div class="hero-img"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&q=80" alt="Blaise Ndayishimiye" loading="lazy"></div>
+  <div class="hero-text">
+    <div class="eyebrow">Project Lead & Developer</div>
     <h1>Blaise Ndayishimiye</h1>
-    <div class="role-pill">Project Lead & Developer</div><br>
-    <div class="uni-line">🎓 Lead Programmer · Burundi</div>
-    <div class="quote-card"><p>I built this for every child in Burundi who deserves to learn without barriers — in their own language, with pride.</p></div>
+    <div class="role-tag" data-en="Project Lead & Developer" data-fr="Chef de Projet & Développeur" data-rn="Project Lead & Developer">Project Lead & Developer</div>
+    <div class="uni">🎓 Lead Programmer · Burundi</div>
+    <div class="quote-pull" data-en="Building this app meant building a future — one word, one line of code, one Burundian at a time." data-fr="Construire cette application, c'est construire un avenir — un mot, une ligne de code, un Burundais à la fois." data-rn="Building this app meant building a future — one word, one line of code, one Burundian at a time.">Building this app meant building a future — one word, one line of code, one Burundian at a time.</div>
   </div>
-  <div class="content">
+</div>
+
+<div class="content">
+  <div class="grid-2">
     <div class="section">
-      <div class="sec-label">🌍 Project &amp; International Work</div>
-      <p>Blaise is the architect behind the <strong>English–Kirundi Dictionary</strong>. He handled the full programming of the app, phonetics implementation, translations of both the app interface and dictionary entries, and coordinated the entire team across every stage of the project. His vision and technical leadership turned a shared dream into a product that reaches Burundians across the world.</p>
+      <div class="sec-label" data-en="🌍 Project &amp; Work" data-fr="🌍 Projets &amp; Expériences" data-rn="🌍 Ibikorwa">🌍 Project &amp; Work</div>
+      <p data-en="Blaise architected and programmed the entire <strong>English–Kirundi Dictionary</strong> app — handling phonetics, translations of the interface and entries, and coordinating every member of the team from inception to release. This project represents the full scope of his technical and human leadership." data-fr="Blaise a conçu et programmé l'intégralité de l'application <strong>English–Kirundi Dictionary</strong> — gestion de la phonétique, traduction de l'interface et des entrées, coordination de toute l'équipe." data-rn="Blaise architected and programmed the entire <strong>English–Kirundi Dictionary</strong> app — handling phonetics, translations of the interface and entries, and coordinating every member of the team from inception to release. This project represents the full scope of his technical and human leadership.">Blaise architected and programmed the entire <strong>English–Kirundi Dictionary</strong> app — handling phonetics, translations of the interface and entries, and coordinating every member of the team from inception to release. This project represents the full scope of his technical and human leadership.</p>
     </div>
     <div class="section">
-      <div class="sec-label">🎓 Education</div>
+      <div class="sec-label" data-en="🎓 Education" data-fr="🎓 Formation" data-rn="🎓 Amashure">🎓 Education</div>
       <div class="chips"><span class="chip">App Development & Programming</span><span class="chip">Phonetics & Linguistics</span><span class="chip">Translation — App & Entries</span><span class="chip">Project Coordination</span></div>
     </div>
     <div class="section">
-      <div class="sec-label">🎯 Hobbies &amp; Interests</div>
+      <div class="sec-label" data-en="🎯 Hobbies" data-fr="🎯 Loisirs" data-rn="🎯 Imyidagaduro">🎯 Hobbies</div>
       <div class="chips"><span class="chip">Programming</span><span class="chip">Language Research</span><span class="chip">Team Building</span></div>
     </div>
-    <div class="section">
-      <div class="sec-label">💬 A Word to Our People</div>
-      <div class="word-block"><p>This project is my love letter to Burundi. Every line of code, every translated word, every phonetic note — written so that our people can stand tall in any language. I am humbled to have led this team of extraordinary people. Burundi, this is for you.</p></div>
+    <div class="section word-box">
+      <div class="wlabel" data-en="💬 A Word to Our People" data-fr="💬 Un Message à Notre Peuple" data-rn="💬 Ijambo kuri Abarundi">💬 A Word to Our People</div>
+      <p data-en="The greatest privilege in building this dictionary was not the code — it was the team. Every contributor, every typed word, every reviewed definition is a proof that Burundi is full of people ready to serve their country in silence. This belongs to all of us." data-fr="Le plus grand privilège dans la construction de ce dictionnaire n'était pas le code — c'était l'équipe. Chaque contributeur, chaque mot tapé, chaque définition révisée prouve que le Burundi est plein de personnes prêtes à servir leur pays en silence." data-rn="The greatest privilege in building this dictionary was not the code — it was the team. Every contributor, every typed word, every reviewed definition is a proof that Burundi is full of people ready to serve their country in silence. This belongs to all of us.">The greatest privilege in building this dictionary was not the code — it was the team. Every contributor, every typed word, every reviewed definition is a proof that Burundi is full of people ready to serve their country in silence. This belongs to all of us.</p>
     </div>
   </div>
 </div>
-</body>
-</html>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var lang = window._lang || 'en';
+  document.querySelectorAll('[data-en]').forEach(function(el) {
+    var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+    if (txt) el.innerHTML = txt;
+  });
+});
+</script>
+
+<script>
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}})  ,{threshold:.1});
+document.querySelectorAll('.section').forEach((el,i)=>{el.style.transitionDelay=i*.1+'s';obs.observe(el)});
+</script>
+</body></html>

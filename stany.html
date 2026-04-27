@@ -1,140 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bigirimana Stany — Kirundi Dictionary</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family:'Plus Jakarta Sans',sans-serif;
-    background:#f0f5f4; color:#0d1a16;
-    min-height:100vh; overflow-x:hidden;
-  }
-  body::before {
-    content:''; position:fixed; inset:0;
-    background: radial-gradient(ellipse 80% 60% at 20% -10%, rgba(29,122,110,0.12) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 90% 100%, rgba(29,122,110,0.07) 0%, transparent 50%);
-    pointer-events:none; z-index:0;
-  }
-  .wrap { position:relative; z-index:1; max-width:680px; margin:0 auto; padding:0 24px 80px; }
-
-  .hero-band {
-    background: linear-gradient(135deg, #0d4a42 0%, #1d7a6e 100%);
-    margin:0 -24px; padding:56px 40px 44px;
-    text-align:center; position:relative; overflow:hidden;
-    opacity:0; animation:fadeDown 0.7s 0.1s ease forwards;
-  }
-  .hero-band::before {
-    content:''; position:absolute; inset:0;
-    background:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
-  }
-  .photo-wrap { position:relative; display:inline-block; margin-bottom:20px; z-index:1; }
-  .photo {
-    width:110px; height:110px; border-radius:50%; object-fit:cover;
-    border:4px solid rgba(255,255,255,0.35);
-    box-shadow:0 10px 40px rgba(0,0,0,0.3); display:block;
-  }
-  .avatar-initials {
-    width:110px; height:110px; border-radius:50%;
-    background:rgba(255,255,255,0.2);
-    border:4px solid rgba(255,255,255,0.35);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'EB Garamond',serif; font-size:38px; color:#fff; font-weight:700;
-    box-shadow:0 10px 40px rgba(0,0,0,0.25);
-  }
-  .hero-band h1 {
-    font-family:'EB Garamond',serif;
-    font-size:clamp(26px,6vw,38px); font-weight:700;
-    color:#fff; letter-spacing:-0.3px; margin-bottom:8px;
-    position:relative; z-index:1;
-  }
-  .role-pill {
-    display:inline-block;
-    background:rgba(255,255,255,0.18); color:#fff;
-    border:1px solid rgba(255,255,255,0.3);
-    font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
-    padding:5px 14px; border-radius:20px; margin-bottom:8px;
-    position:relative; z-index:1;
-  }
-  .uni-line { font-size:12.5px; color:rgba(255,255,255,0.7); position:relative; z-index:1; }
-  .quote-card {
-    margin:24px 0 0;
-    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
-    border-radius:14px; padding:20px 24px;
-    position:relative; z-index:1; overflow:hidden;
-  }
-  .quote-card::before {
-    content:'"'; font-family:'EB Garamond',serif; font-size:80px;
-    color:rgba(255,255,255,0.12); position:absolute; top:-14px; left:10px; line-height:1;
-  }
-  .quote-card p {
-    font-family:'EB Garamond',serif; font-size:16px;
-    font-style:italic; line-height:1.7; color:#fff; position:relative;
-  }
-
-  .content { padding-top:20px; }
-  .section {
-    background:#fff; border-radius:18px; padding:24px;
-    margin-bottom:14px; box-shadow:0 2px 16px rgba(0,0,0,0.05);
-    opacity:0; transform:translateY(18px);
-  }
-  .section:nth-child(1){ animation:fadeUp 0.6s 0.35s ease forwards; }
-  .section:nth-child(2){ animation:fadeUp 0.6s 0.45s ease forwards; }
-  .section:nth-child(3){ animation:fadeUp 0.6s 0.55s ease forwards; }
-  .section:nth-child(4){ animation:fadeUp 0.6s 0.65s ease forwards; }
-  .sec-label {
-    font-size:10px; font-weight:700; text-transform:uppercase;
-    letter-spacing:1.8px; color:#1d7a6e; margin-bottom:13px;
-    display:flex; align-items:center; gap:7px;
-    padding-bottom:8px; border-bottom:1px solid rgba(0,0,0,0.07);
-  }
-  .section p { font-size:15px; line-height:1.8; color:#2a3830; }
-  .chips { display:flex; flex-wrap:wrap; gap:8px; }
-  .chip {
-    background:#d0eeeb; color:#1d7a6e;
-    font-size:12px; font-weight:600; padding:5px 14px; border-radius:20px;
-  }
-  .word-block {
-    background:#d0eeeb; border-left:4px solid #1d7a6e;
-    border-radius:0 14px 14px 0; padding:18px 22px;
-  }
-  .word-block p {
-    font-family:'EB Garamond',serif;
-    font-size:16px; line-height:1.8; font-style:italic; color:#0d1a16;
-  }
-  @keyframes fadeUp { to{ opacity:1; transform:none; } }
-  @keyframes fadeDown { from{ opacity:0; transform:translateY(-20px); } to{ opacity:1; transform:none; } }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600|Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+(function(){
+  // detect system dark mode
+  if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)
+    document.documentElement.setAttribute('data-theme','dark');
+  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',e=>
+    document.documentElement.setAttribute('data-theme', e.matches?'dark':'light'));
+  // detect language from browser
+  var lang = (navigator.language||navigator.userLanguage||'en').slice(0,2).toLowerCase();
+  if(!['en','fr','rn'].includes(lang)) lang='en';
+  document.documentElement.setAttribute('lang', lang);
+  window._lang = lang;
+})();
+</script>
 </head>
+<style>
+:root{--a:#1d7a6e;--bg:#f0f5f4;--card:#ffffff;--txt:#0d1a18;--muted:#7a8478;--border:rgba(0,0,0,0.07);--alight:#1d7a6e1a}
+[data-theme=dark]{--a:#2da898;--bg:#0d1a18;--card:#152420;--txt:#e0f0ee;--muted:#8a9088;--border:rgba(255,255,255,0.07);--alight:#2da8982a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--txt);transition:background .3s,color .3s}
+
+.cinema{
+  position:relative;height:100vh;overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.cinema-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1200&q=80');
+  background-size:cover;background-position:center top;
+  filter:brightness(.55);
+  animation:zoomin 12s ease-out both;
+}
+.cinema-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 50%,transparent 100%);
+}
+.cinema-text{
+  position:relative;padding:60px 48px;width:100%;
+  animation:riseup .9s .3s ease both;
+}
+.c-role{
+  font-size:10px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;
+  color:var(--a);margin-bottom:14px;
+}
+.cinema-text h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,7vw,72px);font-weight:600;color:#fff;
+  line-height:1;margin-bottom:10px;
+}
+.c-uni{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:0}
+
+/* floating quote ribbon */
+.quote-ribbon{
+  background:var(--a);padding:24px 48px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(16px,2vw,20px);font-style:italic;
+  color:#fff;line-height:1.65;
+  position:relative;overflow:hidden;
+}
+.quote-ribbon::after{
+  content:'"';font-size:200px;position:absolute;
+  right:-20px;top:-60px;color:rgba(255,255,255,0.07);line-height:1;font-style:normal;
+}
+
+/* masonry cards */
+.masonry{
+  columns:2;column-gap:20px;
+  max-width:860px;margin:0 auto;padding:48px 40px 100px;
+}
+.mcard{
+  break-inside:avoid;margin-bottom:20px;
+  background:var(--card);border-radius:18px;padding:24px;
+  border:1px solid var(--border);
+  opacity:0;transform:translateY(20px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+.mcard.vis{opacity:1;transform:none}
+.mc-label{
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--a);margin-bottom:12px;
+  display:flex;align-items:center;gap:7px;
+}
+.mc-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.mcard p{font-size:14px;line-height:1.8;color:var(--txt);opacity:.82}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{background:var(--alight);color:var(--a);font-size:11.5px;font-weight:600;padding:4px 12px;border-radius:16px}
+.word-mcard{
+  column-span:all;background:var(--card);border-radius:18px;
+  padding:32px;border:2px solid var(--a);
+  opacity:0;transform:translateY(20px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+.word-mcard.vis{opacity:1;transform:none}
+.wm-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--a);margin-bottom:14px}
+.word-mcard p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;font-style:italic;line-height:1.75;color:var(--txt);
+}
+@keyframes zoomin{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes riseup{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@media(max-width:680px){
+  .masonry{columns:1;padding:32px 20px 80px}
+  .cinema-text{padding:40px 24px}
+  .quote-ribbon{padding:20px 24px}
+}
+</style>
 <body>
-<div class="wrap">
-  <div class="hero-band">
-    <div class="photo-wrap"><div class="avatar-initials">BS</div></div>
+<div class="cinema">
+  <div class="cinema-bg"></div>
+  <div class="cinema-overlay"></div>
+  <div class="cinema-text">
+    <div class="c-role">The Spark · Voice Translator</div>
     <h1>Bigirimana Stany</h1>
-    <div class="role-pill">Initial Spark & Voice Translator</div><br>
-    <div class="uni-line">🎓 TESOL Certified — Arizona State University</div>
-    <div class="quote-card"><p>I saw a gap in my community and I could not look away. This dictionary is the answer I wished I had growing up.</p></div>
-  </div>
-  <div class="content">
-    <div class="section">
-      <div class="sec-label">🌍 Project &amp; International Work</div>
-      <p>Stany was the <strong>initial spark</strong> of the English–Kirundi Dictionary. He translated dictionary entries and recorded the reading voices sourced from API Dictionary — giving the app its authentic spoken dimension that sets it apart. Beyond this project, he worked with the <strong>Vodafone Foundation – IRC</strong> as English Facilitator across East Africa, and with <strong>Good Neighbors</strong> in community monitoring and evaluation programs.</p>
-    </div>
-    <div class="section">
-      <div class="sec-label">🎓 Education</div>
-      <div class="chips"><span class="chip">TESOL Certificate — Arizona State University</span><span class="chip">English Facilitation — Vodafone Foundation / IRC</span><span class="chip">Monitoring & Evaluation — Good Neighbors NGO</span></div>
-    </div>
-    <div class="section">
-      <div class="sec-label">🎯 Hobbies &amp; Interests</div>
-      <div class="chips"><span class="chip">Language Learning</span><span class="chip">Community Education</span><span class="chip">Listening & Reading</span></div>
-    </div>
-    <div class="section">
-      <div class="sec-label">💬 A Word to Our People</div>
-      <div class="word-block"><p>I started with an idea and a love for my people. Now this dictionary belongs to all of us — to Burundi, to every Kirundi speaker who ever felt the world was not speaking their language. It is, now. And it always will be.</p></div>
-    </div>
+    <div class="c-uni">🎓 TESOL Certified — Arizona State University</div>
   </div>
 </div>
-</body>
-</html>
+<div class="quote-ribbon">
+  <span data-en="Seeing a gap in one's community and choosing to fill it — that is what this project is built on." data-fr="Voir un manque dans sa communauté et choisir de le combler — c'est sur quoi ce projet est construit." data-rn="Seeing a gap in one's community and choosing to fill it — that is what this project is built on.">Seeing a gap in one's community and choosing to fill it — that is what this project is built on.</span>
+</div>
+<div class="masonry">
+  <div class="mcard">
+    <div class="mc-label" data-en="🌍 Project &amp; Work" data-fr="🌍 Projets &amp; Expériences" data-rn="🌍 Ibikorwa">🌍 Project &amp; Work</div>
+    <p data-en="Stany was the <strong>founding spark</strong> of this project. He translated entries and recorded the dictionary's reading voices sourced from API Dictionary — giving the app its spoken, human dimension. Beyond this, he worked with the <strong>Vodafone Foundation – IRC</strong> as English Facilitator across East Africa, and with <strong>Good Neighbors</strong> in community monitoring and evaluation programs." data-fr="Stany a été l'<strong>étincelle fondatrice</strong> de ce projet. Il a traduit des entrées et enregistré les voix de lecture du dictionnaire. Il a également travaillé avec la <strong>Fondation Vodafone – IRC</strong> et <strong>Good Neighbors</strong>." data-rn="Stany was the <strong>founding spark</strong> of this project. He translated entries and recorded the dictionary's reading voices sourced from API Dictionary — giving the app its spoken, human dimension. Beyond this, he worked with the <strong>Vodafone Foundation – IRC</strong> as English Facilitator across East Africa, and with <strong>Good Neighbors</strong> in community monitoring and evaluation programs.">Stany was the <strong>founding spark</strong> of this project. He translated entries and recorded the dictionary's reading voices sourced from API Dictionary — giving the app its spoken, human dimension. Beyond this, he worked with the <strong>Vodafone Foundation – IRC</strong> as English Facilitator across East Africa, and with <strong>Good Neighbors</strong> in community monitoring and evaluation programs.</p>
+  </div>
+  <div class="mcard">
+    <div class="mc-label" data-en="🎓 Education" data-fr="🎓 Formation" data-rn="🎓 Amashure">🎓 Education</div>
+    <div class="chips"><span class="chip">TESOL Certificate — Arizona State University</span><span class="chip">English Facilitation — Vodafone Foundation / IRC</span><span class="chip">Monitoring & Evaluation — Good Neighbors NGO</span></div>
+  </div>
+  <div class="mcard">
+    <div class="mc-label" data-en="🎯 Hobbies" data-fr="🎯 Loisirs" data-rn="🎯 Imyidagaduro">🎯 Hobbies</div>
+    <div class="chips"><span class="chip">Language Learning</span><span class="chip">Community Education</span><span class="chip">Listening & Reading</span></div>
+  </div>
+  <div class="word-mcard">
+    <div class="wm-label" data-en="💬 A Word to Our People" data-fr="💬 Un Message à Notre Peuple" data-rn="💬 Ijambo kuri Abarundi">💬 A Word to Our People</div>
+    <p data-en="This dictionary started as an idea born from witnessing people struggle with language barriers every day. Now it serves thousands. May it continue to grow — and may Burundi always find people willing to take the first step for their community, without waiting to be asked." data-fr="Ce dictionnaire a commencé comme une idée née du constat quotidien des barrières linguistiques. Qu'il continue de grandir — et que le Burundi trouve toujours des personnes prêtes à faire le premier pas pour leur communauté." data-rn="This dictionary started as an idea born from witnessing people struggle with language barriers every day. Now it serves thousands. May it continue to grow — and may Burundi always find people willing to take the first step for their community, without waiting to be asked.">This dictionary started as an idea born from witnessing people struggle with language barriers every day. Now it serves thousands. May it continue to grow — and may Burundi always find people willing to take the first step for their community, without waiting to be asked.</p>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var lang = window._lang || 'en';
+  document.querySelectorAll('[data-en]').forEach(function(el) {
+    var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+    if (txt) el.innerHTML = txt;
+  });
+});
+</script>
+
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll('.mcard,.word-mcard').forEach((el,i)=>{el.style.transitionDelay=i*.08+'s';obs.observe(el)});
+</script>
+</body></html>

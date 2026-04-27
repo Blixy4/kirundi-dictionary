@@ -1,140 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Albert Niyo Mutabazi — Kirundi Dictionary</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family:'Plus Jakarta Sans',sans-serif;
-    background:#f4faf7; color:#0d1a16;
-    min-height:100vh; overflow-x:hidden;
-  }
-  body::before {
-    content:''; position:fixed; inset:0;
-    background: radial-gradient(ellipse 80% 60% at 20% -10%, rgba(26,107,90,0.12) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 90% 100%, rgba(26,107,90,0.07) 0%, transparent 50%);
-    pointer-events:none; z-index:0;
-  }
-  .wrap { position:relative; z-index:1; max-width:680px; margin:0 auto; padding:0 24px 80px; }
-
-  .hero-band {
-    background: linear-gradient(135deg, #0f4a3d 0%, #1a6b5a 100%);
-    margin:0 -24px; padding:56px 40px 44px;
-    text-align:center; position:relative; overflow:hidden;
-    opacity:0; animation:fadeDown 0.7s 0.1s ease forwards;
-  }
-  .hero-band::before {
-    content:''; position:absolute; inset:0;
-    background:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
-  }
-  .photo-wrap { position:relative; display:inline-block; margin-bottom:20px; z-index:1; }
-  .photo {
-    width:110px; height:110px; border-radius:50%; object-fit:cover;
-    border:4px solid rgba(255,255,255,0.35);
-    box-shadow:0 10px 40px rgba(0,0,0,0.3); display:block;
-  }
-  .avatar-initials {
-    width:110px; height:110px; border-radius:50%;
-    background:rgba(255,255,255,0.2);
-    border:4px solid rgba(255,255,255,0.35);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'EB Garamond',serif; font-size:38px; color:#fff; font-weight:700;
-    box-shadow:0 10px 40px rgba(0,0,0,0.25);
-  }
-  .hero-band h1 {
-    font-family:'EB Garamond',serif;
-    font-size:clamp(26px,6vw,38px); font-weight:700;
-    color:#fff; letter-spacing:-0.3px; margin-bottom:8px;
-    position:relative; z-index:1;
-  }
-  .role-pill {
-    display:inline-block;
-    background:rgba(255,255,255,0.18); color:#fff;
-    border:1px solid rgba(255,255,255,0.3);
-    font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
-    padding:5px 14px; border-radius:20px; margin-bottom:8px;
-    position:relative; z-index:1;
-  }
-  .uni-line { font-size:12.5px; color:rgba(255,255,255,0.7); position:relative; z-index:1; }
-  .quote-card {
-    margin:24px 0 0;
-    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
-    border-radius:14px; padding:20px 24px;
-    position:relative; z-index:1; overflow:hidden;
-  }
-  .quote-card::before {
-    content:'"'; font-family:'EB Garamond',serif; font-size:80px;
-    color:rgba(255,255,255,0.12); position:absolute; top:-14px; left:10px; line-height:1;
-  }
-  .quote-card p {
-    font-family:'EB Garamond',serif; font-size:16px;
-    font-style:italic; line-height:1.7; color:#fff; position:relative;
-  }
-
-  .content { padding-top:20px; }
-  .section {
-    background:#fff; border-radius:18px; padding:24px;
-    margin-bottom:14px; box-shadow:0 2px 16px rgba(0,0,0,0.05);
-    opacity:0; transform:translateY(18px);
-  }
-  .section:nth-child(1){ animation:fadeUp 0.6s 0.35s ease forwards; }
-  .section:nth-child(2){ animation:fadeUp 0.6s 0.45s ease forwards; }
-  .section:nth-child(3){ animation:fadeUp 0.6s 0.55s ease forwards; }
-  .section:nth-child(4){ animation:fadeUp 0.6s 0.65s ease forwards; }
-  .sec-label {
-    font-size:10px; font-weight:700; text-transform:uppercase;
-    letter-spacing:1.8px; color:#1a6b5a; margin-bottom:13px;
-    display:flex; align-items:center; gap:7px;
-    padding-bottom:8px; border-bottom:1px solid rgba(0,0,0,0.07);
-  }
-  .section p { font-size:15px; line-height:1.8; color:#2a3830; }
-  .chips { display:flex; flex-wrap:wrap; gap:8px; }
-  .chip {
-    background:#d4ede8; color:#1a6b5a;
-    font-size:12px; font-weight:600; padding:5px 14px; border-radius:20px;
-  }
-  .word-block {
-    background:#d4ede8; border-left:4px solid #1a6b5a;
-    border-radius:0 14px 14px 0; padding:18px 22px;
-  }
-  .word-block p {
-    font-family:'EB Garamond',serif;
-    font-size:16px; line-height:1.8; font-style:italic; color:#0d1a16;
-  }
-  @keyframes fadeUp { to{ opacity:1; transform:none; } }
-  @keyframes fadeDown { from{ opacity:0; transform:translateY(-20px); } to{ opacity:1; transform:none; } }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800|Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<script>
+(function(){
+  // detect system dark mode
+  if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)
+    document.documentElement.setAttribute('data-theme','dark');
+  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',e=>
+    document.documentElement.setAttribute('data-theme', e.matches?'dark':'light'));
+  // detect language from browser
+  var lang = (navigator.language||navigator.userLanguage||'en').slice(0,2).toLowerCase();
+  if(!['en','fr','rn'].includes(lang)) lang='en';
+  document.documentElement.setAttribute('lang', lang);
+  window._lang = lang;
+})();
+</script>
 </head>
+<style>
+:root{--a:#1a6b5a;--bg:#f4faf7;--card:#ffffff;--txt:#0a1a16;--muted:#6a7068;--border:rgba(0,0,0,0.08);--alight:#1a6b5a15}
+[data-theme=dark]{--a:#2d9b83;--bg:#0a1a16;--card:#102820;--txt:#d4ede8;--muted:#8a8e88;--border:rgba(255,255,255,0.08);--alight:#2d9b8325}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--txt);transition:background .3s,color .3s;overflow-x:hidden}
+
+/* BIG NUMBER COUNTER animation */
+.counter-strip{
+  background:var(--a);padding:20px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  overflow:hidden;
+}
+.c-num{
+  font-size:clamp(48px,8vw,96px);font-weight:800;
+  color:rgba(255,255,255,0.15);line-height:1;
+  animation:countup 1.5s .5s ease both;
+}
+.c-tag{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.9)}
+
+/* hero */
+.hero{
+  display:grid;grid-template-columns:1.2fr 1fr;min-height:75vh;
+}
+.hero-left{
+  padding:60px 48px;display:flex;flex-direction:column;justify-content:center;
+  animation:fadein .8s .2s ease both;
+}
+.h-tag{
+  font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  color:var(--a);margin-bottom:16px;
+}
+.hero-left h1{
+  font-size:clamp(36px,5vw,60px);font-weight:800;
+  line-height:1;letter-spacing:-1px;margin-bottom:14px;
+}
+.hero-left .h1-accent{color:var(--a)}
+.hero-uni{font-size:13px;color:var(--muted);margin-bottom:32px}
+.hero-quote{
+  font-family:'Lora',serif;font-size:16px;font-style:italic;
+  line-height:1.7;color:var(--txt);opacity:.8;
+  border-left:3px solid var(--a);padding-left:18px;
+}
+.hero-right{
+  position:relative;overflow:hidden;
+}
+.hero-right img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.88) saturate(1.1);
+  animation:zoomin 10s ease-out both;
+}
+.hero-right::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(270deg,transparent 60%,var(--bg) 100%);
+}
+
+/* content */
+.content{max-width:900px;margin:0 auto;padding:56px 48px 100px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.block{
+  background:var(--card);border-radius:16px;padding:26px;
+  border:1px solid var(--border);
+  opacity:0;transform:scale(.97);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.block.vis{opacity:1;transform:none}
+.bl{
+  font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--a);margin-bottom:14px;
+}
+.block p{font-size:14px;line-height:1.85;opacity:.82}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{background:var(--alight);color:var(--a);font-size:12px;font-weight:700;padding:5px 13px;border-radius:4px}
+.word-row{
+  background:var(--txt);border-radius:16px;padding:36px 40px;
+  opacity:0;transform:scale(.97);transition:opacity .5s ease,transform .5s ease;
+}
+.word-row.vis{opacity:1;transform:none}
+.wrl{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--bg);opacity:.5;margin-bottom:16px}
+.word-row p{
+  font-family:'Lora',serif;font-size:18px;font-style:italic;
+  line-height:1.8;color:var(--bg);
+}
+
+@keyframes fadein{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+@keyframes zoomin{from{transform:scale(1.06)}to{transform:scale(1)}}
+@keyframes countup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:720px){
+  .counter-strip{flex-direction:column;gap:4px;padding:16px 24px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{height:260px}
+  .hero-left{padding:36px 24px}
+  .content{padding:36px 20px 80px}
+  .row{grid-template-columns:1fr}
+}
+</style>
 <body>
-<div class="wrap">
-  <div class="hero-band">
-    <div class="photo-wrap"><div class="avatar-initials">AN</div></div>
-    <h1>Albert Niyo Mutabazi</h1>
-    <div class="role-pill">Typist & Team Spirit</div><br>
-    <div class="uni-line">🎓 Burundi</div>
-    <div class="quote-card"><p>A team that believes in what it builds can move mountains. I believed in this one from the very first day.</p></div>
+<div class="counter-strip">
+  <div class="c-num">10K+</div>
+  <div class="c-tag">Words translated<br>for Burundi</div>
+</div>
+<div class="hero">
+  <div class="hero-left">
+    <div class="h-tag">Typist & Team Spirit</div>
+    <h1>Albert<br><span class="h1-accent">Niyo Mutabazi</span></h1>
+    <div class="hero-uni">🎓 Burundi</div>
+    <div class="hero-quote" data-en="A team united by love for its country can accomplish what no individual could alone. This team proved that." data-fr="Une équipe unie par l'amour de son pays peut accomplir ce qu'aucun individu ne pourrait seul. Cette équipe l'a prouvé." data-rn="A team united by love for its country can accomplish what no individual could alone. This team proved that.">A team united by love for its country can accomplish what no individual could alone. This team proved that.</div>
   </div>
-  <div class="content">
-    <div class="section">
-      <div class="sec-label">🌍 Project &amp; International Work</div>
-      <p>Albert contributed to the <strong>English–Kirundi Dictionary</strong> as entry typist and the beating heart of team morale. Beyond his direct typing work, he played an essential role in maintaining the unity and energy of the team — the kind of person who keeps everyone moving forward when the work gets long and demanding. A project this size runs on dedication, and Albert gave his freely.</p>
-    </div>
-    <div class="section">
-      <div class="sec-label">🎓 Education</div>
-      <div class="chips"><span class="chip">Secondary Education — Burundi</span></div>
-    </div>
-    <div class="section">
-      <div class="sec-label">🎯 Hobbies &amp; Interests</div>
-      <div class="chips"><span class="chip">Teamwork & Leadership</span><span class="chip">Community</span><span class="chip">Language</span></div>
-    </div>
-    <div class="section">
-      <div class="sec-label">💬 A Word to Our People</div>
-      <div class="word-block"><p>Brotherhood made this dictionary possible. We were not just colleagues — we were a family, united for Burundi. I am proud to have been part of this family. This work belongs to all of us. May it serve our country for generations.</p></div>
-    </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900&q=80" alt="Albert Niyo Mutabazi" loading="lazy">
   </div>
 </div>
-</body>
-</html>
+<div class="content">
+  <div class="row">
+    <div class="block">
+      <div class="bl" data-en="🌍 Project &amp; Work" data-fr="🌍 Projets &amp; Expériences" data-rn="🌍 Ibikorwa">🌍 Project &amp; Work</div>
+      <p data-en="Albert contributed to the <strong>English–Kirundi Dictionary</strong> as entry typist and the living spirit of team cohesion. Beyond his direct work on entries, he kept the team energized, unified, and moving forward through a long and demanding project — the kind of person every great team quietly depends on." data-fr="Albert a contribué comme typiste et âme vivante de la cohésion d'équipe. Au-delà de son travail direct sur les entrées, il a maintenu l'énergie, l'unité et l'élan de l'équipe tout au long d'un projet long et exigeant." data-rn="Albert contributed to the <strong>English–Kirundi Dictionary</strong> as entry typist and the living spirit of team cohesion. Beyond his direct work on entries, he kept the team energized, unified, and moving forward through a long and demanding project — the kind of person every great team quietly depends on.">Albert contributed to the <strong>English–Kirundi Dictionary</strong> as entry typist and the living spirit of team cohesion. Beyond his direct work on entries, he kept the team energized, unified, and moving forward through a long and demanding project — the kind of person every great team quietly depends on.</p>
+    </div>
+    <div class="block">
+      <div class="bl" data-en="🎓 Education" data-fr="🎓 Formation" data-rn="🎓 Amashure">🎓 Education</div>
+      <div class="chips"><span class="chip">Secondary & Higher Education — Burundi</span></div>
+    </div>
+    <div class="block">
+      <div class="bl" data-en="🎯 Hobbies" data-fr="🎯 Loisirs" data-rn="🎯 Imyidagaduro">🎯 Hobbies</div>
+      <div class="chips"><span class="chip">Teamwork & Leadership</span><span class="chip">Community</span><span class="chip">Language</span></div>
+    </div>
+  </div>
+  <div class="word-row">
+    <div class="wrl" data-en="💬 A Word to Our People" data-fr="💬 Un Message à Notre Peuple" data-rn="💬 Ijambo kuri Abarundi">💬 A Word to Our People</div>
+    <p data-en="Brotherhood made this dictionary possible. Not just the technical work — the spirit. The belief that Burundi deserves this. The willingness to show up every day for something bigger than oneself. That is what this team was built on. That is what this dictionary carries." data-fr="La fraternité a rendu ce dictionnaire possible. Pas seulement le travail technique — l'esprit. La conviction que le Burundi mérite cela. La volonté de se montrer chaque jour pour quelque chose de plus grand que soi." data-rn="Brotherhood made this dictionary possible. Not just the technical work — the spirit. The belief that Burundi deserves this. The willingness to show up every day for something bigger than oneself. That is what this team was built on. That is what this dictionary carries.">Brotherhood made this dictionary possible. Not just the technical work — the spirit. The belief that Burundi deserves this. The willingness to show up every day for something bigger than oneself. That is what this team was built on. That is what this dictionary carries.</p>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var lang = window._lang || 'en';
+  document.querySelectorAll('[data-en]').forEach(function(el) {
+    var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+    if (txt) el.innerHTML = txt;
+  });
+});
+</script>
+
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}}),{threshold:.1});
+document.querySelectorAll('.block,.word-row').forEach((el,i)=>{el.style.transitionDelay=i*.09+'s';obs.observe(el)});
+</script>
+</body></html>
