@@ -13,7 +13,9 @@
   window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',e=>
     document.documentElement.setAttribute('data-theme', e.matches?'dark':'light'));
   // detect language from browser
-  var lang = (navigator.language||navigator.userLanguage||'en').slice(0,2).toLowerCase();
+  // Priority: ?lang= URL param (set by Flutter app) → system language → 'en'
+  var lang = new URLSearchParams(window.location.search).get('lang')
+             || (navigator.language||navigator.userLanguage||'en').slice(0,2).toLowerCase();
   if(!['en','fr','rn'].includes(lang)) lang='en';
   document.documentElement.setAttribute('lang', lang);
   window._lang = lang;
