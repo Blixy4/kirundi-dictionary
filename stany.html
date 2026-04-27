@@ -3,159 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bigirimana Stany — Contributor</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Bigirimana Stany — Kirundi Dictionary</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #0f1923; --teal: #1d7a6e; --teal-light: #d0eeeb;
-    --bg: #f0f5f4; --card: #ffffff; --muted: #5e7470;
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background:#f0f5f4; color:#0d1a16;
+    min-height:100vh; overflow-x:hidden;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; overflow-x: hidden; }
   body::before {
-    content: ''; position: fixed; inset: 0;
-    background:
-      radial-gradient(ellipse 70% 50% at 0% 0%, rgba(29,122,110,0.1) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 40% at 100% 100%, rgba(29,122,110,0.07) 0%, transparent 50%);
-    pointer-events: none; z-index: 0;
+    content:''; position:fixed; inset:0;
+    background: radial-gradient(ellipse 80% 60% at 20% -10%, rgba(29,122,110,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 90% 100%, rgba(29,122,110,0.07) 0%, transparent 50%);
+    pointer-events:none; z-index:0;
   }
-  .wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+  .wrap { position:relative; z-index:1; max-width:680px; margin:0 auto; padding:0 24px 80px; }
 
-  .hero {
-    display: flex; align-items: center; gap: 28px; padding: 50px 0 36px;
-    opacity: 0; transform: translateX(-30px);
-    animation: fadeRight 0.7s 0.1s ease forwards;
+  .hero-band {
+    background: linear-gradient(135deg, #0d4a42 0%, #1d7a6e 100%);
+    margin:0 -24px; padding:56px 40px 44px;
+    text-align:center; position:relative; overflow:hidden;
+    opacity:0; animation:fadeDown 0.7s 0.1s ease forwards;
   }
-  .avatar {
-    flex-shrink: 0; width: 100px; height: 100px; border-radius: 24px;
-    background: linear-gradient(135deg, var(--teal), #2ba898);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif; font-size: 34px; font-weight: 800; color: #fff;
-    box-shadow: 0 10px 30px rgba(29,122,110,0.3); position: relative;
+  .hero-band::before {
+    content:''; position:absolute; inset:0;
+    background:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
   }
-  .avatar::after {
-    content: '✦'; position: absolute; bottom: -6px; right: -6px;
-    background: #fff; color: var(--teal);
-    width: 22px; height: 22px; border-radius: 6px;
-    display: flex; align-items: center; justify-content: center; font-size: 10px;
+  .photo-wrap { position:relative; display:inline-block; margin-bottom:20px; z-index:1; }
+  .photo {
+    width:110px; height:110px; border-radius:50%; object-fit:cover;
+    border:4px solid rgba(255,255,255,0.35);
+    box-shadow:0 10px 40px rgba(0,0,0,0.3); display:block;
   }
-  .hero-text h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(24px, 5.5vw, 34px); font-weight: 800;
-    letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 8px;
+  .avatar-initials {
+    width:110px; height:110px; border-radius:50%;
+    background:rgba(255,255,255,0.2);
+    border:4px solid rgba(255,255,255,0.35);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'EB Garamond',serif; font-size:38px; color:#fff; font-weight:700;
+    box-shadow:0 10px 40px rgba(0,0,0,0.25);
   }
-  .role-badge {
-    display: inline-block; background: var(--teal-light); color: var(--teal);
-    font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 20px;
-    letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px;
+  .hero-band h1 {
+    font-family:'EB Garamond',serif;
+    font-size:clamp(26px,6vw,38px); font-weight:700;
+    color:#fff; letter-spacing:-0.3px; margin-bottom:8px;
+    position:relative; z-index:1;
   }
-  .institution { font-size: 12px; color: var(--muted); }
+  .role-pill {
+    display:inline-block;
+    background:rgba(255,255,255,0.18); color:#fff;
+    border:1px solid rgba(255,255,255,0.3);
+    font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    padding:5px 14px; border-radius:20px; margin-bottom:8px;
+    position:relative; z-index:1;
+  }
+  .uni-line { font-size:12.5px; color:rgba(255,255,255,0.7); position:relative; z-index:1; }
+  .quote-card {
+    margin:24px 0 0;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
+    border-radius:14px; padding:20px 24px;
+    position:relative; z-index:1; overflow:hidden;
+  }
+  .quote-card::before {
+    content:'"'; font-family:'EB Garamond',serif; font-size:80px;
+    color:rgba(255,255,255,0.12); position:absolute; top:-14px; left:10px; line-height:1;
+  }
+  .quote-card p {
+    font-family:'EB Garamond',serif; font-size:16px;
+    font-style:italic; line-height:1.7; color:#fff; position:relative;
+  }
 
-  .stats {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;
-    opacity: 0; animation: fadeUp 0.6s 0.3s ease forwards;
-  }
-  .stat { background: var(--card); border-radius: 14px; padding: 18px 14px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
-  .stat-val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--teal); display: block; margin-bottom: 3px; }
-  .stat-key { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-
-  .quote-banner {
-    background: var(--teal); color: #fff; border-radius: 18px;
-    padding: 26px 30px; margin-bottom: 20px; position: relative; overflow: hidden;
-    opacity: 0; animation: fadeUp 0.6s 0.4s ease forwards;
-  }
-  .quote-banner::before {
-    content: '"'; position: absolute; top: -20px; right: 16px;
-    font-family: 'Syne', serif; font-size: 110px; color: rgba(255,255,255,0.1); line-height: 1;
-  }
-  .quote-banner p { font-size: 15px; line-height: 1.7; font-style: italic; position: relative; }
-
+  .content { padding-top:20px; }
   .section {
-    background: var(--card); border-radius: 18px; padding: 26px;
-    margin-bottom: 14px; box-shadow: 0 2px 14px rgba(0,0,0,0.05); opacity: 0;
+    background:#fff; border-radius:18px; padding:24px;
+    margin-bottom:14px; box-shadow:0 2px 16px rgba(0,0,0,0.05);
+    opacity:0; transform:translateY(18px);
   }
-  .section:nth-child(1) { animation: fadeUp 0.6s 0.5s ease forwards; }
-  .section:nth-child(2) { animation: fadeUp 0.6s 0.6s ease forwards; }
-  .section:nth-child(3) { animation: fadeUp 0.6s 0.7s ease forwards; }
-  .section:nth-child(4) { animation: fadeUp 0.6s 0.8s ease forwards; }
-
-  .section-label {
-    font-size: 10px; font-weight: 500; text-transform: uppercase;
-    letter-spacing: 1.4px; color: var(--teal); margin-bottom: 13px;
-    display: flex; align-items: center; gap: 7px;
+  .section:nth-child(1){ animation:fadeUp 0.6s 0.35s ease forwards; }
+  .section:nth-child(2){ animation:fadeUp 0.6s 0.45s ease forwards; }
+  .section:nth-child(3){ animation:fadeUp 0.6s 0.55s ease forwards; }
+  .section:nth-child(4){ animation:fadeUp 0.6s 0.65s ease forwards; }
+  .sec-label {
+    font-size:10px; font-weight:700; text-transform:uppercase;
+    letter-spacing:1.8px; color:#1d7a6e; margin-bottom:13px;
+    display:flex; align-items:center; gap:7px;
+    padding-bottom:8px; border-bottom:1px solid rgba(0,0,0,0.07);
   }
-  .section p { font-size: 14.5px; line-height: 1.75; color: #2a3a38; }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { background: var(--teal-light); color: #155249; font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; }
-
-  .word-block { border-left: 4px solid var(--teal); background: linear-gradient(135deg, #f0faf9, #e8f7f5); border-radius: 0 14px 14px 0; padding: 18px 20px; }
-  .word-block p { font-size: 15px; line-height: 1.8; font-style: italic; color: #1a4a44; }
-
-  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeRight { to { opacity: 1; transform: translateX(0); } }
+  .section p { font-size:15px; line-height:1.8; color:#2a3830; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .chip {
+    background:#d0eeeb; color:#1d7a6e;
+    font-size:12px; font-weight:600; padding:5px 14px; border-radius:20px;
+  }
+  .word-block {
+    background:#d0eeeb; border-left:4px solid #1d7a6e;
+    border-radius:0 14px 14px 0; padding:18px 22px;
+  }
+  .word-block p {
+    font-family:'EB Garamond',serif;
+    font-size:16px; line-height:1.8; font-style:italic; color:#0d1a16;
+  }
+  @keyframes fadeUp { to{ opacity:1; transform:none; } }
+  @keyframes fadeDown { from{ opacity:0; transform:translateY(-20px); } to{ opacity:1; transform:none; } }
 </style>
 </head>
 <body>
 <div class="wrap">
-
-  <div class="hero">
-    <div class="avatar">BS</div>
-    <div class="hero-text">
-      <h1>Bigirimana Stany</h1>
-      <div class="role-badge">English Facilitator</div>
-      <div class="institution">🎓 TESOL Certified · Arizona State University</div>
+  <div class="hero-band">
+    <div class="photo-wrap"><div class="avatar-initials">BS</div></div>
+    <h1>Bigirimana Stany</h1>
+    <div class="role-pill">Initial Spark & Voice Translator</div><br>
+    <div class="uni-line">🎓 TESOL Certified — Arizona State University</div>
+    <div class="quote-card"><p>I saw a gap in my community and I could not look away. This dictionary is the answer I wished I had growing up.</p></div>
+  </div>
+  <div class="content">
+    <div class="section">
+      <div class="sec-label">🌍 Project &amp; International Work</div>
+      <p>Stany was the <strong>initial spark</strong> of the English–Kirundi Dictionary. He translated dictionary entries and recorded the reading voices sourced from API Dictionary — giving the app its authentic spoken dimension that sets it apart. Beyond this project, he worked with the <strong>Vodafone Foundation – IRC</strong> as English Facilitator across East Africa, and with <strong>Good Neighbors</strong> in community monitoring and evaluation programs.</p>
+    </div>
+    <div class="section">
+      <div class="sec-label">🎓 Education</div>
+      <div class="chips"><span class="chip">TESOL Certificate — Arizona State University</span><span class="chip">English Facilitation — Vodafone Foundation / IRC</span><span class="chip">Monitoring & Evaluation — Good Neighbors NGO</span></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">🎯 Hobbies &amp; Interests</div>
+      <div class="chips"><span class="chip">Language Learning</span><span class="chip">Community Education</span><span class="chip">Listening & Reading</span></div>
+    </div>
+    <div class="section">
+      <div class="sec-label">💬 A Word to Our People</div>
+      <div class="word-block"><p>I started with an idea and a love for my people. Now this dictionary belongs to all of us — to Burundi, to every Kirundi speaker who ever felt the world was not speaking their language. It is, now. And it always will be.</p></div>
     </div>
   </div>
-
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-val">TESOL</span>
-      <span class="stat-key">Certified</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val">4+</span>
-      <span class="stat-key">Languages</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val">NGO</span>
-      <span class="stat-key">Experience</span>
-    </div>
-  </div>
-
-  <div class="quote-banner">
-    <p>The idea of writing an English–Kirundi dictionary came to me when I noticed that many people in my community had problems translating between English and Kirundi.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-label">🌍 International Projects</div>
-    <p>Stany contributed to the <strong>English–Kirundi Dictionary</strong> as English Facilitator and co-author of translated entries. He also worked with the <strong>Vodafone Foundation – IRC</strong> English learning program (2019–2020), facilitating cross-community English education across East Africa, and with <strong>Good Neighbors</strong> in a monitoring and evaluation role for community development programs.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-label">🎓 Education</div>
-    <div class="chips">
-      <span class="chip">TESOL Certificate — Arizona State University</span>
-      <span class="chip">Diploma — Secondary Education</span>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">🎯 Hobbies</div>
-    <div class="chips">
-      <span class="chip">Language Learning</span>
-      <span class="chip">Community Education</span>
-      <span class="chip">Reading</span>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">💬 A Word to Our Users</div>
-    <div class="word-block">
-      <p>My goal in writing this dictionary is to provide a reliable reference source for learners, teachers, and researchers, and to support my community in overcoming language barriers. I believe this resource will help students, teachers, and anyone interested in learning either language. It is a privilege to contribute something lasting to this cause.</p>
-    </div>
-  </div>
-
 </div>
 </body>
 </html>
