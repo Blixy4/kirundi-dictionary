@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tuyisenge Alice — Contributor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c9636a;
+    --rose-light: #f5dede;
+    --cream: #fdf8f3;
+    --dark: #1a1210;
+    --muted: #7a6b65;
+    --card: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% -10%, rgba(201,99,106,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(201,99,106,0.08) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+  .wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  .hero {
+    text-align: center; padding: 60px 0 36px;
+    opacity: 0; transform: translateY(30px);
+    animation: fadeUp 0.7s 0.1s ease forwards;
+  }
+  .avatar-ring {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 110px; height: 110px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), #e8a0a5);
+    box-shadow: 0 8px 32px rgba(201,99,106,0.35);
+    margin-bottom: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; color: #fff; font-weight: 700;
+    position: relative;
+  }
+  .avatar-ring::after {
+    content: '';
+    position: absolute; inset: -5px; border-radius: 50%;
+    border: 2px dashed rgba(201,99,106,0.4);
+    animation: spin 18s linear infinite;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 6vw, 36px);
+    font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px;
+  }
+  .role-badge {
+    display: inline-block; background: var(--rose-light); color: var(--rose);
+    font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px;
+    letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .institution { font-size: 13px; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .institution::before { content: '🎓'; font-size: 14px; }
+
+  .quote-banner {
+    background: linear-gradient(135deg, var(--rose) 0%, #c47a7f 100%);
+    color: #fff; border-radius: 18px; padding: 28px 32px; margin: 32px 0;
+    position: relative; overflow: hidden;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.7s 0.3s ease forwards;
+  }
+  .quote-banner::before {
+    content: '\201C';
+    position: absolute; top: -10px; left: 16px;
+    font-family: 'Playfair Display', serif;
+    font-size: 100px; color: rgba(255,255,255,0.15); line-height: 1;
+  }
+  .quote-banner p { font-size: 16px; line-height: 1.7; font-style: italic; position: relative; }
+
+  .section {
+    background: var(--card); border-radius: 18px; padding: 28px;
+    margin-bottom: 16px; box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    opacity: 0; transform: translateY(20px);
+  }
+  .section:nth-child(1) { animation: fadeUp 0.6s 0.4s ease forwards; }
+  .section:nth-child(2) { animation: fadeUp 0.6s 0.5s ease forwards; }
+  .section:nth-child(3) { animation: fadeUp 0.6s 0.6s ease forwards; }
+  .section:nth-child(4) { animation: fadeUp 0.6s 0.7s ease forwards; }
+
+  .section-label {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 11px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 1.2px; color: var(--rose); margin-bottom: 14px;
+  }
+  .section p { font-size: 15px; line-height: 1.75; color: #3d2e2b; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .chip {
+    background: var(--rose-light); color: #8b3a3e;
+    font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px;
+  }
+
+  .word-block {
+    background: linear-gradient(135deg, #fff8f8, #fdf0f0);
+    border-left: 4px solid var(--rose);
+    border-radius: 0 14px 14px 0; padding: 20px 22px;
+  }
+  .word-block p {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; line-height: 1.8; font-style: italic; color: #5a3535;
+  }
+
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="avatar-ring">TA</div>
+    <h1>Tuyisenge Alice</h1>
+    <div class="role-badge">Kirundi Translator</div>
+    <div class="institution">University of Iringa, Tanzania — B.Sc. Counseling Psychology</div>
+  </div>
+
+  <div class="quote-banner">
+    <p>Being part of this work feels very meaningful to me — it represents a bridge between my language and the world's language.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌍 International Projects</div>
+    <p>Alice contributed to the <strong>English–Kirundi Dictionary</strong> — a cross-border academic initiative connecting Burundian communities with English language resources. She brings native Kirundi fluency and a deep commitment to making knowledge accessible across languages, particularly for youth and educational institutions in Burundi.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🎓 Education</div>
+    <div class="chips">
+      <span class="chip">B.Sc. Counseling Psychology — UOI Tanzania</span>
+      <span class="chip">English Language Certificate — UOI</span>
+      <span class="chip">Information Technology Certificate — UOI</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🎵 Hobbies</div>
+    <div class="chips">
+      <span class="chip">Music & Singing</span>
+      <span class="chip">Meditation</span>
+      <span class="chip">Reading</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">💬 A Word to Our Users</div>
+    <div class="word-block">
+      <p>I am deeply proud to serve my country through this contribution, especially in helping youths and future generations gain access to English knowledge. My vision is to see this work support schools and expand English language understanding across the whole country. It is a true honor to be part of something this meaningful.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

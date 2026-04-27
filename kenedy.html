@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niyubuntu Kenedy — Contributor</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;1,300&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep: #1b2340; --blue: #3457d5; --blue-light: #dce4fb;
+    --bg: #f4f6fc; --card: #ffffff; --muted: #6b7a9e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--deep); min-height: 100vh; overflow-x: hidden; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(52,87,213,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 100% 80%, rgba(52,87,213,0.06) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+  .wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 24px 80px; }
+
+  .hero-banner {
+    background: linear-gradient(135deg, var(--deep) 0%, #2a3a6e 100%);
+    margin: 0 -24px; padding: 60px 40px 44px;
+    text-align: center; position: relative; overflow: hidden;
+    opacity: 0; animation: fadeDown 0.7s 0.1s ease forwards;
+  }
+  .hero-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E");
+  }
+  .avatar {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), #5a78e8);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 34px; color: #fff; font-weight: 700;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.15), 0 12px 36px rgba(52,87,213,0.5);
+    position: relative; z-index: 1;
+  }
+  .hero-banner h1 {
+    font-family: 'Fraunces', serif; font-size: clamp(26px, 6vw, 36px);
+    color: #fff; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px;
+    position: relative; z-index: 1;
+  }
+  .role-badge {
+    display: inline-block; background: rgba(255,255,255,0.15); color: #fff;
+    border: 1px solid rgba(255,255,255,0.25); font-size: 11px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 1px; padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 8px; position: relative; z-index: 1;
+  }
+  .institution { font-size: 12px; color: rgba(255,255,255,0.65); position: relative; z-index: 1; }
+
+  .content { padding-top: 24px; }
+
+  .quote-banner {
+    background: var(--blue-light); border-radius: 18px; padding: 24px 28px; margin-bottom: 16px;
+    position: relative; overflow: hidden;
+    opacity: 0; animation: fadeUp 0.6s 0.35s ease forwards;
+  }
+  .quote-banner::before {
+    content: '"'; font-family: 'Fraunces', serif; font-size: 90px;
+    color: rgba(52,87,213,0.15); position: absolute; top: -10px; left: 14px; line-height: 1;
+  }
+  .quote-banner p { font-size: 15px; line-height: 1.7; font-style: italic; color: #1e3080; position: relative; }
+
+  .section {
+    background: var(--card); border-radius: 18px; padding: 24px; margin-bottom: 14px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05); opacity: 0;
+  }
+  .section:nth-child(1) { animation: fadeUp 0.6s 0.45s ease forwards; }
+  .section:nth-child(2) { animation: fadeUp 0.6s 0.55s ease forwards; }
+  .section:nth-child(3) { animation: fadeUp 0.6s 0.65s ease forwards; }
+  .section:nth-child(4) { animation: fadeUp 0.6s 0.75s ease forwards; }
+
+  .section-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.4px; color: var(--blue); margin-bottom: 13px; display: flex; align-items: center; gap: 7px; }
+  .section p { font-size: 14.5px; line-height: 1.75; color: #2c3a5e; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--blue-light); color: #1e3080; font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; }
+
+  .word-block { background: linear-gradient(135deg, #eef2fe, #dce4fb); border-left: 4px solid var(--blue); border-radius: 0 14px 14px 0; padding: 18px 20px; }
+  .word-block p { font-family: 'Fraunces', serif; font-size: 15px; line-height: 1.8; font-style: italic; color: #1b2a5e; }
+
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero-banner">
+    <div class="avatar">NK</div>
+    <h1>Niyubuntu Kenedy</h1>
+    <div class="role-badge">Psychologist & Translator</div>
+    <div class="institution">University of Iringa, Tanzania · B.Sc. Psychology & Counselling — Upper Second Class</div>
+  </div>
+
+  <div class="content">
+
+    <div class="quote-banner">
+      <p>Language is access — and every Burundian deserves that access in their own mother tongue.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">🌍 International Projects</div>
+      <p>Kenedy contributed to the <strong>English–Kirundi Dictionary</strong> as translator and reviewer, bringing both linguistic precision and psychological insight to the work. He served as a psychology intern at <strong>Brothers Shelter Home Center</strong>, providing support to children with disabilities — a role that deepened his commitment to accessible, community-driven resources across borders.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">🎓 Education</div>
+      <div class="chips">
+        <span class="chip">B.Sc. Psychology & Counselling — Upper Second Class, UOI</span>
+        <span class="chip">BBC Learning English Certificate</span>
+        <span class="chip">GBV Certificate — UNESCO</span>
+        <span class="chip">DAFI Recognition Award</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">🎯 Hobbies</div>
+      <div class="chips">
+        <span class="chip">Reading</span>
+        <span class="chip">Music</span>
+        <span class="chip">Football</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">💬 A Word to Our Users</div>
+      <div class="word-block">
+        <p>I hope this dictionary becomes a meaningful bridge for every Burundian who wants to connect with the English-speaking world. It is a privilege to have contributed something that may open doors for those who come after us — and I am deeply grateful to be part of this team.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

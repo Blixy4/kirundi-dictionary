@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English–Kirundi Dictionary · Academic Project</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0e1410;
+    --ink-mid:   #2d3b35;
+    --muted:     #6b7c74;
+    --rule:      #d4dbd7;
+    --accent:    #1a5c42;
+    --accent-2:  #8b6914;
+    --bg:        #f9faf8;
+    --paper:     #ffffff;
+    --sand:      #f4f1eb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  .top-rule {
+    height: 4px;
+    background: var(--accent);
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 56px 40px 40px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    opacity: 0;
+    animation: fadeIn 0.6s 0.1s ease forwards;
+  }
+
+  .masthead-kicker {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .masthead-title {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+
+  .masthead-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .masthead-right {
+    flex-shrink: 0;
+    text-align: right;
+    padding-top: 6px;
+  }
+
+  .masthead-date {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .masthead-badge {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* ── LAYOUT ── */
+  .page-body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+    display: grid;
+    grid-template-columns: 1fr 270px;
+    gap: 0 60px;
+  }
+
+  .main-col { padding-top: 52px; }
+  .side-col  { padding-top: 52px; border-left: 1px solid var(--rule); padding-left: 40px; }
+
+  /* ── SECTION LABELS ── */
+  .section-head {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 26px;
+    display: block;
+  }
+
+  /* ── BODY COPY ── */
+  .lede {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(19px, 2.4vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink-mid);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeIn 0.7s 0.3s ease forwards;
+  }
+
+  .body-text {
+    font-size: 17px;
+    line-height: 1.85;
+    color: var(--ink-mid);
+    margin-bottom: 22px;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-left: 3px solid var(--accent);
+    padding: 16px 24px;
+    margin: 36px 0;
+    background: var(--sand);
+  }
+
+  .pull-quote p {
+    font-family: 'EB Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--ink-mid);
+  }
+
+  .pull-quote cite {
+    display: block;
+    font-size: 11.5px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 10px;
+  }
+
+  /* ── GOALS ── */
+  .goals { list-style: none; margin-bottom: 40px; }
+
+  .goals li {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-mid);
+    align-items: flex-start;
+  }
+
+  .goals li:first-child { border-top: 1px solid var(--rule); }
+
+  .goal-num {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    min-width: 22px;
+    padding-top: 3px;
+  }
+
+  .goal-text strong {
+    display: block;
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  /* ── SIDEBAR ── */
+  .side-block { margin-bottom: 40px; }
+
+  .side-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .side-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  .fact-box {
+    background: var(--sand);
+    border: 1px solid var(--rule);
+    padding: 18px;
+  }
+
+  .fact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 7px 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 13.5px;
+  }
+
+  .fact-item:last-child { border-bottom: none; }
+  .fact-key { color: var(--muted); }
+
+  .fact-val {
+    font-family: 'EB Garamond', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  .contributor-list { list-style: none; }
+
+  .contributor-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .contributor-list li:last-child { border-bottom: none; }
+
+  .contrib-name {
+    font-weight: 600;
+    color: var(--ink);
+    display: block;
+    font-size: 14px;
+  }
+
+  .contrib-role { color: var(--muted); font-size: 12.5px; }
+
+  /* ── COLOPHON ── */
+  .colophon {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .colophon p { font-size: 12px; color: var(--muted); }
+  .colophon a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .masthead { flex-direction: column; gap: 16px; padding: 36px 20px 28px; }
+    .masthead-right { text-align: left; }
+    .page-body { grid-template-columns: 1fr; padding: 0 20px 70px; }
+    .side-col { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 40px; margin-top: 20px; }
+    .colophon { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+
+<header class="masthead">
+  <div>
+    <span class="masthead-kicker">Academic Language Project · Burundi</span>
+    <h1 class="masthead-title">English–<em>Kirundi</em><br>Dictionary</h1>
+  </div>
+  <div class="masthead-right">
+    <span class="masthead-date">Published 2025</span>
+    <span class="masthead-badge">Open Access</span>
+  </div>
+</header>
+
+<div class="page-body">
+
+  <!-- MAIN COLUMN -->
+  <main class="main-col">
+
+    <span class="section-head">Abstract</span>
+
+    <p class="lede">
+      A collaborative lexicographic initiative to document, translate, and digitise the English–Kirundi language pair — making bilingual knowledge freely and permanently accessible to all Burundians.
+    </p>
+
+    <p class="body-text reveal">
+      The English–Kirundi Dictionary project arose from a documented gap in available linguistic resources for Burundi's population. Despite Kirundi being the native language of the overwhelming majority of Burundians, no comprehensive, digitally accessible bilingual dictionary existed to bridge it with English — the primary language of international education, commerce, and scholarship.
+    </p>
+
+    <p class="body-text reveal">
+      This project was conceived and executed by five contributors united by a shared conviction: that access to language is access to opportunity, and that Kirundi deserves the same digital presence afforded to the world's most widely spoken languages.
+    </p>
+
+    <div class="pull-quote reveal">
+      <p>The idea came when I noticed that many people in my community had problems translating between English and Kirundi. I was inspired by this communication gap, which made me understand the importance of having reliable language resources.</p>
+      <cite>— Bigirimana Stany, English Facilitator</cite>
+    </div>
+
+    <span class="section-head reveal">Mission &amp; Goals</span>
+
+    <ol class="goals reveal">
+      <li>
+        <span class="goal-num">I.</span>
+        <div class="goal-text">
+          <strong>Preserve and elevate Kirundi</strong>
+          To produce a rigorous, accurate bilingual lexicon that honours the linguistic structures, idiomatic richness, and cultural context of Kirundi as spoken in Burundi today.
+        </div>
+      </li>
+      <li>
+        <span class="goal-num">II.</span>
+        <div class="goal-text">
+          <strong>Expand educational access</strong>
+          To equip students, teachers, and educational institutions across Burundi with a reliable English reference tool that functions entirely offline, removing dependency on internet infrastructure.
+        </div>
+      </li>
+      <li>
+        <span class="goal-num">III.</span>
+        <div class="goal-text">
+          <strong>Support government and civic institutions</strong>
+          To provide public sector workers, policy makers, and civil servants with a trusted translation resource that strengthens official communication and reduces language barriers in governance.
+        </div>
+      </li>
+      <li>
+        <span class="goal-num">IV.</span>
+        <div class="goal-text">
+          <strong>Serve the Burundian diaspora</strong>
+          To remain a living connection to mother tongue and culture for Burundians studying or working abroad, particularly within the East African academic and refugee communities.
+        </div>
+      </li>
+      <li>
+        <span class="goal-num">V.</span>
+        <div class="goal-text">
+          <strong>Establish a foundation for future scholarship</strong>
+          To create an open, extensible linguistic dataset that future researchers, lexicographers, and developers may build upon as Kirundi's digital presence continues to grow.
+        </div>
+      </li>
+    </ol>
+
+    <span class="section-head reveal">Methodology</span>
+
+    <p class="body-text reveal">
+      Translations were produced collaboratively, with each contributor drawing on native Kirundi fluency alongside formal education in linguistics, translation, psychology, and English language facilitation. Entries were reviewed for contextual accuracy, cultural appropriateness, and consistency of register before inclusion in the final corpus.
+    </p>
+
+    <p class="body-text reveal">
+      The project adopted a community-first review model, prioritising clarity for non-specialist users — students and general readers — while maintaining terminological rigour sufficient for academic and professional use.
+    </p>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="side-col">
+
+    <div class="side-block reveal">
+      <span class="side-label">Project Details</span>
+      <div class="fact-box">
+        <div class="fact-item">
+          <span class="fact-key">Language pair</span>
+          <span class="fact-val">EN → Kirundi</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-key">Platform</span>
+          <span class="fact-val">Android</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-key">Access</span>
+          <span class="fact-val">Free · Offline</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-key">Published</span>
+          <span class="fact-val">2025</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-key">Publisher</span>
+          <span class="fact-val">HelixNova™</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-block reveal">
+      <span class="side-label">Contributors</span>
+      <ul class="contributor-list">
+        <li>
+          <span class="contrib-name">Tuyisenge Alice</span>
+          <span class="contrib-role">Kirundi Translator · UOI Tanzania</span>
+        </li>
+        <li>
+          <span class="contrib-name">Bigirimana Stany</span>
+          <span class="contrib-role">English Facilitator · TESOL Certified</span>
+        </li>
+        <li>
+          <span class="contrib-name">Niyubuntu Kenedy</span>
+          <span class="contrib-role">Psychologist & Translator · UOI Tanzania</span>
+        </li>
+        <li>
+          <span class="contrib-name">Ndayikengurukiye Moise</span>
+          <span class="contrib-role">Translation Lead · Univ. of Dodoma</span>
+        </li>
+        <li>
+          <span class="contrib-name">Nduwimana Montesquieu</span>
+          <span class="contrib-role">Kirundi Translator · Bujumbura</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="side-block reveal">
+      <span class="side-label">Statement of Need</span>
+      <p class="side-text">
+        Kirundi is spoken by over 10 million people, yet digital bilingual resources connecting it to English remain critically scarce. This project addresses that gap directly, placing a scholarly tool in the hands of those who need it most.
+      </p>
+    </div>
+
+  </aside>
+
+  <footer class="colophon reveal">
+    <p>© 2025 HelixNova™ · English–Kirundi Dictionary · All rights reserved</p>
+    <p>Developed in Burundi · <a href="mailto:contact@helixnova.dev">contact@helixnova.dev</a></p>
+  </footer>
+
+</div>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

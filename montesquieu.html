@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nduwimana Montesquieu — Contributor</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet: #5b3fa0; --violet-light: #ede8f9;
+    --bg: #f7f5fc; --dark: #150e2e; --card: #ffffff; --muted: #7a6fa8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--dark); min-height: 100vh; overflow-x: hidden; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% -10%, rgba(91,63,160,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 80% 110%, rgba(91,63,160,0.07) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+  .wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 24px 80px; }
+
+  .header-strip {
+    height: 6px;
+    background: linear-gradient(90deg, var(--violet), #9b7de8, var(--violet));
+    background-size: 200%;
+    animation: shimmer 3s ease infinite;
+  }
+
+  .hero {
+    padding: 50px 0 32px; text-align: center;
+    opacity: 0; animation: fadeUp 0.7s 0.15s ease forwards;
+  }
+  .avatar-wrap { position: relative; display: inline-block; margin-bottom: 22px; }
+  .avatar {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet), #8b6cd4);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 34px; color: #fff; font-weight: 700;
+    box-shadow: 0 12px 36px rgba(91,63,160,0.35);
+  }
+  .chess-badge {
+    position: absolute; bottom: 0; right: -8px;
+    background: #fff; border: 2px solid var(--violet-light);
+    font-size: 16px; width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 7vw, 42px); font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
+  .role-badge { display: inline-block; background: var(--violet-light); color: var(--violet); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 14px; border-radius: 20px; margin-bottom: 8px; }
+  .institution { font-size: 12.5px; color: var(--muted); }
+
+  /* chess prodigy strip */
+  .chess-strip {
+    background: linear-gradient(135deg, #2d1a5e, #4a2d8a);
+    border-radius: 16px; padding: 18px 24px; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 18px;
+    opacity: 0; animation: fadeUp 0.6s 0.28s ease forwards;
+  }
+  .chess-icon { font-size: 36px; flex-shrink: 0; }
+  .chess-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #fff; font-weight: 700; margin-bottom: 3px; }
+  .chess-text p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+
+  .quote-banner {
+    background: linear-gradient(135deg, var(--violet), #7a5bbf);
+    color: #fff; border-radius: 18px; padding: 28px 32px; margin-bottom: 18px;
+    position: relative; overflow: hidden;
+    opacity: 0; animation: fadeUp 0.6s 0.3s ease forwards;
+  }
+  .quote-banner::before {
+    content: '"'; position: absolute; top: -15px; left: 12px;
+    font-family: 'Cormorant Garamond', serif; font-size: 110px;
+    color: rgba(255,255,255,0.12); line-height: 1;
+  }
+  .quote-banner p { font-family: 'Cormorant Garamond', serif; font-size: 17px; line-height: 1.7; font-style: italic; position: relative; }
+
+  .section {
+    background: var(--card); border-radius: 18px; padding: 24px; margin-bottom: 14px;
+    box-shadow: 0 2px 16px rgba(91,63,160,0.07); opacity: 0;
+  }
+  .section:nth-child(1) { animation: fadeUp 0.6s 0.4s ease forwards; }
+  .section:nth-child(2) { animation: fadeUp 0.6s 0.5s ease forwards; }
+  .section:nth-child(3) { animation: fadeUp 0.6s 0.6s ease forwards; }
+  .section:nth-child(4) { animation: fadeUp 0.6s 0.7s ease forwards; }
+
+  .section-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.4px; color: var(--violet); margin-bottom: 13px; display: flex; align-items: center; gap: 7px; }
+  .section p { font-size: 14.5px; line-height: 1.75; color: #2a1e50; }
+
+  .lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .lang-item { background: var(--violet-light); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+  .lang-name { font-size: 13px; font-weight: 600; color: var(--dark); }
+  .lang-level { font-size: 11px; color: var(--violet); }
+  .lang-bar { height: 3px; background: rgba(91,63,160,0.15); border-radius: 2px; margin-top: 4px; overflow: hidden; }
+  .lang-bar-fill { height: 100%; background: var(--violet); border-radius: 2px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--violet-light); color: #3a1e70; font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px; }
+
+  .word-block { background: var(--violet-light); border-left: 4px solid var(--violet); border-radius: 0 14px 14px 0; padding: 18px 20px; }
+  .word-block p { font-family: 'Cormorant Garamond', serif; font-size: 16px; line-height: 1.8; font-style: italic; color: #3a1e70; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+  @keyframes shimmer { 0%,100% { background-position: 0%; } 50% { background-position: 100%; } }
+</style>
+</head>
+<body>
+
+<div class="header-strip"></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="avatar-wrap">
+      <div class="avatar">NM</div>
+      <div class="chess-badge">♟</div>
+    </div>
+    <h1>Nduwimana Montesquieu</h1>
+    <div class="role-badge">Kirundi Translator</div>
+    <div class="institution">🎓 Lake Tanganyika University, Burundi</div>
+  </div>
+
+  <div class="chess-strip">
+    <div class="chess-icon">♟</div>
+    <div class="chess-text">
+      <h3>Chess Prodigy</h3>
+      <p>Montesquieu is a competitive chess player known for his strategic depth and precision — qualities he brings equally to his linguistic work.</p>
+    </div>
+  </div>
+
+  <div class="quote-banner">
+    <p>Kirundi deserves its place in the digital age. Contributing to this dictionary means giving my community a tool that honors who we are while opening doors to the world.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌍 International Projects</div>
+    <p>Montesquieu contributed to the <strong>English–Kirundi Dictionary</strong> as a Kirundi translator, bringing the authenticity of a native speaker with a deep cultural grounding in Burundian language and tradition. Currently pursuing his degree at Lake Tanganyika University, he represents the next generation of Burundian scholars committed to elevating Kirundi in academic and digital spaces.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🎓 Education</div>
+    <div class="chips">
+      <span class="chip">Lake Tanganyika University — Bujumbura, Burundi</span>
+      <span class="chip">Certificat des Humanités Générales — Lycée Power To You</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌍 Languages</div>
+    <div class="lang-grid">
+      <div class="lang-item">
+        <span class="lang-name">Kirundi</span>
+        <span class="lang-level">Mother tongue</span>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">French</span>
+        <span class="lang-level">Très bon</span>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">Swahili</span>
+        <span class="lang-level">Très bon</span>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">English</span>
+        <span class="lang-level">Intermediate</span>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:55%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">💬 A Word to Our Users</div>
+    <div class="word-block">
+      <p>I may be young, but I believe deeply that Kirundi deserves its place in the digital age. I worked on this dictionary so that every young person from Burundi — wherever they are in the world — can learn and grow with pride in their roots. It is the greatest honor to serve in this way.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
