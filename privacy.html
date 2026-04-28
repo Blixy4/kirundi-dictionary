@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — English–Kirundi Dictionary</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<script>
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)
+    document.documentElement.setAttribute('data-theme','dark');
+  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',e=>
+    document.documentElement.setAttribute('data-theme', e.matches?'dark':'light'));
+  var lang = new URLSearchParams(window.location.search).get('lang')
+          || (navigator.language||'en').slice(0,2).toLowerCase();
+  if(!['en','fr','rn'].includes(lang)) lang='en';
+  document.documentElement.setAttribute('lang', lang);
+  window._lang = lang;
+})();
+</script>
+<style>
+  :root {
+    --ink: #0e1410; --ink-mid: #2d3b35; --muted: #6b7c74;
+    --rule: #d4dbd7; --accent: #1a5c42;
+    --bg: #f9faf8; --paper: #ffffff; --sand: #f4f1eb;
+  }
+  [data-theme=dark] {
+    --ink: #e8eee9; --ink-mid: #b0bcb4; --muted: #7a8a82;
+    --rule: #2a3a32; --accent: #4ba07a;
+    --bg: #0a1410; --paper: #131c17; --sand: #1a2520;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family: 'Crimson Pro', Georgia, serif;
+    background: var(--bg); color: var(--ink);
+    font-size: 18px; line-height: 1.75;
+    transition: background .3s, color .3s;
+  }
+  .top-rule { height: 4px; background: var(--accent); }
+
+  .masthead {
+    max-width: 760px; margin: 0 auto;
+    padding: 56px 40px 36px;
+    border-bottom: 1px solid var(--rule);
+    opacity: 0; animation: fadeIn 0.6s 0.1s ease forwards;
+  }
+  .kicker {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px; display: block;
+  }
+  .masthead h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.5px; color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .masthead h1 em { font-style: italic; color: var(--accent); }
+  .meta {
+    display: flex; align-items: center; gap: 16px;
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 0.5px; flex-wrap: wrap;
+  }
+  .meta-badge {
+    display: inline-block;
+    border: 1px solid var(--accent); color: var(--accent);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 2px;
+  }
+
+  .body { max-width: 760px; margin: 0 auto; padding: 40px 40px 100px; }
+
+  .lede {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 24px);
+    font-style: italic; line-height: 1.6;
+    color: var(--ink-mid); margin-bottom: 36px;
+    opacity: 0; animation: fadeIn 0.7s 0.3s ease forwards;
+  }
+
+  .article-section {
+    margin-bottom: 28px;
+    opacity: 0; animation: fadeIn 0.7s ease forwards;
+  }
+  .article-section:nth-child(1) { animation-delay: 0.4s; }
+  .article-section:nth-child(2) { animation-delay: 0.45s; }
+  .article-section:nth-child(3) { animation-delay: 0.5s; }
+  .article-section:nth-child(4) { animation-delay: 0.55s; }
+  .article-section:nth-child(5) { animation-delay: 0.6s; }
+  .article-section:nth-child(6) { animation-delay: 0.65s; }
+  .article-section:nth-child(7) { animation-delay: 0.7s; }
+  .article-section:nth-child(8) { animation-delay: 0.75s; }
+  .article-section:nth-child(9) { animation-delay: 0.8s; }
+
+  .article-section h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--ink); margin-bottom: 10px;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .article-section h2 .num {
+    font-size: 13px; color: var(--accent);
+    font-weight: 600; letter-spacing: 1px;
+    min-width: 32px;
+  }
+  .article-section p {
+    font-size: 17px; line-height: 1.85;
+    color: var(--ink-mid); margin-bottom: 12px;
+    padding-left: 44px;
+  }
+
+  /* data table */
+  .data-table {
+    margin: 16px 0 16px 44px;
+    border: 1px solid var(--rule);
+    border-radius: 8px; overflow: hidden;
+    background: var(--paper);
+  }
+  .data-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .data-row:last-child { border-bottom: none; }
+  .data-key {
+    padding: 14px 16px;
+    background: var(--sand);
+    font-family: 'EB Garamond', serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.3px;
+    border-right: 1px solid var(--rule);
+  }
+  .data-val {
+    padding: 14px 18px;
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+
+  .highlight-box {
+    background: var(--sand);
+    border-left: 4px solid var(--accent);
+    padding: 18px 22px; margin: 18px 0 18px 44px;
+    border-radius: 0 8px 8px 0;
+  }
+  .highlight-box p {
+    padding-left: 0 !important;
+    font-family: 'EB Garamond', serif;
+    font-size: 17px; font-style: italic;
+    color: var(--ink) !important;
+    line-height: 1.65; margin-bottom: 0;
+  }
+
+  .check-list {
+    list-style: none; padding-left: 44px; margin-bottom: 12px;
+  }
+  .check-list li {
+    font-size: 16.5px; line-height: 1.7;
+    color: var(--ink-mid); padding: 6px 0 6px 28px;
+    position: relative;
+  }
+  .check-list li::before {
+    content: '✓'; position: absolute; left: 0; top: 6px;
+    color: var(--accent); font-weight: 700;
+    font-size: 15px;
+  }
+
+  /* feature limitation list (shows what locked features look like) */
+  .lock-list {
+    list-style: none; padding-left: 44px; margin: 12px 0;
+  }
+  .lock-list li {
+    font-size: 16px; line-height: 1.7;
+    color: var(--ink-mid); padding: 7px 0 7px 28px;
+    position: relative;
+  }
+  .lock-list li::before {
+    content: '🔒'; position: absolute; left: 0; top: 8px;
+    font-size: 13px;
+  }
+
+  .colophon {
+    border-top: 1px solid var(--rule);
+    padding-top: 28px; margin-top: 48px;
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .colophon p { font-size: 12.5px; color: var(--muted); padding-left: 0; }
+  .colophon a {
+    color: var(--accent); text-decoration: none;
+    font-weight: 600; font-size: 12.5px;
+  }
+  .colophon a:hover { text-decoration: underline; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 640px) {
+    .masthead { padding: 36px 20px 28px; }
+    .body { padding: 28px 20px 80px; }
+    .article-section p,
+    .check-list, .lock-list,
+    .data-table,
+    .highlight-box { padding-left: 0 !important; margin-left: 0 !important; }
+    .article-section h2 { padding-left: 0; }
+    .data-row { grid-template-columns: 110px 1fr; }
+    .data-key { font-size: 13px; padding: 12px 12px; }
+    .data-val { padding: 12px 14px; font-size: 14px; }
+    .colophon { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+
+<header class="masthead">
+  <span class="kicker" data-en="Legal Document" data-fr="Document Juridique" data-rn="Inyandiko y'Amategeko">Legal Document</span>
+  <h1 data-en="Privacy <em>Policy</em>" data-fr="Politique de <em>Confidentialité</em>" data-rn="Politiki y'<em>Ibanga</em>">Privacy <em>Policy</em></h1>
+  <div class="meta">
+    <span data-en="English–Kirundi Dictionary" data-fr="Dictionnaire Anglais–Kirundi" data-rn="Igisobanuzo Icongereza–Ikirundi">English–Kirundi Dictionary</span>
+    <span>·</span>
+    <span data-en="Effective: 2026" data-fr="En vigueur: 2026" data-rn="Bishyirwa mu bikorwa: 2026">Effective: 2026</span>
+    <span class="meta-badge" data-en="Optional Account" data-fr="Compte Optionnel" data-rn="Konti Itasabwa">Optional Account</span>
+  </div>
+</header>
+
+<main class="body">
+
+  <p class="lede" data-en="This dictionary respects user privacy by design. The application can be used without creating an account or sharing any personal information. The information described below is collected only when a user freely chooses to create an account, in exchange for additional features."
+                  data-fr="Ce dictionnaire respecte la vie privée des utilisateurs par conception. L'application peut être utilisée sans créer de compte ni partager d'informations personnelles. Les informations décrites ci-dessous ne sont collectées que lorsqu'un utilisateur choisit librement de créer un compte, en échange de fonctionnalités supplémentaires."
+                  data-rn="Iki gisobanuzo cyubahiriza ibanga ry'abakoresha. Porogaramu ishobora gukoreshwa utabanje gukora konti cyangwa gutanga amakuru bwite. Amakuru avugwa hano hasi atangwa gusa iyo umukoresha yihitiyemo gukora konti, mu rwego rwo kubona ibindi bikoresho.">
+    This dictionary respects user privacy by design. The application can be used without creating an account or sharing any personal information. The information described below is collected only when a user freely chooses to create an account, in exchange for additional features.
+  </p>
+
+  <!-- 1. ANONYMOUS vs ACCOUNT -->
+  <section class="article-section">
+    <h2><span class="num">I.</span> <span data-en="Anonymous Use vs. Account Use" data-fr="Utilisation Anonyme vs. Utilisation avec Compte" data-rn="Ikoreshwa Utabonetse Konti vs. Iy'Ufite Konti">Anonymous Use vs. Account Use</span></h2>
+
+    <p data-en="The application can always be used anonymously — without an account. No personal information is ever collected from anonymous users. However, anonymous users have access to a limited set of features. The following features are available only to users who create an account:"
+       data-fr="L'application peut toujours être utilisée de manière anonyme — sans compte. Aucune information personnelle n'est jamais collectée auprès des utilisateurs anonymes. Cependant, les utilisateurs anonymes ont accès à un ensemble limité de fonctionnalités. Les fonctionnalités suivantes ne sont disponibles que pour les utilisateurs qui créent un compte:"
+       data-rn="Porogaramu ishobora gukoreshwa nta konti — buri gihe. Nta makuru bwite atangwa ku bakoresha batazwi. Ariko abakoresha batazwi babona gusa bimwe muri ibikoresho. Ibikorwa bikurikira bibonwa gusa n'abafite konti:">
+      The application can always be used anonymously — without an account. No personal information is ever collected from anonymous users. However, anonymous users have access to a limited set of features. The following features are available only to users who create an account:
+    </p>
+
+    <ul class="lock-list">
+      <li data-en="Changing the application theme and color scheme"
+          data-fr="Changer le thème et la palette de couleurs de l'application"
+          data-rn="Guhindura ibara n'imisusire ya porogaramu">Changing the application theme and color scheme</li>
+      <li data-en="Adjusting font size and reading preferences"
+          data-fr="Ajuster la taille de la police et les préférences de lecture"
+          data-rn="Guhindura ingano y'inyuguti n'amahitamo y'isomo">Adjusting font size and reading preferences</li>
+      <li data-en="Viewing illustrative images for dictionary entries"
+          data-fr="Voir les images illustratives des entrées du dictionnaire"
+          data-rn="Kureba amafoto y'ibisobanuro mu gisobanuzo">Viewing illustrative images for dictionary entries</li>
+      <li data-en="Accessing synonyms, opposites, and idioms for entries"
+          data-fr="Accéder aux synonymes, antonymes et expressions idiomatiques"
+          data-rn="Kubona amagambo asa, ahabanye, n'imvugo zihariye">Accessing synonyms, opposites, and idioms for entries</li>
+      <li data-en="Other extended features that may be added in the future"
+          data-fr="Autres fonctionnalités étendues qui pourraient être ajoutées à l'avenir"
+          data-rn="Ibindi bikoresho bishobora kongerwa mu gihe kizaza">Other extended features that may be added in the future</li>
+    </ul>
+
+    <p data-en="The core dictionary — looking up English and Kirundi words with their definitions and phonetics — is and will always remain free and available to anonymous users."
+       data-fr="Le dictionnaire principal — la recherche de mots anglais et kirundi avec leurs définitions et leur phonétique — est et restera toujours gratuit et disponible pour les utilisateurs anonymes."
+       data-rn="Igisobanuzo nyamukuru — gushaka amagambo y'Icongereza n'Ikirundi hamwe n'ibisobanuro byayo n'amajwi yayo — ni n'izahora ari ubuntu kandi ihari ku bakoresha batazwi.">
+      The core dictionary — looking up English and Kirundi words with their definitions and phonetics — is and will always remain free and available to anonymous users.
+    </p>
+  </section>
+
+  <!-- 2. WHAT IS COLLECTED -->
+  <section class="article-section">
+    <h2><span class="num">II.</span> <span data-en="What is Collected (Only If You Sign Up)" data-fr="Ce qui est Collecté (Uniquement si Vous Vous Inscrivez)" data-rn="Ibitangwa (Iyo Ushyizemo Konti)">What is Collected (Only If You Sign Up)</span></h2>
+    <p data-en="When and only when an account is created, the following information is collected:"
+       data-fr="Lorsque et uniquement lorsqu'un compte est créé, les informations suivantes sont collectées:"
+       data-rn="Iyo wakoze konti gusa, amakuru akurikira aratangwa:">
+      When and only when an account is created, the following information is collected:
+    </p>
+    <div class="data-table">
+      <div class="data-row">
+        <div class="data-key" data-en="Email" data-fr="Email" data-rn="Imeli">Email</div>
+        <div class="data-val" data-en="Used for authentication and password recovery." data-fr="Utilisé pour l'authentification et la récupération du mot de passe." data-rn="Ikoreshwa mu kwemeza no kugarura ijambobanga.">Used for authentication and password recovery.</div>
+      </div>
+      <div class="data-row">
+        <div class="data-key" data-en="Username" data-fr="Nom d'utilisateur" data-rn="Izina ry'umukoresha">Username</div>
+        <div class="data-val" data-en="Chosen by the user for identification within the application." data-fr="Choisi par l'utilisateur pour l'identification dans l'application." data-rn="Ihitamo n'umukoresha kugira ngo amenyekane muri porogaramu.">Chosen by the user for identification within the application.</div>
+      </div>
+      <div class="data-row">
+        <div class="data-key" data-en="Password" data-fr="Mot de passe" data-rn="Ijambobanga">Password</div>
+        <div class="data-val" data-en="Stored securely (hashed) and used only for authentication. Never accessible to anyone, including project contributors." data-fr="Stocké en toute sécurité (haché) et utilisé uniquement pour l'authentification. Jamais accessible à quiconque, y compris les contributeurs du projet." data-rn="Ribikwa neza (rihishijwe) kandi rikoreshwa gusa mu kwemeza. Ntirisangirwa n'umuntu uwo ari we wese, harimo n'abafatanyabikorwa b'umushinga.">Stored securely (hashed) and used only for authentication. Never accessible to anyone, including project contributors.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. WHY -->
+  <section class="article-section">
+    <h2><span class="num">III.</span> <span data-en="Why This Information is Collected" data-fr="Pourquoi ces Informations sont Collectées" data-rn="Impamvu Aya Makuru Atangwa">Why This Information is Collected</span></h2>
+    <p data-en="Collected information serves two purposes only:"
+       data-fr="Les informations collectées servent à deux fins uniquement:"
+       data-rn="Amakuru atangwa akoreshwa mu mpamvu ebyiri gusa:">
+      Collected information serves two purposes only:
+    </p>
+    <ul class="check-list">
+      <li data-en="Authentication — verifying that a returning user is who they claim to be."
+          data-fr="Authentification — vérifier qu'un utilisateur de retour est bien celui qu'il prétend être."
+          data-rn="Kwemeza — kugenzura ko umukoresha ugarutse ari we koko avuga ko ari we.">
+        Authentication — verifying that a returning user is who they claim to be.
+      </li>
+      <li data-en="Password recovery — allowing a user to regain access if they forget their password."
+          data-fr="Récupération du mot de passe — permettre à un utilisateur de retrouver l'accès s'il oublie son mot de passe."
+          data-rn="Kugarura ijambobanga — gufasha umukoresha kongera kubona uburyo bwo kwinjira igihe yibagiwe ijambobanga.">
+        Password recovery — allowing a user to regain access if they forget their password.
+      </li>
+    </ul>
+    <p data-en="No information is used for advertising, profiling, marketing, or analytics. None is sold or shared with third parties for commercial purposes."
+       data-fr="Aucune information n'est utilisée pour la publicité, le profilage, le marketing ou l'analyse. Aucune n'est vendue ou partagée avec des tiers à des fins commerciales."
+       data-rn="Nta makuru akoreshwa mu kwamamaza, kumenya ibyo umuntu akora, ubucuruzi, cyangwa isesengura. Nta yagurishijwe cyangwa gusangirwa n'abandi mu mpamvu z'ubucuruzi.">
+      No information is used for advertising, profiling, marketing, or analytics. None is sold or shared with third parties for commercial purposes.
+    </p>
+  </section>
+
+  <!-- 4. WHERE STORED -->
+  <section class="article-section">
+    <h2><span class="num">IV.</span> <span data-en="Where Information is Stored" data-fr="Où les Informations sont Stockées" data-rn="Aho Amakuru Abikwa">Where Information is Stored</span></h2>
+    <p data-en="When provided, account information is stored on Supabase — a third-party authentication and database service trusted for its strong privacy and security practices. Supabase processes this information solely on behalf of the dictionary, under their own privacy commitments."
+       data-fr="Lorsqu'elles sont fournies, les informations de compte sont stockées sur Supabase — un service tiers d'authentification et de base de données reconnu pour ses solides pratiques de confidentialité et de sécurité. Supabase traite ces informations uniquement pour le compte du dictionnaire, sous ses propres engagements de confidentialité."
+       data-rn="Iyo atanzwe, amakuru ya konti abikwa kuri Supabase — serivisi y'abandi ikoresha mu kwemeza no kubika amakuru, izwiho gukurikiza neza ibanga n'umutekano. Supabase ikora ku bwa iki gisobanuzo gusa, hakurikijwe inshingano zayo ku banga.">
+      When provided, account information is stored on Supabase — a third-party authentication and database service trusted for its strong privacy and security practices. Supabase processes this information solely on behalf of the dictionary, under their own privacy commitments.
+    </p>
+    <div class="highlight-box">
+      <p data-en="Supabase is the only third party that ever receives any of this data. Their privacy policy applies to how they protect and process it on our behalf."
+         data-fr="Supabase est le seul tiers à recevoir ces données. Leur politique de confidentialité s'applique à la manière dont ils les protègent et les traitent en notre nom."
+         data-rn="Supabase ni yo yonyine itanga abandi bareba aya makuru. Politiki yabo y'ibanga ikurikizwa ku buryo bayarinda kandi bayakoresha mu izina ryacu.">
+        Supabase is the only third party that ever receives any of this data. Their privacy policy applies to how they protect and process it on our behalf.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. WHAT IS NEVER COLLECTED -->
+  <section class="article-section">
+    <h2><span class="num">V.</span> <span data-en="What is Never Collected" data-fr="Ce qui n'est Jamais Collecté" data-rn="Ibitigeze Bitangwa">What is Never Collected</span></h2>
+    <p data-en="The following are never collected, accessed, or transmitted by this application:"
+       data-fr="Les éléments suivants ne sont jamais collectés, consultés ni transmis par cette application:"
+       data-rn="Ibikurikira ntibyatanzwe, ntibyabonye, kandi ntibyatangajwe na iyi porogaramu:">
+      The following are never collected, accessed, or transmitted by this application:
+    </p>
+    <ul class="check-list">
+      <li data-en="Browsing history or in-app activity logs" data-fr="L'historique de navigation ou les journaux d'activité dans l'application" data-rn="Amateka y'ibyo wasomye cyangwa ibikorwa muri porogaramu">Browsing history or in-app activity logs</li>
+      <li data-en="Location, contacts, photos, or device identifiers" data-fr="Localisation, contacts, photos ou identifiants de l'appareil" data-rn="Aho uherereye, amazina y'inshuti, amafoto, cyangwa imibare y'ikoresho">Location, contacts, photos, or device identifiers</li>
+      <li data-en="Words you look up in the dictionary" data-fr="Les mots que vous recherchez dans le dictionnaire" data-rn="Amagambo ushaka mu gisobanuzo">Words you look up in the dictionary</li>
+      <li data-en="Payment information — the application is and will always remain free" data-fr="Informations de paiement — l'application est et restera toujours gratuite" data-rn="Amakuru y'imari — porogaramu iri n'izahora ari ubuntu">Payment information — the application is and will always remain free</li>
+    </ul>
+  </section>
+
+  <!-- 6. USER RIGHTS -->
+  <section class="article-section">
+    <h2><span class="num">VI.</span> <span data-en="User Rights" data-fr="Droits de l'Utilisateur" data-rn="Uburenganzira bw'Umukoresha">User Rights</span></h2>
+    <p data-en="Anyone with an account has the right to:"
+       data-fr="Toute personne possédant un compte a le droit de:"
+       data-rn="Umuntu wese ufite konti afite uburenganzira bwo:">
+      Anyone with an account has the right to:
+    </p>
+    <ul class="check-list">
+      <li data-en="Access the personal information stored about them"
+          data-fr="Accéder aux informations personnelles stockées les concernant"
+          data-rn="Kubona amakuru bwite abikwa muri konti yawe">Access the personal information stored about them</li>
+      <li data-en="Correct or update their email or username"
+          data-fr="Corriger ou mettre à jour leur email ou nom d'utilisateur"
+          data-rn="Kuvugurura imeli cyangwa izina ry'umukoresha">Correct or update their email or username</li>
+      <li data-en="Change their password at any time"
+          data-fr="Changer leur mot de passe à tout moment"
+          data-rn="Guhindura ijambobanga igihe icyo ari cyo cyose">Change their password at any time</li>
+      <li data-en="Delete their account and all associated data permanently"
+          data-fr="Supprimer leur compte et toutes les données associées de façon permanente"
+          data-rn="Gufuta konti yabo n'amakuru yose ajyana na yo burundu">Delete their account and all associated data permanently</li>
+      <li data-en="Continue using the core dictionary without an account at any time"
+          data-fr="Continuer à utiliser le dictionnaire principal sans compte à tout moment"
+          data-rn="Gukomeza gukoresha igisobanuzo nyamukuru utabaye n'umunyamuryango igihe icyo ari cyo cyose">Continue using the core dictionary without an account at any time</li>
+    </ul>
+    <p data-en="All of the above rights can be exercised directly from within the application — no email request is required."
+       data-fr="Tous les droits ci-dessus peuvent être exercés directement depuis l'application — aucune demande par email n'est nécessaire."
+       data-rn="Uburenganzira bwose buvuzwe hejuru bushobora gukorerwa muri porogaramu — nta cyifuzo cy'imeli kibasabwa.">
+      All of the above rights can be exercised directly from within the application — no email request is required.
+    </p>
+  </section>
+
+  <!-- 7. CHILDREN -->
+  <section class="article-section">
+    <h2><span class="num">VII.</span> <span data-en="Use by Children" data-fr="Utilisation par les Enfants" data-rn="Ikoreshwa n'Abana">Use by Children</span></h2>
+    <p data-en="The dictionary is freely available to learners of every age. Children may use the application without an account at any time. If account creation is offered to a minor, parents and guardians are encouraged to assist or create the account on their behalf."
+       data-fr="Le dictionnaire est librement disponible pour les apprenants de tout âge. Les enfants peuvent utiliser l'application sans compte à tout moment. Si la création d'un compte est proposée à un mineur, les parents et tuteurs sont invités à aider ou à créer le compte en leur nom."
+       data-rn="Iki gisobanuzo gihari ku buntu ku bose, n'abana barimo. Abana bashobora gukoresha porogaramu nta konti igihe icyo ari cyo cyose. Iyo umwana ashaka gukora konti, ababyeyi cyangwa abamuhereye baragufasha cyangwa bakoreshe konti mu izina rye.">
+      The dictionary is freely available to learners of every age. Children may use the application without an account at any time. If account creation is offered to a minor, parents and guardians are encouraged to assist or create the account on their behalf.
+    </p>
+  </section>
+
+  <!-- 8. CHANGES -->
+  <section class="article-section">
+    <h2><span class="num">VIII.</span> <span data-en="Changes to This Policy" data-fr="Modifications de cette Politique" data-rn="Impinduka muri iyi Politiki">Changes to This Policy</span></h2>
+    <p data-en="Should this policy change, the new version will replace this page and its effective date will be updated above. Continued use of the application after a change indicates acceptance of the updated policy."
+       data-fr="Si cette politique change, la nouvelle version remplacera cette page et sa date d'entrée en vigueur sera mise à jour ci-dessus. L'utilisation continue de l'application après un changement indique l'acceptation de la politique mise à jour."
+       data-rn="Iyi politiki niyahindurwa, iyindi nshya izasimbura iyi paji kandi italiki yayo izavugururwa hejuru. Gukomeza gukoresha porogaramu nyuma y'impinduka byerekana ko wemeye politiki nshya.">
+      Should this policy change, the new version will replace this page and its effective date will be updated above. Continued use of the application after a change indicates acceptance of the updated policy.
+    </p>
+  </section>
+
+  <footer class="colophon">
+    <p>© 2026 HelixNova™ · English–Kirundi Dictionary</p>
+    <a href="terms.html" data-en="← Terms of Use" data-fr="← Conditions d'Utilisation" data-rn="← Amabwirizwa">← Terms of Use</a>
+  </footer>
+
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var lang = window._lang || 'en';
+  document.querySelectorAll('[data-en]').forEach(function(el) {
+    var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+    if (txt) el.innerHTML = txt;
+  });
+});
+</script>
+
+</body>
+</html>

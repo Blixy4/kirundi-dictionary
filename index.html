@@ -1,487 +1,846 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>English–Kirundi Dictionary · Academic Project</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink:       #0e1410;
-    --ink-mid:   #2d3b35;
-    --muted:     #6b7c74;
-    --rule:      #d4dbd7;
-    --accent:    #1a5c42;
-    --accent-2:  #8b6914;
-    --bg:        #f9faf8;
-    --paper:     #ffffff;
-    --sand:      #f4f1eb;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English–Kirundi Dictionary · Academic Project</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+    rel="stylesheet">
+  <script>
+    (function () {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches)
+        document.documentElement.setAttribute('data-theme', 'dark');
+      window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', e =>
+        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light'));
+      var lang = new URLSearchParams(window.location.search).get('lang')
+        || (navigator.language || 'en').slice(0, 2).toLowerCase();
+      if (!['en', 'fr', 'rn'].includes(lang)) lang = 'en';
+      document.documentElement.setAttribute('lang', lang);
+      window._lang = lang;
+    })();
+  </script>
+  <style>
+    :root {
+      --ink: #0e1410;
+      --ink-mid: #2d3b35;
+      --muted: #6b7c74;
+      --rule: #d4dbd7;
+      --accent: #1a5c42;
+      --accent-2: #8b6914;
+      --bg: #f9faf8;
+      --paper: #ffffff;
+      --sand: #f4f1eb;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+    [data-theme=dark] {
+      --ink: #e8eee9;
+      --ink-mid: #b0bcb4;
+      --muted: #7a8a82;
+      --rule: #2a3a32;
+      --accent: #4ba07a;
+      --accent-2: #c9a850;
+      --bg: #0a1410;
+      --paper: #131c17;
+      --sand: #1a2520;
+    }
 
-  body {
-    font-family: 'Crimson Pro', Georgia, serif;
-    background: var(--bg);
-    color: var(--ink);
-    font-size: 18px;
-    line-height: 1.75;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .top-rule {
-    height: 4px;
-    background: var(--accent);
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* ── MASTHEAD ── */
-  .masthead {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 56px 40px 40px;
-    border-bottom: 1px solid var(--rule);
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 40px;
-    opacity: 0;
-    animation: fadeIn 0.6s 0.1s ease forwards;
-  }
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.75;
+      transition: background .3s, color .3s;
+    }
 
-  .masthead-kicker {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-    display: block;
-  }
+    .top-rule {
+      height: 4px;
+      background: var(--accent);
+    }
 
-  .masthead-title {
-    font-family: 'EB Garamond', serif;
-    font-size: clamp(32px, 5vw, 54px);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.5px;
-    color: var(--ink);
-  }
+    /* ── MASTHEAD ── */
+    .masthead {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 40px 40px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      opacity: 0;
+      animation: fadeIn 0.6s 0.1s ease forwards;
+    }
 
-  .masthead-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
+    .masthead-kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: block;
+    }
 
-  .masthead-right {
-    flex-shrink: 0;
-    text-align: right;
-    padding-top: 6px;
-  }
+    .masthead-title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+    }
 
-  .masthead-date {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-    display: block;
-    margin-bottom: 6px;
-  }
+    .masthead-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
 
-  .masthead-badge {
-    display: inline-block;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 2px;
-  }
+    .masthead-right {
+      flex-shrink: 0;
+      text-align: right;
+      padding-top: 6px;
+    }
 
-  /* ── LAYOUT ── */
-  .page-body {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 40px 100px;
-    display: grid;
-    grid-template-columns: 1fr 270px;
-    gap: 0 60px;
-  }
+    .masthead-date {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 6px;
+    }
 
-  .main-col { padding-top: 52px; }
-  .side-col  { padding-top: 52px; border-left: 1px solid var(--rule); padding-left: 40px; }
+    .masthead-badge {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
 
-  /* ── SECTION LABELS ── */
-  .section-head {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--rule);
-    margin-bottom: 26px;
-    display: block;
-  }
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+      display: grid;
+      grid-template-columns: 1fr 270px;
+      gap: 0 60px;
+    }
 
-  /* ── BODY COPY ── */
-  .lede {
-    font-family: 'EB Garamond', serif;
-    font-size: clamp(19px, 2.4vw, 24px);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.6;
-    color: var(--ink-mid);
-    margin-bottom: 36px;
-    opacity: 0;
-    animation: fadeIn 0.7s 0.3s ease forwards;
-  }
+    .main-col {
+      padding-top: 52px;
+    }
 
-  .body-text {
-    font-size: 17px;
-    line-height: 1.85;
-    color: var(--ink-mid);
-    margin-bottom: 22px;
-  }
+    .side-col {
+      padding-top: 52px;
+      border-left: 1px solid var(--rule);
+      padding-left: 40px;
+    }
 
-  /* ── PULL QUOTE ── */
-  .pull-quote {
-    border-left: 3px solid var(--accent);
-    padding: 16px 24px;
-    margin: 36px 0;
-    background: var(--sand);
-  }
+    .section-head {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 26px;
+      display: block;
+    }
 
-  .pull-quote p {
-    font-family: 'EB Garamond', serif;
-    font-size: 19px;
-    font-style: italic;
-    line-height: 1.65;
-    color: var(--ink-mid);
-  }
+    .lede {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(19px, 2.4vw, 24px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--ink-mid);
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeIn 0.7s 0.3s ease forwards;
+    }
 
-  .pull-quote cite {
-    display: block;
-    font-size: 11.5px;
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-top: 10px;
-  }
+    .body-text {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--ink-mid);
+      margin-bottom: 22px;
+    }
 
-  /* ── GOALS ── */
-  .goals { list-style: none; margin-bottom: 40px; }
+    .pull-quote {
+      border-left: 3px solid var(--accent);
+      padding: 16px 24px;
+      margin: 36px 0;
+      background: var(--sand);
+    }
 
-  .goals li {
-    display: flex;
-    gap: 18px;
-    padding: 18px 0;
-    border-bottom: 1px solid var(--rule);
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--ink-mid);
-    align-items: flex-start;
-  }
+    .pull-quote p {
+      font-family: 'EB Garamond', serif;
+      font-size: 19px;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--ink-mid);
+    }
 
-  .goals li:first-child { border-top: 1px solid var(--rule); }
+    .pull-quote cite {
+      display: block;
+      font-size: 11.5px;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 10px;
+    }
 
-  .goal-num {
-    font-family: 'EB Garamond', serif;
-    font-size: 13px;
-    color: var(--accent);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    min-width: 22px;
-    padding-top: 3px;
-  }
+    /* ── GOALS ── */
+    .goals {
+      list-style: none;
+      margin-bottom: 40px;
+    }
 
-  .goal-text strong {
-    display: block;
-    font-family: 'EB Garamond', serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
+    .goals li {
+      display: flex;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-mid);
+      align-items: flex-start;
+    }
 
-  /* ── SIDEBAR ── */
-  .side-block { margin-bottom: 40px; }
+    .goals li:first-child {
+      border-top: 1px solid var(--rule);
+    }
 
-  .side-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--rule);
-    margin-bottom: 16px;
-    display: block;
-  }
+    .goal-num {
+      font-family: 'EB Garamond', serif;
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      min-width: 22px;
+      padding-top: 3px;
+    }
 
-  .side-text {
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--muted);
-  }
+    .goal-text strong {
+      display: block;
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
 
-  .fact-box {
-    background: var(--sand);
-    border: 1px solid var(--rule);
-    padding: 18px;
-  }
+    /* ── ACKNOWLEDGEMENTS / ATTRIBUTION CARDS ── */
+    .ack-card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 14px;
+    }
 
-  .fact-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 7px 0;
-    border-bottom: 1px dotted var(--rule);
-    font-size: 13.5px;
-  }
+    .ack-card-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
 
-  .fact-item:last-child { border-bottom: none; }
-  .fact-key { color: var(--muted); }
+    .ack-card a {
+      display: inline-block;
+      font-size: 13px;
+      color: var(--ink-mid);
+      text-decoration: none;
+      word-break: break-all;
+      border-bottom: 1px dashed var(--rule);
+      padding-bottom: 1px;
+      margin-bottom: 8px;
+      transition: color .2s, border-color .2s;
+    }
 
-  .fact-val {
-    font-family: 'EB Garamond', serif;
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--ink);
-  }
+    .ack-card a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
 
-  .contributor-list { list-style: none; }
+    .ack-card-desc {
+      font-size: 14.5px;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
 
-  .contributor-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--rule);
-    font-size: 13.5px;
-    line-height: 1.5;
-  }
+    /* ── SIDEBAR ── */
+    .side-block {
+      margin-bottom: 40px;
+    }
 
-  .contributor-list li:last-child { border-bottom: none; }
+    .side-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 16px;
+      display: block;
+    }
 
-  .contrib-name {
-    font-weight: 600;
-    color: var(--ink);
-    display: block;
-    font-size: 14px;
-  }
+    .side-text {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
 
-  .contrib-role { color: var(--muted); font-size: 12.5px; }
+    .fact-box {
+      background: var(--sand);
+      border: 1px solid var(--rule);
+      padding: 18px;
+    }
 
-  /* ── COLOPHON ── */
-  .colophon {
-    grid-column: 1 / -1;
-    border-top: 1px solid var(--rule);
-    padding-top: 24px;
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+    .fact-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 7px 0;
+      border-bottom: 1px dotted var(--rule);
+      font-size: 13.5px;
+    }
 
-  .colophon p { font-size: 12px; color: var(--muted); }
-  .colophon a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .fact-item:last-child {
+      border-bottom: none;
+    }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: none; }
-  }
+    .fact-key {
+      color: var(--muted);
+    }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible { opacity: 1; transform: none; }
+    .fact-val {
+      font-family: 'EB Garamond', serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--ink);
+    }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 700px) {
-    .masthead { flex-direction: column; gap: 16px; padding: 36px 20px 28px; }
-    .masthead-right { text-align: left; }
-    .page-body { grid-template-columns: 1fr; padding: 0 20px 70px; }
-    .side-col { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 40px; margin-top: 20px; }
-    .colophon { flex-direction: column; gap: 8px; text-align: center; }
-  }
-</style>
+    .contributor-list {
+      list-style: none;
+    }
+
+    .contributor-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .contributor-list li:last-child {
+      border-bottom: none;
+    }
+
+    .contrib-name {
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      font-size: 14px;
+    }
+
+    .contrib-role {
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    /* legal links */
+    .legal-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .legal-links a {
+      font-size: 13.5px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .legal-links a:last-child {
+      border-bottom: none;
+    }
+
+    .legal-links a:hover {
+      color: var(--ink);
+    }
+
+    /* ── COLOPHON ── */
+    .colophon {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--rule);
+      padding-top: 24px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .colophon p {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .colophon a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 700px) {
+      .masthead {
+        flex-direction: column;
+        gap: 16px;
+        padding: 36px 20px 28px;
+      }
+
+      .masthead-right {
+        text-align: left;
+      }
+
+      .page-body {
+        grid-template-columns: 1fr;
+        padding: 0 20px 70px;
+      }
+
+      .side-col {
+        border-left: none;
+        border-top: 1px solid var(--rule);
+        padding-left: 0;
+        padding-top: 40px;
+        margin-top: 20px;
+      }
+
+      .colophon {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="top-rule"></div>
+  <div class="top-rule"></div>
 
-<header class="masthead">
-  <div>
-    <span class="masthead-kicker">Academic Language Project · Burundi</span>
-    <h1 class="masthead-title">English–<em>Kirundi</em><br>Dictionary</h1>
-  </div>
-  <div class="masthead-right">
-    <span class="masthead-date">Published 2025</span>
-    <span class="masthead-badge">Open Access</span>
-  </div>
-</header>
-
-<div class="page-body">
-
-  <!-- MAIN COLUMN -->
-  <main class="main-col">
-
-    <span class="section-head">Abstract</span>
-
-    <p class="lede">
-      A collaborative lexicographic initiative to document, translate, and digitise the English–Kirundi language pair — making bilingual knowledge freely and permanently accessible to all Burundians.
-    </p>
-
-    <p class="body-text reveal">
-      The English–Kirundi Dictionary project arose from a documented gap in available linguistic resources for Burundi's population. Despite Kirundi being the native language of the overwhelming majority of Burundians, no comprehensive, digitally accessible bilingual dictionary existed to bridge it with English — the primary language of international education, commerce, and scholarship.
-    </p>
-
-    <p class="body-text reveal">
-      This project was conceived and executed by five contributors united by a shared conviction: that access to language is access to opportunity, and that Kirundi deserves the same digital presence afforded to the world's most widely spoken languages.
-    </p>
-
-    <div class="pull-quote reveal">
-      <p>The idea came when I noticed that many people in my community had problems translating between English and Kirundi. I was inspired by this communication gap, which made me understand the importance of having reliable language resources.</p>
-      <cite>— Bigirimana Stany, English Facilitator</cite>
+  <header class="masthead">
+    <div>
+      <span class="masthead-kicker" data-en="Academic Language Project · Burundi"
+        data-fr="Projet Linguistique Académique · Burundi" data-rn="Umushinga w'Ururimi · Uburundi">Academic Language
+        Project · Burundi</span>
+      <h1 class="masthead-title" data-en="English–<em>Kirundi</em><br>Dictionary"
+        data-fr="Dictionnaire<br>Anglais–<em>Kirundi</em>" data-rn="Igisobanuzo<br>Icongereza–<em>Ikirundi</em>">
+        English–<em>Kirundi</em><br>Dictionary</h1>
     </div>
+    <div class="masthead-right">
+      <span class="masthead-date" data-en="Published 2026" data-fr="Publié 2026" data-rn="Cyatangajwe 2026">Published
+        2026</span>
+      <span class="masthead-badge" data-en="Open Access" data-fr="Accès Ouvert" data-rn="Bwifunguye">Open Access</span>
+    </div>
+  </header>
 
-    <span class="section-head reveal">Mission &amp; Goals</span>
+  <div class="page-body">
 
-    <ol class="goals reveal">
-      <li>
-        <span class="goal-num">I.</span>
-        <div class="goal-text">
-          <strong>Preserve and elevate Kirundi</strong>
-          To produce a rigorous, accurate bilingual lexicon that honours the linguistic structures, idiomatic richness, and cultural context of Kirundi as spoken in Burundi today.
-        </div>
-      </li>
-      <li>
-        <span class="goal-num">II.</span>
-        <div class="goal-text">
-          <strong>Expand educational access</strong>
-          To equip students, teachers, and educational institutions across Burundi with a reliable English reference tool that functions entirely offline, removing dependency on internet infrastructure.
-        </div>
-      </li>
-      <li>
-        <span class="goal-num">III.</span>
-        <div class="goal-text">
-          <strong>Support government and civic institutions</strong>
-          To provide public sector workers, policy makers, and civil servants with a trusted translation resource that strengthens official communication and reduces language barriers in governance.
-        </div>
-      </li>
-      <li>
-        <span class="goal-num">IV.</span>
-        <div class="goal-text">
-          <strong>Serve the Burundian diaspora</strong>
-          To remain a living connection to mother tongue and culture for Burundians studying or working abroad, particularly within the East African academic and refugee communities.
-        </div>
-      </li>
-      <li>
-        <span class="goal-num">V.</span>
-        <div class="goal-text">
-          <strong>Establish a foundation for future scholarship</strong>
-          To create an open, extensible linguistic dataset that future researchers, lexicographers, and developers may build upon as Kirundi's digital presence continues to grow.
-        </div>
-      </li>
-    </ol>
+    <!-- MAIN COLUMN -->
+    <main class="main-col">
 
-    <span class="section-head reveal">Methodology</span>
+      <span class="section-head" data-en="Abstract" data-fr="Résumé" data-rn="Incamake">Abstract</span>
 
-    <p class="body-text reveal">
-      Translations were produced collaboratively, with each contributor drawing on native Kirundi fluency alongside formal education in linguistics, translation, psychology, and English language facilitation. Entries were reviewed for contextual accuracy, cultural appropriateness, and consistency of register before inclusion in the final corpus.
-    </p>
+      <p class="lede"
+        data-en="A collaborative lexicographic initiative to document, translate, and digitise the English–Kirundi language pair — making bilingual knowledge freely and permanently accessible to all Burundians and every Kirundi speaker around the world."
+        data-fr="Une initiative lexicographique collaborative pour documenter, traduire et numériser la paire linguistique Anglais–Kirundi — rendant les connaissances bilingues librement et durablement accessibles à tous les Burundais et à chaque locuteur du Kirundi à travers le monde."
+        data-rn="Umushinga w'ubufatanye wo kwandika, guhindura, no kuvugurura ururimi rw'Icongereza n'Ikirundi — bigatuma ubumenyi mu ndimi zombi bushobora kuboneka ku Barundi bose n'abavuga Ikirundi ku isi yose.">
+        A collaborative lexicographic initiative to document, translate, and digitise the English–Kirundi language pair
+        — making bilingual knowledge freely and permanently accessible to all Burundians and every Kirundi speaker
+        around the world.
+      </p>
 
-    <p class="body-text reveal">
-      The project adopted a community-first review model, prioritising clarity for non-specialist users — students and general readers — while maintaining terminological rigour sufficient for academic and professional use.
-    </p>
+      <p class="body-text reveal"
+        data-en="The English–Kirundi Dictionary project arose from a documented gap in available linguistic resources for the Burundian population. Despite Kirundi being the native language of the overwhelming majority of Burundians, no comprehensive, digitally accessible bilingual dictionary existed to bridge it with English — the primary language of international education, commerce, and scholarship."
+        data-fr="Le projet du Dictionnaire Anglais–Kirundi est né d'un manque documenté de ressources linguistiques pour la population burundaise. Bien que le Kirundi soit la langue maternelle de la grande majorité des Burundais, il n'existait aucun dictionnaire bilingue complet et numériquement accessible le reliant à l'anglais — la principale langue de l'éducation internationale, du commerce et de la recherche."
+        data-rn="Umushinga w'Igisobanuzo Icongereza–Ikirundi wavutse ku rugaragara rw'amakuru y'ururimi adahari ku Barundi. N'ubwo Ikirundi ari ururimi kavukire rw'Abarundi benshi, nta gisobanuzo gishingiye ku itumanaho rigezweho cyahuza Ikirundi n'Icongereza — ururimi nyamukuru rwo mu ishuri ry'amahanga, ubucuruzi, n'ubushakashatsi.">
+        The English–Kirundi Dictionary project arose from a documented gap in available linguistic resources for the
+        Burundian population. Despite Kirundi being the native language of the overwhelming majority of Burundians, no
+        comprehensive, digitally accessible bilingual dictionary existed to bridge it with English — the primary
+        language of international education, commerce, and scholarship.
+      </p>
 
-  </main>
+      <p class="body-text reveal"
+        data-en="The project was conceived and executed by a team of contributors united by a shared conviction: that access to language is access to opportunity, and that Kirundi deserves the same digital presence afforded to the world's most widely spoken languages."
+        data-fr="Le projet a été conçu et exécuté par une équipe de contributeurs unis par une conviction partagée : que l'accès à la langue est un accès aux opportunités, et que le Kirundi mérite la même présence numérique que celle accordée aux langues les plus parlées au monde."
+        data-rn="Umushinga washyizweho kandi ushyirwa mu bikorwa n'itsinda ry'abafatanyabikorwa bunze ubumwe ku bwemeza busangiwe: ko kubona ururimi ari ukubona amahirwe, kandi ko Ikirundi rikwiriye kuba mu rwego rumwe rw'ikoranabuhanga rwo mu ndimi zikoreshwa cyane ku isi.">
+        The project was conceived and executed by a team of contributors united by a shared conviction: that access to
+        language is access to opportunity, and that Kirundi deserves the same digital presence afforded to the world's
+        most widely spoken languages.
+      </p>
 
-  <!-- SIDEBAR -->
-  <aside class="side-col">
+      <div class="pull-quote reveal">
+        <p data-en="Building this dictionary meant noticing a gap in the community and choosing to fill it — together, patiently, and in service of every Burundian who would one day open it."
+          data-fr="Construire ce dictionnaire, c'était remarquer un manque dans la communauté et choisir de le combler — ensemble, patiemment, au service de chaque Burundais qui l'ouvrirait un jour."
+          data-rn="Kubaka iki gisobanuzo cyari ukwerekana ikibuze mu muryango no guhitamo kucyuzuza — twese hamwe, mu kwihangana, ku murongo wa buri Murundi azacyugurura umunsi.">
+          Building this dictionary meant noticing a gap in the community and choosing to fill it — together, patiently,
+          and in service of every Burundian who would one day open it.
+        </p>
+        <cite data-en="— Bigirimana Stany, Initial Spark of the Project"
+          data-fr="— Bigirimana Stany, Étincelle Initiale du Projet"
+          data-rn="— Bigirimana Stany, Itangiriro ry'Umushinga">— Bigirimana Stany, Initial Spark of the Project</cite>
+      </div>
 
-    <div class="side-block reveal">
-      <span class="side-label">Project Details</span>
-      <div class="fact-box">
-        <div class="fact-item">
-          <span class="fact-key">Language pair</span>
-          <span class="fact-val">EN → Kirundi</span>
-        </div>
-        <div class="fact-item">
-          <span class="fact-key">Platform</span>
-          <span class="fact-val">Android</span>
-        </div>
-        <div class="fact-item">
-          <span class="fact-key">Access</span>
-          <span class="fact-val">Free · Offline</span>
-        </div>
-        <div class="fact-item">
-          <span class="fact-key">Published</span>
-          <span class="fact-val">2025</span>
-        </div>
-        <div class="fact-item">
-          <span class="fact-key">Publisher</span>
-          <span class="fact-val">HelixNova™</span>
+      <span class="section-head reveal" data-en="Mission &amp; Goals" data-fr="Mission &amp; Objectifs"
+        data-rn="Inshingano &amp; Intego">Mission &amp; Goals</span>
+
+      <ol class="goals reveal">
+        <li>
+          <span class="goal-num">I.</span>
+          <div class="goal-text">
+            <strong data-en="Preserve and elevate Kirundi" data-fr="Préserver et élever le Kirundi"
+              data-rn="Kubungabunga no Gushira Hejuru Ikirundi">Preserve and elevate Kirundi</strong>
+            <span
+              data-en="To produce a rigorous, accurate bilingual lexicon that honours the linguistic structures, idiomatic richness, and cultural context of Kirundi as spoken in Burundi today."
+              data-fr="Produire un lexique bilingue rigoureux et précis qui honore les structures linguistiques, la richesse idiomatique et le contexte culturel du Kirundi tel qu'il est parlé au Burundi aujourd'hui."
+              data-rn="Gukora igisobanuzo cy'indimi ebyiri cyihariye kandi cyukuri kibungabunga imyandikire y'ururimi, ubukungu bw'imvugo, n'umuco w'Ikirundi nk'uko kivugwa muri Uburundi uyu munsi.">
+              To produce a rigorous, accurate bilingual lexicon that honours the linguistic structures, idiomatic
+              richness, and cultural context of Kirundi as spoken in Burundi today.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="goal-num">II.</span>
+          <div class="goal-text">
+            <strong data-en="Expand educational access" data-fr="Étendre l'accès éducatif"
+              data-rn="Kwagura Uburezi">Expand educational access</strong>
+            <span
+              data-en="To equip students, teachers, and educational institutions across Burundi with a reliable English reference tool that functions entirely offline, removing dependency on internet infrastructure."
+              data-fr="Équiper les étudiants, les enseignants et les institutions éducatives à travers le Burundi d'un outil de référence anglais fiable qui fonctionne entièrement hors ligne, supprimant ainsi la dépendance à l'infrastructure Internet."
+              data-rn="Guha abanyeshuri, abarimu, n'ibigo by'amashuri muri Uburundi igikoresho cy'icyizere cy'Icongereza gikora nta nterineti, bigakuramo ibibazo by'imikoreshereze yayo.">
+              To equip students, teachers, and educational institutions across Burundi with a reliable English reference
+              tool that functions entirely offline, removing dependency on internet infrastructure.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="goal-num">III.</span>
+          <div class="goal-text">
+            <strong data-en="Support government and civic institutions"
+              data-fr="Soutenir les institutions gouvernementales et civiques"
+              data-rn="Gushigikira Inzego za Leta">Support government and civic institutions</strong>
+            <span
+              data-en="To provide public sector workers, policy makers, and civil servants with a trusted translation resource that strengthens official communication and reduces language barriers in governance."
+              data-fr="Fournir aux travailleurs du secteur public, aux décideurs politiques et aux fonctionnaires une ressource de traduction fiable qui renforce la communication officielle et réduit les barrières linguistiques dans la gouvernance."
+              data-rn="Guha abakozi ba Leta, abafata ibyemezo, n'abakozi b'inzego za Leta umutungo w'icyizere wo guhindura indimi, bukomeza itumanaho rya Leta kandi bukagabanya inzitizi z'indimi mu butegetsi.">
+              To provide public sector workers, policy makers, and civil servants with a trusted translation resource
+              that strengthens official communication and reduces language barriers in governance.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="goal-num">IV.</span>
+          <div class="goal-text">
+            <strong data-en="Serve the global Burundian community" data-fr="Servir la communauté burundaise mondiale"
+              data-rn="Gukorera Abarundi ku Isi">Serve the global Burundian community</strong>
+            <span
+              data-en="To remain a living connection to mother tongue and culture for Burundians studying, working, or living abroad — keeping Kirundi present wherever Burundians are present."
+              data-fr="Rester un lien vivant avec la langue maternelle et la culture pour les Burundais étudiant, travaillant ou vivant à l'étranger — gardant le Kirundi présent partout où les Burundais sont présents."
+              data-rn="Kuguma ari ihuriro ry'ururimi kavukire n'umuco ku Barundi biga, bakora, cyangwa baba mu mahanga — guhakoraho Ikirundi aho hose Abarundi bari.">
+              To remain a living connection to mother tongue and culture for Burundians studying, working, or living
+              abroad — keeping Kirundi present wherever Burundians are present.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="goal-num">V.</span>
+          <div class="goal-text">
+            <strong data-en="Establish a foundation for future scholarship"
+              data-fr="Établir une base pour la recherche future"
+              data-rn="Gushinga Urufatiro rw'Ubushakashatsi">Establish a foundation for future scholarship</strong>
+            <span
+              data-en="To create an open, extensible linguistic dataset that future researchers, lexicographers, and developers may build upon as Kirundi's digital presence continues to grow."
+              data-fr="Créer un ensemble de données linguistiques ouvert et extensible sur lequel les chercheurs, lexicographes et développeurs futurs pourront s'appuyer à mesure que la présence numérique du Kirundi continue de croître."
+              data-rn="Gukora urutonde rw'amakuru y'ururimi rufunguye kandi rugurutse, rushobora gukoreshwa n'abashakashatsi, abakora ibisobanuzo, n'abakora porogaramu mu gihe Ikirundi gikomeje gukura mu ikoranabuhanga.">
+              To create an open, extensible linguistic dataset that future researchers, lexicographers, and developers
+              may build upon as Kirundi's digital presence continues to grow.
+            </span>
+          </div>
+        </li>
+      </ol>
+
+      <span class="section-head reveal" data-en="Methodology" data-fr="Méthodologie"
+        data-rn="Uburyo bwakoreshejwe">Methodology</span>
+
+      <p class="body-text reveal"
+        data-en="Translations were produced collaboratively, with each contributor drawing on native Kirundi fluency alongside formal education in linguistics, translation, psychology, and English language facilitation. Entries were reviewed for contextual accuracy, cultural appropriateness, and consistency of register before inclusion in the final corpus."
+        data-fr="Les traductions ont été produites de manière collaborative, chaque contributeur s'appuyant sur sa maîtrise native du Kirundi ainsi que sur une formation académique en linguistique, traduction, psychologie et enseignement de l'anglais. Les entrées ont été examinées pour leur exactitude contextuelle, leur pertinence culturelle et leur cohérence de registre avant leur inclusion dans le corpus final."
+        data-rn="Ihindura ryakozwe mu bufatanye, buri mufatanyabikorwa akoresha ubuhanga bwe mu Kirundi hamwe n'inyigisho z'amashuri makuru mu by'ururimi, guhindura, ubumenyi bw'imitekerereze, no kwigisha Icongereza. Amagambo yagenzuwe ku bijyanye n'ukuri kw'imiterere yayo, umuco, n'ubujyane mbere yo gushyirwa mu gisobanuzo.">
+        Translations were produced collaboratively, with each contributor drawing on native Kirundi fluency alongside
+        formal education in linguistics, translation, psychology, and English language facilitation. Entries were
+        reviewed for contextual accuracy, cultural appropriateness, and consistency of register before inclusion in the
+        final corpus.
+      </p>
+
+      <p class="body-text reveal"
+        data-en="The Kirundi orthography used throughout the application follows the rules and guidelines published by Ikirundi.org, ensuring linguistic correctness consistent with national standards. The work was further reviewed by Dr. Mberamihigo of the Université du Burundi, and 83% of the Kirundi vocabulary has been formally certified by the Académie Rundi — the official national authority for the language."
+        data-fr="L'orthographe Kirundi utilisée dans l'application suit les règles et directives publiées par Ikirundi.org, garantissant une justesse linguistique conforme aux normes nationales. Le travail a en outre été révisé par le Dr Mberamihigo de l'Université du Burundi, et 83% du vocabulaire Kirundi a été officiellement certifié par l'Académie Rundi — l'autorité nationale officielle pour la langue."
+        data-rn="Imyandikire y'Ikirundi ikoreshwa muri porogaramu yose ikurikiza amategeko n'amabwirizwa byatangajwe na Ikirundi.org, hakemererwa ko ururimi rwanditse neza nk'uko byemewe ku rwego rw'igihugu. Umurimo kandi wagenzuwe na Dr Mberamihigo wo muri Université du Burundi, kandi 83% by'amagambo y'Ikirundi yemejwe ku mugaragaro na Académie Rundi — urwego rw'igihugu rufite ububasha bw'ururimi.">
+        The Kirundi orthography used throughout the application follows the rules and guidelines published by
+        Ikirundi.org, ensuring linguistic correctness consistent with national standards. The work was further reviewed
+        by Dr. Mberamihigo of the Université du Burundi, and 83% of the Kirundi vocabulary has been formally certified
+        by the Académie Rundi — the official national authority for the language.
+      </p>
+
+      <span class="section-head reveal" data-en="Acknowledgements" data-fr="Remerciements"
+        data-rn="Ishimirwa">Acknowledgements</span>
+
+      <p class="body-text reveal"
+        data-en="The application gratefully acknowledges the following sources, whose contributions made parts of this dictionary possible:"
+        data-fr="L'application reconnaît avec gratitude les sources suivantes, dont les contributions ont rendu possibles certaines parties de ce dictionnaire:"
+        data-rn="Porogaramu yemera kandi ishimira inkomoko zikurikira, izamuriza zo zatumye bimwe muri iki gisobanuzo bishoboka:">
+        The application gratefully acknowledges the following sources, whose contributions made parts of this dictionary
+        possible:
+      </p>
+
+      <div class="ack-card reveal">
+        <div class="ack-card-title">dictionaryapi.dev</div>
+        <a href="https://dictionaryapi.dev" target="_blank" rel="noopener">https://dictionaryapi.dev</a>
+        <div class="ack-card-desc"
+          data-en="A free public dictionary API providing the phonetic transcriptions and partial linguistic data used throughout the application."
+          data-fr="Une API de dictionnaire publique et gratuite fournissant les transcriptions phonétiques et certaines données linguistiques utilisées dans l'application."
+          data-rn="API y'igisobanuzo cy'ubuntu itanga imibare y'ihame ry'amajwi n'andi makuru y'ururimi akoreshwa muri porogaramu.">
+          A free public dictionary API providing the phonetic transcriptions and partial linguistic data used throughout
+          the application.
         </div>
       </div>
-    </div>
 
-    <div class="side-block reveal">
-      <span class="side-label">Contributors</span>
-      <ul class="contributor-list">
-        <li>
-          <span class="contrib-name">Tuyisenge Alice</span>
-          <span class="contrib-role">Kirundi Translator · UOI Tanzania</span>
-        </li>
-        <li>
-          <span class="contrib-name">Bigirimana Stany</span>
-          <span class="contrib-role">English Facilitator · TESOL Certified</span>
-        </li>
-        <li>
-          <span class="contrib-name">Niyubuntu Kenedy</span>
-          <span class="contrib-role">Psychologist & Translator · UOI Tanzania</span>
-        </li>
-        <li>
-          <span class="contrib-name">Ndayikengurukiye Moise</span>
-          <span class="contrib-role">Translation Lead · Univ. of Dodoma</span>
-        </li>
-        <li>
-          <span class="contrib-name">Nduwimana Montesquieu</span>
-          <span class="contrib-role">Kirundi Translator · Bujumbura</span>
-        </li>
-      </ul>
-    </div>
+      <div class="ack-card reveal">
+        <div class="ack-card-title">Ikirundi.org</div>
+        <a href="https://ikirundi.org" target="_blank" rel="noopener">https://ikirundi.org</a>
+        <div class="ack-card-desc"
+          data-en="The way Kirundi is written throughout this application follows the orthographic rules and guidelines published by Ikirundi.org — a foundational reference for ensuring linguistic correctness."
+          data-fr="La manière dont le Kirundi est écrit dans cette application suit les règles orthographiques publiées par Ikirundi.org — une référence fondamentale pour assurer la justesse linguistique."
+          data-rn="Uburyo Ikirundi cyandikwa muri iyi porogaramu bukurikiza amategeko y'inyandiko byatangajwe na Ikirundi.org — umufatanyabikorwa w'ingenzi mu kwemeza ko ururimi rwanditse neza.">
+          The way Kirundi is written throughout this application follows the orthographic rules and guidelines published
+          by Ikirundi.org — a foundational reference for ensuring linguistic correctness.
+        </div>
+      </div>
 
-    <div class="side-block reveal">
-      <span class="side-label">Statement of Need</span>
-      <p class="side-text">
-        Kirundi is spoken by over 10 million people, yet digital bilingual resources connecting it to English remain critically scarce. This project addresses that gap directly, placing a scholarly tool in the hands of those who need it most.
-      </p>
-    </div>
+    </main>
 
-  </aside>
+    <!-- SIDEBAR -->
+    <aside class="side-col">
 
-  <footer class="colophon reveal">
-    <p>© 2025 HelixNova™ · English–Kirundi Dictionary · All rights reserved</p>
-    <p>Developed in Burundi · <a href="mailto:contact@helixnova.dev">contact@helixnova.dev</a></p>
-  </footer>
+      <div class="side-block reveal">
+        <span class="side-label" data-en="Project Details" data-fr="Détails du Projet"
+          data-rn="Amakuru y'Umushinga">Project Details</span>
+        <div class="fact-box">
+          <div class="fact-item">
+            <span class="fact-key" data-en="Language pair" data-fr="Paire de langues" data-rn="Indimi">Language
+              pair</span>
+            <span class="fact-val">EN → Kirundi</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-key" data-en="Platform" data-fr="Plateforme" data-rn="Urubuga">Platform</span>
+            <span class="fact-val">Android</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-key" data-en="Access" data-fr="Accès" data-rn="Bwifungura">Access</span>
+            <span class="fact-val" data-en="Free · Offline" data-fr="Gratuit · Hors ligne"
+              data-rn="Ubuntu · Idakeneye internet">Free · Offline</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-key" data-en="Published" data-fr="Publié" data-rn="Cyatangajwe">Published</span>
+            <span class="fact-val">2026</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-key" data-en="Certified" data-fr="Certifié" data-rn="Cyemejwe">Certified</span>
+            <span class="fact-val">83% — Académie Rundi</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-key" data-en="Publisher" data-fr="Éditeur" data-rn="Uwakigize">Publisher</span>
+            <span class="fact-val">HelixNova™</span>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <div class="side-block reveal">
+        <span class="side-label" data-en="Contributors" data-fr="Contributeurs"
+          data-rn="Abafatanyabikorwa">Contributors</span>
+        <ul class="contributor-list">
+          <li>
+            <span class="contrib-name">Blaise Ndayishimiye</span>
+            <span class="contrib-role" data-en="Project Lead &amp; Developer" data-fr="Chef de Projet &amp; Développeur"
+              data-rn="Umuyobozi &amp; Uwakoze Porogaramu">Project Lead &amp; Developer</span>
+          </li>
+          <li>
+            <span class="contrib-name">Bigirimana Stany</span>
+            <span class="contrib-role" data-en="Initial Spark · Voice Translator"
+              data-fr="Étincelle Initiale · Traducteur Vocal" data-rn="Itangiriro · Uwahinduye Amajwi">Initial Spark ·
+              Voice Translator</span>
+          </li>
+          <li>
+            <span class="contrib-name">Ndayikengurukiye Moise</span>
+            <span class="contrib-role" data-en="Translation Lead" data-fr="Responsable Traduction"
+              data-rn="Umuyobozi w'Ihindura">Translation Lead</span>
+          </li>
+          <li>
+            <span class="contrib-name">Tuyisenge Alice</span>
+            <span class="contrib-role" data-en="Translator &amp; Typist" data-fr="Traductrice &amp; Typiste"
+              data-rn="Umuhinduzi &amp; Umwanditsi">Translator &amp; Typist</span>
+          </li>
+          <li>
+            <span class="contrib-name">Niyubuntu Kenedy</span>
+            <span class="contrib-role" data-en="Translator &amp; Reviewer" data-fr="Traducteur &amp; Relecteur"
+              data-rn="Umuhinduzi &amp; Umugenzuzi">Translator &amp; Reviewer</span>
+          </li>
+          <li>
+            <span class="contrib-name">Nduwimana Montesquieu</span>
+            <span class="contrib-role" data-en="Typist · Images · Tester" data-fr="Typiste · Images · Testeur"
+              data-rn="Umwanditsi · Amafoto · Umugenzuzi">Typist · Images · Tester</span>
+          </li>
+          <li>
+            <span class="contrib-name">Harerimana Samuel</span>
+            <span class="contrib-role" data-en="Typist &amp; Architecture Advisor"
+              data-fr="Typiste &amp; Conseiller Architecture" data-rn="Umwanditsi &amp; Umujyanama">Typist &amp;
+              Architecture Advisor</span>
+          </li>
+          <li>
+            <span class="contrib-name">Landry Gildas Muhizi</span>
+            <span class="contrib-role" data-en="Entry Typist" data-fr="Typiste" data-rn="Umwanditsi">Entry Typist</span>
+          </li>
+          <li>
+            <span class="contrib-name">Albert Niyo Mutabazi</span>
+            <span class="contrib-role" data-en="Typist &amp; Team Spirit" data-fr="Typiste &amp; Esprit d'Équipe"
+              data-rn="Umwanditsi &amp; Umutima w'Itsinda">Typist &amp; Team Spirit</span>
+          </li>
+          <li>
+            <span class="contrib-name">Ezekiel Ndagijimana</span>
+            <span class="contrib-role" data-en="Entry Typist" data-fr="Typiste" data-rn="Umwanditsi">Entry Typist</span>
+          </li>
+          <li>
+            <span class="contrib-name">Dr. Mberamihigo</span>
+            <span class="contrib-role" data-en="Academic Reviewer · Univ. du Burundi"
+              data-fr="Relecteur Académique · Univ. du Burundi"
+              data-rn="Umugenzuzi w'Akademiki · Univ. du Burundi">Academic Reviewer · Univ. du Burundi</span>
+          </li>
+          <li>
+            <span class="contrib-name">Académie Rundi</span>
+            <span class="contrib-role" data-en="Official Kirundi Certifier · 83%" data-fr="Certificateur Officiel · 83%"
+              data-rn="Uwemeje ku Mugaragaro · 83%">Official Kirundi Certifier · 83%</span>
+          </li>
+        </ul>
+      </div>
 
-<script>
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
+      <div class="side-block reveal">
+        <span class="side-label" data-en="Statement of Need" data-fr="Énoncé du Besoin"
+          data-rn="Inyandiko y'Inyigisho">Statement of Need</span>
+        <p class="side-text"
+          data-en="Kirundi is spoken by over 10 million people, yet digital bilingual resources connecting it to English remain critically scarce. This project addresses that gap directly — placing a scholarly tool in the hands of those who need it most."
+          data-fr="Le Kirundi est parlé par plus de 10 millions de personnes, mais les ressources numériques bilingues qui le relient à l'anglais restent extrêmement rares. Ce projet répond directement à cette lacune — en mettant un outil savant entre les mains de ceux qui en ont le plus besoin."
+          data-rn="Ikirundi kivugwa n'abantu barenze miliyoni 10, ariko amakuru y'ikoranabuhanga ahuza Ikirundi n'Icongereza ari macye cyane. Uyu mushinga uhagurura iki kibazo — ukabakira igikoresho cy'ubumenyi mu maboko y'abagikeneye cyane.">
+          Kirundi is spoken by over 10 million people, yet digital bilingual resources connecting it to English remain
+          critically scarce. This project addresses that gap directly — placing a scholarly tool in the hands of those
+          who need it most.
+        </p>
+      </div>
+
+      <div class="side-block reveal">
+        <span class="side-label" data-en="Legal" data-fr="Mentions Légales" data-rn="Amategeko">Legal</span>
+        <div class="legal-links">
+          <a href="terms.html" data-en="Terms of Use →" data-fr="Conditions d'Utilisation →"
+            data-rn="Amabwirizwa →">Terms of Use →</a>
+          <a href="privacy.html" data-en="Privacy Policy →" data-fr="Politique de Confidentialité →"
+            data-rn="Politiki y'Ibanga →">Privacy Policy →</a>
+        </div>
+      </div>
+
+    </aside>
+
+    <footer class="colophon reveal">
+      <p>© 2026 HelixNova™ · English–Kirundi Dictionary</p>
+      <p data-en="Developed in Canada · " data-fr="Développé au Canada · " data-rn="Yakorewe mu Canada · ">Developed
+        in Canada · <a href="mailto:contact@helixnova.dev">contact@helixnova.dev</a></p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var lang = window._lang || 'en';
+      document.querySelectorAll('[data-en]').forEach(function (el) {
+        var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+        if (txt) el.innerHTML = txt;
+      });
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
 
 </body>
+
 </html>
