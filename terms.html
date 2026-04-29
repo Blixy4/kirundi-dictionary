@@ -1,366 +1,589 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Use — English–Kirundi Dictionary</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-<script>
-(function(){
-  if(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)
-    document.documentElement.setAttribute('data-theme','dark');
-  window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',e=>
-    document.documentElement.setAttribute('data-theme', e.matches?'dark':'light'));
-  var lang = new URLSearchParams(window.location.search).get('lang')
-          || (navigator.language||'en').slice(0,2).toLowerCase();
-  if(!['en','fr','rn'].includes(lang)) lang='en';
-  document.documentElement.setAttribute('lang', lang);
-  window._lang = lang;
-})();
-</script>
-<style>
-  :root {
-    --ink: #0e1410; --ink-mid: #2d3b35; --muted: #6b7c74;
-    --rule: #d4dbd7; --accent: #1a5c42;
-    --bg: #f9faf8; --paper: #ffffff; --sand: #f4f1eb;
-  }
-  [data-theme=dark] {
-    --ink: #e8eee9; --ink-mid: #b0bcb4; --muted: #7a8a82;
-    --rule: #2a3a32; --accent: #4ba07a;
-    --bg: #0a1410; --paper: #131c17; --sand: #1a2520;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body {
-    font-family: 'Crimson Pro', Georgia, serif;
-    background: var(--bg); color: var(--ink);
-    font-size: 18px; line-height: 1.75;
-    transition: background .3s, color .3s;
-  }
-  .top-rule { height: 4px; background: var(--accent); }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use — English–Kirundi Dictionary</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+    rel="stylesheet">
+  <script>
+    (function () {
+      var p = new URLSearchParams(window.location.search);
 
-  .masthead {
-    max-width: 760px; margin: 0 auto;
-    padding: 56px 40px 36px;
-    border-bottom: 1px solid var(--rule);
-    opacity: 0; animation: fadeIn 0.6s 0.1s ease forwards;
-  }
-  .kicker {
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 10px; display: block;
-  }
-  .masthead h1 {
-    font-family: 'EB Garamond', serif;
-    font-size: clamp(30px, 5vw, 48px);
-    font-weight: 700; line-height: 1.1;
-    letter-spacing: -0.5px; color: var(--ink);
-    margin-bottom: 12px;
-  }
-  .masthead h1 em { font-style: italic; color: var(--accent); }
-  .meta {
-    display: flex; align-items: center; gap: 16px;
-    font-size: 12px; color: var(--muted);
-    letter-spacing: 0.5px; flex-wrap: wrap;
-  }
-  .meta-badge {
-    display: inline-block;
-    border: 1px solid var(--accent); color: var(--accent);
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 2px;
-  }
+      // 1. Theme — from Flutter param, fallback to system
+      var theme = p.get('theme');
+      if (!theme) {
+        theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches)
+          ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+      // Keep in sync if user rotates system theme while page is open
+      window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', function (e) {
+        if (!new URLSearchParams(window.location.search).get('theme'))
+          document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+      });
 
-  .body { max-width: 760px; margin: 0 auto; padding: 40px 40px 100px; }
+      // 2. Accent color — from Flutter colorScheme.primary
+      var color = p.get('color');
+      if (color) {
+        document.documentElement.style.setProperty('--accent', decodeURIComponent(color));
+      }
 
-  .lede {
-    font-family: 'EB Garamond', serif;
-    font-size: clamp(20px, 2.5vw, 24px);
-    font-style: italic; line-height: 1.6;
-    color: var(--ink-mid); margin-bottom: 36px;
-    opacity: 0; animation: fadeIn 0.7s 0.3s ease forwards;
-  }
+      // 3. Language
+      var lang = p.get('lang')
+        || (navigator.language || 'en').slice(0, 2).toLowerCase();
+      if (!['en', 'fr', 'rn'].includes(lang)) lang = 'en';
+      document.documentElement.setAttribute('lang', lang);
+      window._lang = lang;
 
-  .article-section {
-    margin-bottom: 28px;
-    opacity: 0; animation: fadeIn 0.7s ease forwards;
-  }
-  .article-section:nth-child(1) { animation-delay: 0.4s; }
-  .article-section:nth-child(2) { animation-delay: 0.45s; }
-  .article-section:nth-child(3) { animation-delay: 0.5s; }
-  .article-section:nth-child(4) { animation-delay: 0.55s; }
-  .article-section:nth-child(5) { animation-delay: 0.6s; }
-  .article-section:nth-child(6) { animation-delay: 0.65s; }
-  .article-section:nth-child(7) { animation-delay: 0.7s; }
-  .article-section:nth-child(8) { animation-delay: 0.75s; }
-  .article-section:nth-child(9) { animation-delay: 0.8s; }
+      // 4. Year — always current, never hardcoded
+      window._year = new Date().getFullYear();
+    })();
+  </script>
+  <style>
+    :root {
+      --ink: #0e1410;
+      --ink-mid: #2d3b35;
+      --muted: #6b7c74;
+      --rule: #d4dbd7;
+      --accent: #1a5c42;
+      --bg: #f9faf8;
+      --paper: #ffffff;
+      --sand: #f4f1eb;
+    }
 
-  .article-section h2 {
-    font-family: 'EB Garamond', serif;
-    font-size: 22px; font-weight: 700;
-    color: var(--ink); margin-bottom: 10px;
-    display: flex; align-items: baseline; gap: 12px;
-  }
-  .article-section h2 .num {
-    font-size: 13px; color: var(--accent);
-    font-weight: 600; letter-spacing: 1px;
-    min-width: 32px;
-  }
+    [data-theme=dark] {
+      --ink: #e8eee9;
+      --ink-mid: #b0bcb4;
+      --muted: #7a8a82;
+      --rule: #2a3a32;
+      --accent: #4ba07a;
+      --bg: #0a1410;
+      --paper: #131c17;
+      --sand: #1a2520;
+    }
 
-  .article-section p {
-    font-size: 17px; line-height: 1.85;
-    color: var(--ink-mid); margin-bottom: 12px;
-    padding-left: 44px;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .article-section ul {
-    list-style: none; padding-left: 44px; margin-bottom: 12px;
-  }
-  .article-section ul li {
-    font-size: 17px; line-height: 1.8;
-    color: var(--ink-mid); padding: 4px 0 4px 18px;
-    position: relative;
-  }
-  .article-section ul li::before {
-    content: '·'; position: absolute; left: 0;
-    color: var(--accent); font-size: 22px;
-    line-height: 1; top: 6px;
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  .grant-box {
-    background: var(--sand);
-    border-left: 4px solid var(--accent);
-    padding: 22px 26px; margin: 24px 0;
-    border-radius: 0 8px 8px 0;
-  }
-  .grant-box p {
-    padding-left: 0 !important;
-    font-family: 'EB Garamond', serif;
-    font-size: 18px; font-style: italic;
-    color: var(--ink) !important;
-    line-height: 1.7;
-  }
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.75;
+      transition: background .3s, color .3s;
+    }
 
-  /* attribution card */
-  .attrib-card {
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 10px;
-    padding: 20px 24px;
-    margin: 16px 0 16px 44px;
-  }
-  .attrib-card-title {
-    font-family: 'EB Garamond', serif;
-    font-size: 17px; font-weight: 700;
-    color: var(--accent); margin-bottom: 4px;
-  }
-  .attrib-card a {
-    display: inline-block;
-    font-size: 13.5px; color: var(--ink-mid);
-    text-decoration: none; word-break: break-all;
-    border-bottom: 1px dashed var(--rule);
-    padding-bottom: 1px; margin-bottom: 8px;
-    transition: color .2s, border-color .2s;
-  }
-  .attrib-card a:hover { color: var(--accent); border-color: var(--accent); }
-  .attrib-card-desc {
-    font-size: 15px; color: var(--ink-mid);
-    line-height: 1.7;
-  }
+    .top-rule {
+      height: 4px;
+      background: var(--accent);
+    }
 
-  .colophon {
-    border-top: 1px solid var(--rule);
-    padding-top: 28px; margin-top: 48px;
-    display: flex; justify-content: space-between;
-    align-items: center; flex-wrap: wrap; gap: 12px;
-  }
-  .colophon p { font-size: 12.5px; color: var(--muted); padding-left: 0; }
-  .colophon a {
-    color: var(--accent); text-decoration: none;
-    font-weight: 600; font-size: 12.5px;
-  }
-  .colophon a:hover { text-decoration: underline; }
+    .masthead {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 40px 36px;
+      border-bottom: 1px solid var(--rule);
+      opacity: 0;
+      animation: fadeIn 0.6s 0.1s ease forwards;
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: none; }
-  }
+    .kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: block;
+    }
 
-  @media (max-width: 640px) {
-    .masthead { padding: 36px 20px 28px; }
-    .body { padding: 28px 20px 80px; }
-    .article-section p,
-    .article-section ul,
-    .attrib-card { padding-left: 0 !important; margin-left: 0 !important; }
-    .article-section h2 { padding-left: 0; }
-    .colophon { flex-direction: column; align-items: flex-start; }
-  }
-</style>
+    .masthead h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .masthead h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      flex-wrap: wrap;
+    }
+
+    .meta-badge {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    .body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 40px 100px;
+    }
+
+    .lede {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(20px, 2.5vw, 24px);
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--ink-mid);
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeIn 0.7s 0.3s ease forwards;
+    }
+
+    .article-section {
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeIn 0.7s ease forwards;
+    }
+
+    .article-section:nth-child(1) {
+      animation-delay: 0.4s;
+    }
+
+    .article-section:nth-child(2) {
+      animation-delay: 0.45s;
+    }
+
+    .article-section:nth-child(3) {
+      animation-delay: 0.5s;
+    }
+
+    .article-section:nth-child(4) {
+      animation-delay: 0.55s;
+    }
+
+    .article-section:nth-child(5) {
+      animation-delay: 0.6s;
+    }
+
+    .article-section:nth-child(6) {
+      animation-delay: 0.65s;
+    }
+
+    .article-section:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    .article-section:nth-child(8) {
+      animation-delay: 0.75s;
+    }
+
+    .article-section:nth-child(9) {
+      animation-delay: 0.8s;
+    }
+
+    .article-section h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .article-section h2 .num {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 1px;
+      min-width: 32px;
+    }
+
+    .article-section p {
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--ink-mid);
+      margin-bottom: 12px;
+      padding-left: 44px;
+    }
+
+    .article-section ul {
+      list-style: none;
+      padding-left: 44px;
+      margin-bottom: 12px;
+    }
+
+    .article-section ul li {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--ink-mid);
+      padding: 4px 0 4px 18px;
+      position: relative;
+    }
+
+    .article-section ul li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 22px;
+      line-height: 1;
+      top: 6px;
+    }
+
+    .grant-box {
+      background: var(--sand);
+      border-left: 4px solid var(--accent);
+      padding: 22px 26px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .grant-box p {
+      padding-left: 0 !important;
+      font-family: 'EB Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--ink) !important;
+      line-height: 1.7;
+    }
+
+    /* attribution card */
+    .attrib-card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 16px 0 16px 44px;
+    }
+
+    .attrib-card-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .attrib-card a {
+      display: inline-block;
+      font-size: 13.5px;
+      color: var(--ink-mid);
+      text-decoration: none;
+      word-break: break-all;
+      border-bottom: 1px dashed var(--rule);
+      padding-bottom: 1px;
+      margin-bottom: 8px;
+      transition: color .2s, border-color .2s;
+    }
+
+    .attrib-card a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .attrib-card-desc {
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    .colophon {
+      border-top: 1px solid var(--rule);
+      padding-top: 28px;
+      margin-top: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .colophon p {
+      font-size: 12.5px;
+      color: var(--muted);
+      padding-left: 0;
+    }
+
+    .colophon a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 12.5px;
+    }
+
+    .colophon a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .masthead {
+        padding: 36px 20px 28px;
+      }
+
+      .body {
+        padding: 28px 20px 80px;
+      }
+
+      .article-section p,
+      .article-section ul,
+      .attrib-card {
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+      }
+
+      .article-section h2 {
+        padding-left: 0;
+      }
+
+      .colophon {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="top-rule"></div>
+  <div class="top-rule"></div>
 
-<header class="masthead">
-  <span class="kicker" data-en="Legal Document" data-fr="Document Juridique" data-rn="Inyandiko y'Amategeko">Legal Document</span>
-  <h1 data-en="Terms of <em>Use</em>" data-fr="Conditions <em>d'Utilisation</em>" data-rn="Amabwirizwa y'<em>Ikoreshwa</em>">Terms of <em>Use</em></h1>
-  <div class="meta">
-    <span data-en="English–Kirundi Dictionary" data-fr="Dictionnaire Anglais–Kirundi" data-rn="Igisobanuzo Icongereza–Ikirundi">English–Kirundi Dictionary</span>
-    <span>·</span>
-    <span data-en="Effective: 2026" data-fr="En vigueur: 2026" data-rn="Bishyirwa mu bikorwa: 2026">Effective: 2026</span>
-    <span class="meta-badge" data-en="Open License" data-fr="Licence Ouverte" data-rn="Uburenganzira Bwisanzuye">Open License</span>
-  </div>
-</header>
-
-<main class="body">
-
-  <p class="lede" data-en="The English–Kirundi Dictionary mobile application is offered freely to all, in the spirit of the Apache License 2.0 — broad, permissive, and protective of those who use, share, and build upon this work."
-                  data-fr="L'application mobile English–Kirundi Dictionary est offerte librement à tous, dans l'esprit de la Licence Apache 2.0 — large, permissive et protectrice de ceux qui l'utilisent, la partagent et construisent sur ce travail."
-                  data-rn="Porogaramu ngendanwa ya English–Kirundi Dictionary itangwa ku buntu kuri bose, mu mwuka wa Apache License 2.0 — ihagije, yemera, kandi irinda abakoresha, abasangiza, n'abubaka kuri uyu murimo.">
-    The English–Kirundi Dictionary mobile application is offered freely to all, in the spirit of the Apache License 2.0 — broad, permissive, and protective of those who use, share, and build upon this work.
-  </p>
-
-  <!-- 1. GRANT -->
-  <section class="article-section">
-    <h2><span class="num">I.</span> <span data-en="Grant of Use" data-fr="Octroi d'Utilisation" data-rn="Uburenganzira bwo Gukoresha">Grant of Use</span></h2>
-    <div class="grant-box">
-      <p data-en="Permission is hereby granted, free of charge, to any person who installs or otherwise obtains the mobile application and its dictionary content, to use, study, and share copies of the application, and to permit others to whom it is furnished to do so, subject only to the conditions below."
-         data-fr="Une autorisation est accordée par la présente, à titre gratuit, à toute personne installant ou obtenant l'application mobile et son contenu lexicographique, d'utiliser, étudier et partager des copies de l'application, et de permettre aux autres à qui elle est fournie de le faire, sous réserve uniquement des conditions ci-dessous."
-         data-rn="Uburenganzira buratanzwe ku buntu, ku muntu wese ushyira mu bikoresho cyangwa abona porogaramu ngendanwa n'ibikubiyemo, kuyikoresha, kuyiga, no gusangiza kopi zayo, no gutanga uburenganzira ku bandi ngo bayikore, hakurikijwe gusa ibisabwa hano hasi.">
-        Permission is hereby granted, free of charge, to any person who installs or otherwise obtains the mobile application and its dictionary content, to use, study, and share copies of the application, and to permit others to whom it is furnished to do so, subject only to the conditions below.
-      </p>
+  <header class="masthead">
+    <span class="kicker" data-en="Legal Document" data-fr="Document Juridique" data-rn="Inyandiko y'Amategeko">Legal
+      Document</span>
+    <h1 data-en="Terms of <em>Use</em>" data-fr="Conditions <em>d'Utilisation</em>"
+      data-rn="Amabwirizwa y'<em>Ikoreshwa</em>">Terms of <em>Use</em></h1>
+    <div class="meta">
+      <span data-en="English–Kirundi Dictionary" data-fr="Dictionnaire Anglais–Kirundi"
+        data-rn="Igisobanuzo Icongereza–Ikirundi">English–Kirundi Dictionary</span>
+      <span>·</span>
+      <span data-en="Effective: 2026" data-fr="En vigueur: 2026" data-rn="Bishyirwa mu bikorwa: 2026">Effective:
+        2026</span>
+      <span class="meta-badge" data-en="Open License" data-fr="Licence Ouverte" data-rn="Uburenganzira Bwisanzuye">Open
+        License</span>
     </div>
-  </section>
+  </header>
 
-  <!-- 2. CONDITIONS -->
-  <section class="article-section">
-    <h2><span class="num">II.</span> <span data-en="Conditions" data-fr="Conditions" data-rn="Ibisabwa">Conditions</span></h2>
-    <p data-en="These terms ask only the following in return:" data-fr="Ces conditions ne demandent que ce qui suit en retour:" data-rn="Aya mabwirizwa asaba gusa ibi bikurikira:">
-      These terms ask only the following in return:
+  <main class="body">
+
+    <p class="lede"
+      data-en="The English–Kirundi Dictionary mobile application is offered freely to all, in the spirit of the Apache License 2.0 — broad, permissive, and protective of those who use, share, and build upon this work."
+      data-fr="L'application mobile English–Kirundi Dictionary est offerte librement à tous, dans l'esprit de la Licence Apache 2.0 — large, permissive et protectrice de ceux qui l'utilisent, la partagent et construisent sur ce travail."
+      data-rn="Porogaramu ngendanwa ya English–Kirundi Dictionary itangwa ku buntu kuri bose, mu mwuka wa Apache License 2.0 — ihagije, yemera, kandi irinda abakoresha, abasangiza, n'abubaka kuri uyu murimo.">
+      The English–Kirundi Dictionary mobile application is offered freely to all, in the spirit of the Apache License
+      2.0 — broad, permissive, and protective of those who use, share, and build upon this work.
     </p>
-    <ul>
-      <li data-en="The above grant of use, this notice of conditions, and the disclaimer below shall be retained and acknowledged in any redistribution of the application or its content."
+
+    <!-- 1. GRANT -->
+    <section class="article-section">
+      <h2><span class="num">I.</span> <span data-en="Grant of Use" data-fr="Octroi d'Utilisation"
+          data-rn="Uburenganzira bwo Gukoresha">Grant of Use</span></h2>
+      <div class="grant-box">
+        <p data-en="Permission is hereby granted, free of charge, to any person who installs or otherwise obtains the mobile application and its dictionary content, to use, study, and share copies of the application, and to permit others to whom it is furnished to do so, subject only to the conditions below."
+          data-fr="Une autorisation est accordée par la présente, à titre gratuit, à toute personne installant ou obtenant l'application mobile et son contenu lexicographique, d'utiliser, étudier et partager des copies de l'application, et de permettre aux autres à qui elle est fournie de le faire, sous réserve uniquement des conditions ci-dessous."
+          data-rn="Uburenganzira buratanzwe ku buntu, ku muntu wese ushyira mu bikoresho cyangwa abona porogaramu ngendanwa n'ibikubiyemo, kuyikoresha, kuyiga, no gusangiza kopi zayo, no gutanga uburenganzira ku bandi ngo bayikore, hakurikijwe gusa ibisabwa hano hasi.">
+          Permission is hereby granted, free of charge, to any person who installs or otherwise obtains the mobile
+          application and its dictionary content, to use, study, and share copies of the application, and to permit
+          others to whom it is furnished to do so, subject only to the conditions below.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. CONDITIONS -->
+    <section class="article-section">
+      <h2><span class="num">II.</span> <span data-en="Conditions" data-fr="Conditions"
+          data-rn="Ibisabwa">Conditions</span></h2>
+      <p data-en="These terms ask only the following in return:"
+        data-fr="Ces conditions ne demandent que ce qui suit en retour:"
+        data-rn="Aya mabwirizwa asaba gusa ibi bikurikira:">
+        These terms ask only the following in return:
+      </p>
+      <ul>
+        <li
+          data-en="The above grant of use, this notice of conditions, and the disclaimer below shall be retained and acknowledged in any redistribution of the application or its content."
           data-fr="L'octroi d'utilisation ci-dessus, cet avis de conditions et l'avis de non-responsabilité ci-dessous doivent être conservés et reconnus dans toute redistribution de l'application ou de son contenu."
           data-rn="Uburenganzira bwo gukoresha hejuru, iri tangazo, n'amasezerano y'ubudahangarwa hano hasi, bigomba kubikwa kandi byemerwe iyo porogaramu cyangwa ibikubiyemo bisubizwa abandi.">
-        The above grant of use, this notice of conditions, and the disclaimer below shall be retained and acknowledged in any redistribution of the application or its content.
-      </li>
-    </ul>
-  </section>
+          The above grant of use, this notice of conditions, and the disclaimer below shall be retained and acknowledged
+          in any redistribution of the application or its content.
+        </li>
+      </ul>
+    </section>
 
-  <!-- 3. ATTRIBUTION TO SOURCES (NEW) -->
-  <section class="article-section">
-    <h2><span class="num">III.</span> <span data-en="Attribution to Sources" data-fr="Attribution aux Sources" data-rn="Ubwitirira ku Mbuga">Attribution to Sources</span></h2>
-    <p data-en="The application gratefully acknowledges and credits the following sources, whose contributions made parts of this dictionary possible:"
-       data-fr="L'application reconnaît avec gratitude les sources suivantes, dont les contributions ont rendu possibles certaines parties de ce dictionnaire:"
-       data-rn="Porogaramu yemeza kandi ishimira inkomoko zikurikira, izamuriza zo zatumye bimwe muri iki gisobanuzo bishoboka:">
-      The application gratefully acknowledges and credits the following sources, whose contributions made parts of this dictionary possible:
-    </p>
+    <!-- 3. ATTRIBUTION TO SOURCES (NEW) -->
+    <section class="article-section">
+      <h2><span class="num">III.</span> <span data-en="Attribution to Sources" data-fr="Attribution aux Sources"
+          data-rn="Ubwitirira ku Mbuga">Attribution to Sources</span></h2>
+      <p data-en="The application gratefully acknowledges and credits the following sources, whose contributions made parts of this dictionary possible:"
+        data-fr="L'application reconnaît avec gratitude les sources suivantes, dont les contributions ont rendu possibles certaines parties de ce dictionnaire:"
+        data-rn="Porogaramu yemeza kandi ishimira inkomoko zikurikira, izamuriza zo zatumye bimwe muri iki gisobanuzo bishoboka:">
+        The application gratefully acknowledges and credits the following sources, whose contributions made parts of
+        this dictionary possible:
+      </p>
 
-    <div class="attrib-card">
-      <div class="attrib-card-title">dictionaryapi.dev</div>
-      <a href="https://dictionaryapi.dev" target="_blank" rel="noopener">https://dictionaryapi.dev</a>
-      <div class="attrib-card-desc"
-           data-en="A free public dictionary API that provides the phonetic transcriptions and partial linguistic data used throughout the application."
-           data-fr="Une API de dictionnaire publique et gratuite qui fournit les transcriptions phonétiques et certaines données linguistiques utilisées dans l'application."
-           data-rn="API y'igisobanuzo cy'ubuntu itanga imibare y'ihame ry'amajwi n'andi makuru y'ururimi akoreshwa muri porogaramu.">
-        A free public dictionary API that provides the phonetic transcriptions and partial linguistic data used throughout the application.
+      <div class="attrib-card">
+        <div class="attrib-card-title">dictionaryapi.dev</div>
+        <a target="_blank" rel="noopener">https://dictionaryapi.dev</a>
+        <div class="attrib-card-desc"
+          data-en="A free public dictionary API that provides the phonetic transcriptions and partial linguistic data used throughout the application."
+          data-fr="Une API de dictionnaire publique et gratuite qui fournit les transcriptions phonétiques et certaines données linguistiques utilisées dans l'application."
+          data-rn="API y'igisobanuzo cy'ubuntu itanga imibare y'ihame ry'amajwi n'andi makuru y'ururimi akoreshwa muri porogaramu.">
+          A free public dictionary API that provides the phonetic transcriptions and partial linguistic data used
+          throughout the application.
+        </div>
       </div>
-    </div>
 
-    <div class="attrib-card">
-      <div class="attrib-card-title">Ikirundi.org</div>
-      <a href="https://ikirundi.org" target="_blank" rel="noopener">https://ikirundi.org</a>
-      <div class="attrib-card-desc"
-           data-en="The way Kirundi is written throughout this application follows the orthographic rules and guidelines published by Ikirundi.org. Their work has been a foundational reference for ensuring linguistic correctness."
-           data-fr="La manière dont le Kirundi est écrit dans cette application suit les règles orthographiques publiées par Ikirundi.org. Leur travail a été une référence fondamentale pour assurer la justesse linguistique."
-           data-rn="Uburyo Ikirundi cyandikwa muri iyi porogaramu bukurikiza amategeko n'amabwirizwa y'inyandiko byatangajwe na Ikirundi.org. Umurimo wabo wabaye umufatanyabikorwa w'ingenzi mu kwemeza ko ururimi rwanditse neza.">
-        The way Kirundi is written throughout this application follows the orthographic rules and guidelines published by Ikirundi.org. Their work has been a foundational reference for ensuring linguistic correctness.
+      <div class="attrib-card">
+        <div class="attrib-card-title">Ikirundi.org</div>
+        <a href="https://ikirundi.org" target="_blank" rel="noopener">https://ikirundi.org</a>
+        <div class="attrib-card-desc"
+          data-en="The way Kirundi is written throughout this application follows the orthographic rules and guidelines published by Ikirundi.org. Their work has been a foundational reference for ensuring linguistic correctness."
+          data-fr="La manière dont le Kirundi est écrit dans cette application suit les règles orthographiques publiées par Ikirundi.org. Leur travail a été une référence fondamentale pour assurer la justesse linguistique."
+          data-rn="Uburyo Ikirundi cyandikwa muri iyi porogaramu bukurikiza amategeko n'amabwirizwa y'inyandiko byatangajwe na Ikirundi.org. Umurimo wabo wabaye umufatanyabikorwa w'ingenzi mu kwemeza ko ururimi rwanditse neza.">
+          The way Kirundi is written throughout this application follows the orthographic rules and guidelines published
+          by Ikirundi.org. Their work has been a foundational reference for ensuring linguistic correctness.
+        </div>
       </div>
-    </div>
 
-    <p data-en="Anyone redistributing or building upon this application is asked to maintain these attributions, in keeping with the same spirit of credit and gratitude."
-       data-fr="Toute personne redistribuant ou construisant sur cette application est priée de maintenir ces attributions, dans le même esprit de reconnaissance et de gratitude."
-       data-rn="Umuntu wese usubiza cyangwa ubaka kuri iyi porogaramu arasabwa kugumana ubu bwitirira, mu mwuka umwe w'ubwitange n'ubukundo.">
-      Anyone redistributing or building upon this application is asked to maintain these attributions, in keeping with the same spirit of credit and gratitude.
-    </p>
-  </section>
+      <p data-en="Anyone redistributing or building upon this application is asked to maintain these attributions, in keeping with the same spirit of credit and gratitude."
+        data-fr="Toute personne redistribuant ou construisant sur cette application est priée de maintenir ces attributions, dans le même esprit de reconnaissance et de gratitude."
+        data-rn="Umuntu wese usubiza cyangwa ubaka kuri iyi porogaramu arasabwa kugumana ubu bwitirira, mu mwuka umwe w'ubwitange n'ubukundo.">
+        Anyone redistributing or building upon this application is asked to maintain these attributions, in keeping with
+        the same spirit of credit and gratitude.
+      </p>
+    </section>
 
-  <!-- 4. CREDIT TO PROJECT -->
-  <section class="article-section">
-    <h2><span class="num">IV.</span> <span data-en="Crediting This Project" data-fr="Créditer ce Projet" data-rn="Kwitirira uyu Mushinga">Crediting This Project</span></h2>
-    <p data-en="When using or building upon this application, attribution to the English–Kirundi Dictionary is appreciated but not required. A simple credit such as “Based on the English–Kirundi Dictionary” or a reference to the project is welcome and helps the work grow."
-       data-fr="Lors de l'utilisation ou de la construction sur cette application, l'attribution au Dictionnaire Anglais–Kirundi est appréciée mais non requise. Un simple crédit tel que « Basé sur le English–Kirundi Dictionary » ou une référence au projet est bienvenu et aide le travail à grandir."
-       data-rn="Mu gukoresha cyangwa kubaka kuri iyi porogaramu, kwitirirwa English–Kirundi Dictionary biragoboka ariko ntibisabwa. Igisobanuro nko “Bishingiye ku English–Kirundi Dictionary” cyangwa kuvuga umushinga biragoboka kandi bifasha umurimo gukura.">
-      When using or building upon this application, attribution to the English–Kirundi Dictionary is appreciated but not required. A simple credit such as "Based on the English–Kirundi Dictionary" or a reference to the project is welcome and helps the work grow.
-    </p>
-  </section>
+    <!-- 4. CREDIT TO PROJECT -->
+    <section class="article-section">
+      <h2><span class="num">IV.</span> <span data-en="Crediting This Project" data-fr="Créditer ce Projet"
+          data-rn="Kwitirira uyu Mushinga">Crediting This Project</span></h2>
+      <p data-en="When using or building upon this application, attribution to the English–Kirundi Dictionary is appreciated but not required. A simple credit such as “Based on the English–Kirundi Dictionary” or a reference to the project is welcome and helps the work grow."
+        data-fr="Lors de l'utilisation ou de la construction sur cette application, l'attribution au Dictionnaire Anglais–Kirundi est appréciée mais non requise. Un simple crédit tel que « Basé sur le English–Kirundi Dictionary » ou une référence au projet est bienvenu et aide le travail à grandir."
+        data-rn="Mu gukoresha cyangwa kubaka kuri iyi porogaramu, kwitirirwa English–Kirundi Dictionary biragoboka ariko ntibisabwa. Igisobanuro nko “Bishingiye ku English–Kirundi Dictionary” cyangwa kuvuga umushinga biragoboka kandi bifasha umurimo gukura.">
+        When using or building upon this application, attribution to the English–Kirundi Dictionary is appreciated but
+        not required. A simple credit such as "Based on the English–Kirundi Dictionary" or a reference to the project is
+        welcome and helps the work grow.
+      </p>
+    </section>
 
-  <!-- 5. CONTRIBUTIONS -->
-  <section class="article-section">
-    <h2><span class="num">V.</span> <span data-en="Contributions" data-fr="Contributions" data-rn="Imisanzu">Contributions</span></h2>
-    <p data-en="Anyone is welcome to contribute corrections, new entries, or improvements. Submitted contributions are considered offered under these same terms — broad, permissive, and freely usable by all."
-       data-fr="Toute personne est invitée à contribuer des corrections, de nouvelles entrées ou des améliorations. Les contributions soumises sont considérées comme offertes sous ces mêmes conditions — larges, permissives et librement utilisables par tous."
-       data-rn="Umuntu wese ashobora gutanga ibihindurwa, amagambo mashya, cyangwa iterambere. Imisanzu itanzwe ifatwa nk'iyatanzwe ku mabwirizwa amwe — mahagije, yemera, kandi ashobora gukoreshwa na bose.">
-      Anyone is welcome to contribute corrections, new entries, or improvements. Submitted contributions are considered offered under these same terms — broad, permissive, and freely usable by all.
-    </p>
-  </section>
+    <!-- 5. CONTRIBUTIONS -->
+    <section class="article-section">
+      <h2><span class="num">V.</span> <span data-en="Contributions" data-fr="Contributions"
+          data-rn="Imisanzu">Contributions</span></h2>
+      <p data-en="Anyone is welcome to contribute corrections, new entries, or improvements. Submitted contributions are considered offered under these same terms — broad, permissive, and freely usable by all."
+        data-fr="Toute personne est invitée à contribuer des corrections, de nouvelles entrées ou des améliorations. Les contributions soumises sont considérées comme offertes sous ces mêmes conditions — larges, permissives et librement utilisables par tous."
+        data-rn="Umuntu wese ashobora gutanga ibihindurwa, amagambo mashya, cyangwa iterambere. Imisanzu itanzwe ifatwa nk'iyatanzwe ku mabwirizwa amwe — mahagije, yemera, kandi ashobora gukoreshwa na bose.">
+        Anyone is welcome to contribute corrections, new entries, or improvements. Submitted contributions are
+        considered offered under these same terms — broad, permissive, and freely usable by all.
+      </p>
+    </section>
 
-  <!-- 6. NO TRADEMARK -->
-  <section class="article-section">
-    <h2><span class="num">VI.</span> <span data-en="No Trademark Claims" data-fr="Aucune Revendication de Marque" data-rn="Nta Gusaba Ikirango">No Trademark Claims</span></h2>
-    <p data-en="The names “English–Kirundi Dictionary”, “HelixNova”, and the names of contributors may not be used to endorse or promote derivative products without prior written permission. The freedom to use the application does not extend to the use of these names as commercial endorsements."
-       data-fr="Les noms « English–Kirundi Dictionary », « HelixNova » et les noms des contributeurs ne peuvent être utilisés pour endosser ou promouvoir des produits dérivés sans autorisation écrite préalable. La liberté d'utiliser l'application ne s'étend pas à l'utilisation de ces noms comme endossements commerciaux."
-       data-rn="Amazina “English–Kirundi Dictionary”, “HelixNova”, n'amazina y'abafatanyabikorwa ntashobora gukoreshwa mu kwemeza cyangwa mu kwamamaza ibikomoka kuri uyu murimo nta ruhushya rwanditse mbere.">
-      The names "English–Kirundi Dictionary", "HelixNova", and the names of contributors may not be used to endorse or promote derivative products without prior written permission. The freedom to use the application does not extend to the use of these names as commercial endorsements.
-    </p>
-  </section>
+    <!-- 6. NO TRADEMARK -->
+    <section class="article-section">
+      <h2><span class="num">VI.</span> <span data-en="No Trademark Claims" data-fr="Aucune Revendication de Marque"
+          data-rn="Nta Gusaba Ikirango">No Trademark Claims</span></h2>
+      <p data-en="The names “English–Kirundi Dictionary”, “HelixNova”, and the names of contributors may not be used to endorse or promote derivative products without prior written permission. The freedom to use the application does not extend to the use of these names as commercial endorsements."
+        data-fr="Les noms « English–Kirundi Dictionary », « HelixNova » et les noms des contributeurs ne peuvent être utilisés pour endosser ou promouvoir des produits dérivés sans autorisation écrite préalable. La liberté d'utiliser l'application ne s'étend pas à l'utilisation de ces noms comme endossements commerciaux."
+        data-rn="Amazina “English–Kirundi Dictionary”, “HelixNova”, n'amazina y'abafatanyabikorwa ntashobora gukoreshwa mu kwemeza cyangwa mu kwamamaza ibikomoka kuri uyu murimo nta ruhushya rwanditse mbere.">
+        The names "English–Kirundi Dictionary", "HelixNova", and the names of contributors may not be used to endorse or
+        promote derivative products without prior written permission. The freedom to use the application does not extend
+        to the use of these names as commercial endorsements.
+      </p>
+    </section>
 
-  <!-- 7. DISCLAIMER -->
-  <section class="article-section">
-    <h2><span class="num">VII.</span> <span data-en="Disclaimer of Warranty" data-fr="Avis de Non-responsabilité" data-rn="Inyamulisho">Disclaimer of Warranty</span></h2>
-    <p data-en="The application is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. The contributors of this dictionary work in good faith but accept no liability for any errors, omissions, or consequences arising from its use."
-       data-fr="L'application est fournie « telle quelle », sans garantie d'aucune sorte, expresse ou implicite, y compris mais sans s'y limiter les garanties de qualité marchande, d'adéquation à un usage particulier et de non-contrefaçon. Les contributeurs de ce dictionnaire travaillent en toute bonne foi mais n'acceptent aucune responsabilité pour les erreurs, omissions ou conséquences résultant de son utilisation."
-       data-rn="Porogaramu itangwa “uko iri”, nta cyemezo cy'ubwoko bwose, cyangaragaje cyangwa cyumvikana, harimo ariko ntibikukuyeho ibyemezo by'ubucuruzi, ubunyangamugayo ku cyifuzo cyihariye, no kutarenga ku burenganzira.">
-      The application is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. The contributors of this dictionary work in good faith but accept no liability for any errors, omissions, or consequences arising from its use.
-    </p>
-  </section>
+    <!-- 7. DISCLAIMER -->
+    <section class="article-section">
+      <h2><span class="num">VII.</span> <span data-en="Disclaimer of Warranty" data-fr="Avis de Non-responsabilité"
+          data-rn="Inyamulisho">Disclaimer of Warranty</span></h2>
+      <p data-en="The application is provided “as is”, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. The contributors of this dictionary work in good faith but accept no liability for any errors, omissions, or consequences arising from its use."
+        data-fr="L'application est fournie « telle quelle », sans garantie d'aucune sorte, expresse ou implicite, y compris mais sans s'y limiter les garanties de qualité marchande, d'adéquation à un usage particulier et de non-contrefaçon. Les contributeurs de ce dictionnaire travaillent en toute bonne foi mais n'acceptent aucune responsabilité pour les erreurs, omissions ou conséquences résultant de son utilisation."
+        data-rn="Porogaramu itangwa “uko iri”, nta cyemezo cy'ubwoko bwose, cyangaragaje cyangwa cyumvikana, harimo ariko ntibikukuyeho ibyemezo by'ubucuruzi, ubunyangamugayo ku cyifuzo cyihariye, no kutarenga ku burenganzira.">
+        The application is provided "as is", without warranty of any kind, express or implied, including but not limited
+        to the warranties of merchantability, fitness for a particular purpose, and non-infringement. The contributors
+        of this dictionary work in good faith but accept no liability for any errors, omissions, or consequences arising
+        from its use.
+      </p>
+    </section>
 
-  <!-- 8. LIABILITY -->
-  <section class="article-section">
-    <h2><span class="num">VIII.</span> <span data-en="Limitation of Liability" data-fr="Limitation de Responsabilité" data-rn="Igipimo cy'Ibibazo">Limitation of Liability</span></h2>
-    <p data-en="In no event shall the contributors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the application or the use or other dealings in the application."
-       data-fr="En aucun cas, les contributeurs ou les détenteurs des droits ne pourront être tenus responsables d'une quelconque réclamation, dommage ou autre responsabilité, que ce soit dans une action contractuelle, délictuelle ou autre, découlant de ou en lien avec l'application ou son utilisation."
-       data-rn="Mu kintu cyose, abafatanyabikorwa cyangwa abafite uburenganzira ntibazigera bafatwa nk'abafite ibibazo by'amasezerano, ibyo guhiga, cyangwa ibindi, biva kuri porogaramu cyangwa ku ikoreshwa ryayo.">
-      In no event shall the contributors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the application or the use or other dealings in the application.
-    </p>
-  </section>
+    <!-- 8. LIABILITY -->
+    <section class="article-section">
+      <h2><span class="num">VIII.</span> <span data-en="Limitation of Liability" data-fr="Limitation de Responsabilité"
+          data-rn="Igipimo cy'Ibibazo">Limitation of Liability</span></h2>
+      <p data-en="In no event shall the contributors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the application or the use or other dealings in the application."
+        data-fr="En aucun cas, les contributeurs ou les détenteurs des droits ne pourront être tenus responsables d'une quelconque réclamation, dommage ou autre responsabilité, que ce soit dans une action contractuelle, délictuelle ou autre, découlant de ou en lien avec l'application ou son utilisation."
+        data-rn="Mu kintu cyose, abafatanyabikorwa cyangwa abafite uburenganzira ntibazigera bafatwa nk'abafite ibibazo by'amasezerano, ibyo guhiga, cyangwa ibindi, biva kuri porogaramu cyangwa ku ikoreshwa ryayo.">
+        In no event shall the contributors or copyright holders be liable for any claim, damages or other liability,
+        whether in an action of contract, tort or otherwise, arising from, out of or in connection with the application
+        or the use or other dealings in the application.
+      </p>
+    </section>
 
-  <!-- 9. SPIRIT -->
-  <section class="article-section">
-    <h2><span class="num">IX.</span> <span data-en="Spirit of the License" data-fr="Esprit de la Licence" data-rn="Umwuka w'Iri Bwirizwa">Spirit of the License</span></h2>
-    <p data-en="This dictionary was built for the people of Burundi and for every speaker of Kirundi across the world. It belongs to no one and to everyone. Use it. Share it. Improve it. Build something better with it. That is the only wish of those who made it."
-       data-fr="Ce dictionnaire a été construit pour le peuple du Burundi et pour chaque locuteur du Kirundi à travers le monde. Il n'appartient à personne et à tous. Utilisez-le. Partagez-le. Améliorez-le. Construisez quelque chose de mieux avec. C'est le seul souhait de ceux qui l'ont fait."
-       data-rn="Iki gisobanuzo cyubatswe ku bwa Abarundi no ku bavuga Ikirundi bose ku isi. Nticyari icy'umuntu wese, ariko ni icya bose. Gikoreshe. Kisangize. Kinozere. Wubake ikintu cyiza nacyo. Niyo nyungu y'abakoze iki gisobanuzo.">
-      This dictionary was built for the people of Burundi and for every speaker of Kirundi across the world. It belongs to no one and to everyone. Use it. Share it. Improve it. Build something better with it. That is the only wish of those who made it.
-    </p>
-  </section>
+    <!-- 9. SPIRIT -->
+    <section class="article-section">
+      <h2><span class="num">IX.</span> <span data-en="Spirit of the License" data-fr="Esprit de la Licence"
+          data-rn="Umwuka w'Iri Bwirizwa">Spirit of the License</span></h2>
+      <p data-en="This dictionary was built for the people of Burundi and for every speaker of Kirundi across the world. It belongs to no one and to everyone. Use it. Share it. Improve it. Build something better with it. That is the only wish of those who made it."
+        data-fr="Ce dictionnaire a été construit pour le peuple du Burundi et pour chaque locuteur du Kirundi à travers le monde. Il n'appartient à personne et à tous. Utilisez-le. Partagez-le. Améliorez-le. Construisez quelque chose de mieux avec. C'est le seul souhait de ceux qui l'ont fait."
+        data-rn="Iki gisobanuzo cyubatswe ku bwa Abarundi no ku bavuga Ikirundi bose ku isi. Nticyari icy'umuntu wese, ariko ni icya bose. Gikoreshe. Kisangize. Kinozere. Wubake ikintu cyiza nacyo. Niyo nyungu y'abakoze iki gisobanuzo.">
+        This dictionary was built for the people of Burundi and for every speaker of Kirundi across the world. It
+        belongs to no one and to everyone. Use it. Share it. Improve it. Build something better with it. That is the
+        only wish of those who made it.
+      </p>
+    </section>
 
-  <footer class="colophon">
-    <p>© 2026 HelixNova™ · English–Kirundi Dictionary</p>
-    <a href="privacy.html" data-en="Privacy Policy →" data-fr="Politique de Confidentialité →" data-rn="Politiki y'Ibanga →">Privacy Policy →</a>
-  </footer>
+    <footer class="colophon">
+      <p>© <span id="yr"></span> HelixNova™ · English–Kirundi Dictionary</p>
+      <a href="privacy.html" data-en="Privacy Policy →" data-fr="Politique de Confidentialité →"
+        data-rn="Politiki y'Ibanga →">Privacy Policy →</a>
+    </footer>
 
-</main>
+  </main>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var lang = window._lang || 'en';
-  document.querySelectorAll('[data-en]').forEach(function(el) {
-    var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
-    if (txt) el.innerHTML = txt;
-  });
-});
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var lang = window._lang || 'en';
+      document.querySelectorAll('[data-en]').forEach(function (el) {
+        var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+        if (txt) el.innerHTML = txt;
+      });
+    });
+  </script>
 
 </body>
+
 </html>
