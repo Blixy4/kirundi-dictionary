@@ -34,7 +34,8 @@
       // 3. Language
       var lang = p.get('lang')
         || (navigator.language || 'en').slice(0, 2).toLowerCase();
-      if (!['en', 'fr', 'rn'].includes(lang)) lang = 'en';
+      if (lang === 'rn') lang = 'fr';
+      if (!['en', 'fr'].includes(lang)) lang = 'en';
       document.documentElement.setAttribute('lang', lang);
       window._lang = lang;
 
@@ -679,6 +680,8 @@
         var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
         if (txt) el.innerHTML = txt;
       });
+      var yr = document.getElementById('yr');
+      if (yr) yr.textContent = window._year || new Date().getFullYear();
     });
   </script>
 
