@@ -34,7 +34,8 @@
       // 3. Language
       var lang = p.get('lang')
         || (navigator.language || 'en').slice(0, 2).toLowerCase();
-      if (!['en', 'fr', 'rn'].includes(lang)) lang = 'en';
+      if (lang === 'rn') lang = 'fr';
+      if (!['en', 'fr'].includes(lang)) lang = 'en';
       document.documentElement.setAttribute('lang', lang);
       window._lang = lang;
 
@@ -289,21 +290,14 @@
       margin-bottom: 4px;
     }
 
-    .attrib-card a {
+    .attrib-url {
       display: inline-block;
       font-size: 13.5px;
       color: var(--ink-mid);
-      text-decoration: none;
       word-break: break-all;
-      border-bottom: 1px dashed var(--rule);
-      padding-bottom: 1px;
       margin-bottom: 8px;
-      transition: color .2s, border-color .2s;
-    }
-
-    .attrib-card a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
+      font-family: monospace;
+      opacity: 0.75;
     }
 
     .attrib-card-desc {
@@ -456,8 +450,21 @@
       </p>
 
       <div class="attrib-card">
-        <div class="attrib-card-title">dictionaryapi.dev</div>
-        <a target="_blank" rel="noopener">https://dictionaryapi.dev</a>
+        <div class="attrib-card-title">A Kirundi–English Dictionary — Elizabeth E. Cox</div>
+        <div class="attrib-card-desc"
+          data-en="Some expressions and phrasings found in this dictionary draw on the foundational work of Elizabeth E. Cox&#39;s Kirundi–English Dictionary. Her scholarship has been an invaluable reference in the preparation of this application."
+          data-fr="Certaines expressions et formulations présentes dans ce dictionnaire s&#39;appuient sur le travail fondateur du Dictionnaire Kirundi–Anglais d&#39;Elizabeth E. Cox. Son érudition a été une référence inestimable dans la préparation de cette application."
+          data-rn="Imvugo no gusobanura bimwe biboneka muri iki gisobanuzo bishingiye ku murimo w&#39;ibanze wa Elizabeth E. Cox mu gisobanuzo cye cy&#39;Ikirundi–Icongereza.">
+          Some expressions and phrasings found in this dictionary draw on the foundational work of Elizabeth E. Cox's
+          Kirundi–English Dictionary. Her scholarship has been an invaluable reference in the preparation of this
+          application.
+        </div>
+      </div>
+
+      
+      <div class="attrib-card">
+        <div class="attrib-card-title">Dictionaryapi</div>
+        <span class="attrib-url">https://dictionaryapi.dev</span>
         <div class="attrib-card-desc"
           data-en="A free public dictionary API that provides the phonetic transcriptions and partial linguistic data used throughout the application."
           data-fr="Une API de dictionnaire publique et gratuite qui fournit les transcriptions phonétiques et certaines données linguistiques utilisées dans l'application."
@@ -467,17 +474,32 @@
         </div>
       </div>
 
+
       <div class="attrib-card">
-        <div class="attrib-card-title">Ikirundi.org</div>
-        <a href="https://ikirundi.org" target="_blank" rel="noopener">https://ikirundi.org</a>
+        <div class="attrib-card-title">Pixabay</div>
+        <span class="attrib-url">https://pixabay.com</span>
         <div class="attrib-card-desc"
-          data-en="The way Kirundi is written throughout this application follows the orthographic rules and guidelines published by Ikirundi.org. Their work has been a foundational reference for ensuring linguistic correctness."
-          data-fr="La manière dont le Kirundi est écrit dans cette application suit les règles orthographiques publiées par Ikirundi.org. Leur travail a été une référence fondamentale pour assurer la justesse linguistique."
-          data-rn="Uburyo Ikirundi cyandikwa muri iyi porogaramu bukurikiza amategeko n'amabwirizwa y'inyandiko byatangajwe na Ikirundi.org. Umurimo wabo wabaye umufatanyabikorwa w'ingenzi mu kwemeza ko ururimi rwanditse neza.">
-          The way Kirundi is written throughout this application follows the orthographic rules and guidelines published
-          by Ikirundi.org. Their work has been a foundational reference for ensuring linguistic correctness.
+          data-en="A repository of freely licensed images. Some illustrative images displayed within the application are sourced from Pixabay under their Content License."
+          data-fr="Un référentiel d&#39;images sous licence libre. Certaines images illustratives affichées dans l&#39;application proviennent de Pixabay sous leur Licence de Contenu."
+          data-rn="Ububiko bw&#39;amafoto afite uruhushya rw&#39;ubuntu. Amafoto make yo gusobanura agaragara muri porogaramu avuye kuri Pixabay munsi y&#39;uruhushya rwabo.">
+          A repository of freely licensed images. Some illustrative images displayed within the application are sourced
+          from Pixabay under their Content License.
         </div>
       </div>
+
+      <div class="attrib-card">
+        <div class="attrib-card-title">Vecteezy</div>
+        <span class="attrib-url">https://vecteezy.com</span>
+        <div class="attrib-card-desc"
+          data-en="A platform providing free vector art and stock images. Select visual assets used in the application are attributed to Vecteezy contributors."
+          data-fr="Une plateforme fournissant des illustrations vectorielles et des images libres. Certains éléments visuels utilisés dans l&#39;application sont attribués aux contributeurs de Vecteezy."
+          data-rn="Urubuga rutanga imishusho y&#39;ubuntu n&#39;amafoto. Ibintu bimwe by&#39;ishusho bikoreshwa muri porogaramu bivuye ku bafatanyabikorwa ba Vecteezy.">
+          A platform providing free vector art and stock images. Select visual assets used in the application are
+          attributed to Vecteezy contributors.
+        </div>
+      </div>
+
+
 
       <p data-en="Anyone redistributing or building upon this application is asked to maintain these attributions, in keeping with the same spirit of credit and gratitude."
         data-fr="Toute personne redistribuant ou construisant sur cette application est priée de maintenir ces attributions, dans le même esprit de reconnaissance et de gratitude."
