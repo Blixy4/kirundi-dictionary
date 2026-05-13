@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account — English–Kirundi Dictionary</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <script>
+        (function () {
+            var p = new URLSearchParams(window.location.search);
+
+            var theme = p.get('theme');
+            if (!theme) {
+                theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches)
+                    ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+            window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', function (e) {
+                if (!new URLSearchParams(window.location.search).get('theme'))
+                    document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+            });
+
+            var color = p.get('color');
+            if (color) {
+                document.documentElement.style.setProperty('--accent', decodeURIComponent(color));
+            }
+
+            var lang = p.get('lang')
+                || (navigator.language || 'en').slice(0, 2).toLowerCase();
+            if (lang === 'rn') lang = 'fr';
+            if (!['en', 'fr'].includes(lang)) lang = 'en';
+            document.documentElement.setAttribute('lang', lang);
+            window._lang = lang;
+
+            window._year = new Date().getFullYear();
+        })();
+    </script>
+    <style>
+        :root {
+            --ink: #0e1410;
+            --ink-mid: #2d3b35;
+            --muted: #6b7c74;
+            --rule: #d4dbd7;
+            --accent: #1a5c42;
+            --bg: #f9faf8;
+            --paper: #ffffff;
+            --sand: #f4f1eb;
+            --danger: #8b1a1a;
+            --danger-bg: #fff5f5;
+            --danger-border: #e8c8c8;
+        }
+
+        [data-theme=dark] {
+            --ink: #e8eee9;
+            --ink-mid: #b0bcb4;
+            --muted: #7a8a82;
+            --rule: #2a3a32;
+            --accent: #4ba07a;
+            --bg: #0a1410;
+            --paper: #131c17;
+            --sand: #1a2520;
+            --danger: #c97070;
+            --danger-bg: #1a0f0f;
+            --danger-border: #3a2020;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 18px;
+            line-height: 1.75;
+            transition: background .3s, color .3s;
+        }
+
+        .top-rule {
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .masthead {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 56px 40px 36px;
+            border-bottom: 1px solid var(--rule);
+            opacity: 0;
+            animation: fadeIn 0.6s 0.1s ease forwards;
+        }
+
+        .kicker {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .masthead h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(30px, 5vw, 48px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .masthead h1 em {
+            font-style: italic;
+            color: var(--danger);
+        }
+
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 0.5px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            display: inline-block;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+        }
+
+        .body {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 40px 100px;
+        }
+
+        .lede {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(20px, 2.5vw, 24px);
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--ink-mid);
+            margin-bottom: 36px;
+            opacity: 0;
+            animation: fadeIn 0.7s 0.3s ease forwards;
+        }
+
+        .article-section {
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: fadeIn 0.7s ease forwards;
+        }
+
+        .article-section:nth-child(1) {
+            animation-delay: 0.4s;
+        }
+
+        .article-section:nth-child(2) {
+            animation-delay: 0.45s;
+        }
+
+        .article-section:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .article-section:nth-child(4) {
+            animation-delay: 0.55s;
+        }
+
+        .article-section:nth-child(5) {
+            animation-delay: 0.6s;
+        }
+
+        .article-section h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .article-section h2 .num {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            min-width: 32px;
+        }
+
+        .article-section p {
+            font-size: 17px;
+            line-height: 1.85;
+            color: var(--ink-mid);
+            margin-bottom: 12px;
+            padding-left: 44px;
+        }
+
+        .check-list {
+            list-style: none;
+            padding-left: 44px;
+            margin-bottom: 12px;
+        }
+
+        .check-list li {
+            font-size: 16.5px;
+            line-height: 1.7;
+            color: var(--ink-mid);
+            padding: 6px 0 6px 28px;
+            position: relative;
+        }
+
+        .check-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        /* Steps */
+        .steps {
+            list-style: none;
+            padding-left: 44px;
+            margin-bottom: 16px;
+            counter-reset: step-counter;
+        }
+
+        .steps li {
+            font-size: 16.5px;
+            line-height: 1.7;
+            color: var(--ink-mid);
+            padding: 10px 0 10px 36px;
+            border-bottom: 1px solid var(--rule);
+            position: relative;
+            counter-increment: step-counter;
+        }
+
+        .steps li:last-child {
+            border-bottom: none;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 22px;
+            height: 22px;
+            background: var(--accent);
+            color: var(--bg);
+            font-size: 12px;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .steps li strong {
+            display: block;
+            font-family: 'EB Garamond', serif;
+            font-size: 17px;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+
+        /* Warning box */
+        .warning-box {
+            background: var(--danger-bg);
+            border: 1px solid var(--danger-border);
+            border-left: 4px solid var(--danger);
+            padding: 22px 26px;
+            margin: 20px 0 20px 44px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--danger);
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .warning-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .warning-box ul li {
+            font-size: 16px;
+            color: var(--ink-mid);
+            padding: 4px 0 4px 20px;
+            position: relative;
+            line-height: 1.65;
+        }
+
+        .warning-box ul li::before {
+            content: '×';
+            position: absolute;
+            left: 0;
+            color: var(--danger);
+            font-weight: 700;
+            font-size: 16px;
+            top: 3px;
+        }
+
+        /* Email method box */
+        .email-box {
+            background: var(--sand);
+            border-left: 4px solid var(--accent);
+            padding: 22px 26px;
+            margin: 20px 0 20px 44px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .email-box p {
+            padding-left: 0 !important;
+            font-family: 'EB Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--ink) !important;
+            line-height: 1.7;
+        }
+
+        .email-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 15px;
+            font-style: normal;
+            color: var(--accent);
+            background: var(--paper);
+            border: 1px solid var(--rule);
+            padding: 6px 14px;
+            border-radius: 4px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+        }
+
+        .email-link:hover {
+            border-color: var(--accent);
+        }
+
+        /* Timeline / what gets deleted */
+        .data-table {
+            margin: 16px 0 16px 44px;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--paper);
+        }
+
+        .data-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .data-row:last-child {
+            border-bottom: none;
+        }
+
+        .data-key {
+            padding: 14px 16px;
+            background: var(--sand);
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.3px;
+            border-right: 1px solid var(--rule);
+        }
+
+        .data-val {
+            padding: 14px 18px;
+            font-size: 15px;
+            color: var(--ink-mid);
+            line-height: 1.6;
+        }
+
+        .colophon {
+            border-top: 1px solid var(--rule);
+            padding-top: 28px;
+            margin-top: 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .colophon p {
+            font-size: 12.5px;
+            color: var(--muted);
+            padding-left: 0;
+        }
+
+        .colophon a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12.5px;
+        }
+
+        .colophon a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .masthead {
+                padding: 36px 20px 28px;
+            }
+
+            .body {
+                padding: 28px 20px 80px;
+            }
+
+            .article-section p,
+            .check-list,
+            .steps,
+            .warning-box,
+            .email-box,
+            .data-table {
+                padding-left: 0 !important;
+                margin-left: 0 !important;
+            }
+
+            .article-section h2 {
+                padding-left: 0;
+            }
+
+            .data-row {
+                grid-template-columns: 110px 1fr;
+            }
+
+            .data-key {
+                font-size: 13px;
+                padding: 12px;
+            }
+
+            .data-val {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            .colophon {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-rule"></div>
+
+    <header class="masthead">
+        <span class="kicker" data-en="Account Management" data-fr="Gestion du Compte">Account Management</span>
+        <h1 data-en="Delete <em>Account</em>" data-fr="Supprimer le <em>Compte</em>">Delete <em>Account</em></h1>
+        <div class="meta">
+            <span data-en="English–Kirundi Dictionary" data-fr="Dictionnaire Anglais–Kirundi">English–Kirundi
+                Dictionary</span>
+            <span>·</span>
+            <span>HelixNova™</span>
+            <span class="meta-badge" data-en="Irreversible Action" data-fr="Action Irréversible">Irreversible
+                Action</span>
+        </div>
+    </header>
+
+    <main class="body">
+
+        <p class="lede"
+            data-en="You have the right to delete your account and all associated data at any time. This page explains how to do so — either directly from within the application, or by contacting us."
+            data-fr="Vous avez le droit de supprimer votre compte et toutes les données associées à tout moment. Cette page explique comment procéder — directement depuis l'application ou en nous contactant.">
+            You have the right to delete your account and all associated data at any time. This page explains how to do
+            so — either directly from within the application, or by contacting us.
+        </p>
+
+        <!-- 1. IN-APP METHOD -->
+        <section class="article-section">
+            <h2>
+                <span class="num">I.</span>
+                <span data-en="Delete From Within the App" data-fr="Supprimer Depuis l'Application">Delete From Within
+                    the App</span>
+            </h2>
+            <p data-en="The fastest way to delete your account is directly from the application. No email or external request is needed:"
+                data-fr="Le moyen le plus rapide de supprimer votre compte est directement depuis l'application. Aucun email ni demande externe n'est nécessaire :">
+                The fastest way to delete your account is directly from the application. No email or external request is
+                needed:
+            </p>
+            <ol class="steps">
+                <li>
+                    <strong data-en="Open the app" data-fr="Ouvrez l'application">Open the app</strong>
+                    <span data-en="Launch the English–Kirundi Dictionary on your device."
+                        data-fr="Lancez le Dictionnaire Anglais–Kirundi sur votre appareil.">
+                        Launch the English–Kirundi Dictionary on your device.
+                    </span>
+                </li>
+                <li>
+                    <strong data-en="Tap the Settings icon" data-fr="Appuyez sur l'icône Paramètres">Tap the Settings
+                        icon</strong>
+                    <span data-en="Tap the Settings icon (⚙) in the bottom right corner of the screen."
+                        data-fr="Appuyez sur l'icône Paramètres (⚙) en bas à droite de l'écran.">
+                        Tap the Settings icon (⚙) in the bottom right corner of the screen.
+                    </span>
+                </li>
+                <li>
+                    <strong data-en="Go to Account" data-fr="Accédez à Compte">Go to Account</strong>
+                    <span data-en="Tap on your account name or profile at the top of the Settings page."
+                        data-fr="Appuyez sur votre nom de compte ou profil en haut de la page Paramètres.">
+                        Tap on your account name or profile at the top of the Settings page.
+                    </span>
+                </li>
+                <li>
+                    <strong data-en="Open My Profile" data-fr="Ouvrez Mon Profil">Open My Profile</strong>
+                    <span data-en="You will be taken to the My Profile page."
+                        data-fr="Vous serez dirigé vers la page Mon Profil.">
+                        You will be taken to the My Profile page.
+                    </span>
+                </li>
+                <li>
+                    <strong data-en="Scroll to Danger Zone" data-fr="Faites défiler jusqu'à la Zone Danger">Scroll to
+                        Danger Zone</strong>
+                    <span
+                        data-en="Scroll to the bottom of the page to find the Danger Zone section and tap &ldquo;Delete Account&rdquo;."
+                        data-fr="Faites défiler jusqu'en bas de la page pour trouver la section Zone Danger et appuyez sur &ldquo;Supprimer le compte&rdquo;.">
+                        Scroll to the bottom of the page to find the Danger Zone section and tap "Delete Account".
+                    </span>
+                </li>
+                <li>
+                    <strong data-en="Confirm deletion" data-fr="Confirmez la suppression">Confirm deletion</strong>
+                    <span
+                        data-en="Read the confirmation message and tap Confirm. The deletion is immediate and permanent."
+                        data-fr="Lisez le message de confirmation et appuyez sur Confirmer. La suppression est immédiate et permanente.">
+                        Read the confirmation message and tap Confirm. The deletion is immediate and permanent.
+                    </span>
+                </li>
+            </ol>
+        </section>
+
+        <!-- 2. EMAIL METHOD -->
+        <section class="article-section">
+            <h2>
+                <span class="num">II.</span>
+                <span data-en="Request by Email" data-fr="Demande par Email">Request by Email</span>
+            </h2>
+            <p data-en="If you are unable to access the application, you may request deletion by sending an email to:"
+                data-fr="Si vous ne pouvez pas accéder à l'application, vous pouvez demander la suppression en envoyant un email à :">
+                If you are unable to access the application, you may request deletion by sending an email to:
+            </p>
+            <div class="email-box">
+                <p data-en="Send your request from the email address associated with your account. Include your username in the message. We will process your request within 30 days."
+                    data-fr="Envoyez votre demande depuis l'adresse email associée à votre compte. Incluez votre nom d'utilisateur dans le message. Nous traiterons votre demande dans un délai de 30 jours.">
+                    Send your request from the email address associated with your account. Include your username in the
+                    message. We will process your request within 30 days.
+                </p>
+                <a class="email-link" href="mailto:helixnovaki@gmail.com">helixnovaki@gmail.com</a>
+            </div>
+        </section>
+
+        <!-- 3. WHAT GETS DELETED -->
+        <section class="article-section">
+            <h2>
+                <span class="num">III.</span>
+                <span data-en="What is Deleted" data-fr="Ce qui est Supprimé">What is Deleted</span>
+            </h2>
+            <p data-en="Upon deletion, the following data is permanently removed from our systems:"
+                data-fr="Lors de la suppression, les données suivantes sont définitivement supprimées de nos systèmes :">
+                Upon deletion, the following data is permanently removed from our systems:
+            </p>
+            <div class="data-table">
+                <div class="data-row">
+                    <div class="data-key" data-en="Email address" data-fr="Adresse email">Email address</div>
+                    <div class="data-val" data-en="Permanently deleted from authentication records."
+                        data-fr="Définitivement supprimée des enregistrements d'authentification.">
+                        Permanently deleted from authentication records.
+                    </div>
+                </div>
+                <div class="data-row">
+                    <div class="data-key" data-en="Username" data-fr="Nom d'utilisateur">Username</div>
+                    <div class="data-val" data-en="Removed from the database immediately."
+                        data-fr="Supprimé de la base de données immédiatement.">
+                        Removed from the database immediately.
+                    </div>
+                </div>
+                <div class="data-row">
+                    <div class="data-key" data-en="Password" data-fr="Mot de passe">Password</div>
+                    <div class="data-val" data-en="The stored hash is permanently erased."
+                        data-fr="Le hash stocké est définitivement effacé.">
+                        The stored hash is permanently erased.
+                    </div>
+                </div>
+                <div class="data-row">
+                    <div class="data-key" data-en="Favourites" data-fr="Favoris">Favourites</div>
+                    <div class="data-val" data-en="All saved favourite words are permanently removed."
+                        data-fr="Tous les mots enregistrés en favoris sont définitivement supprimés.">
+                        All saved favourite words are permanently removed.
+                    </div>
+                </div>
+
+                <div class="data-row">
+                    <div class="data-key" data-en="Comments" data-fr="Commentaires">Comments</div>
+                    <div class="data-val" data-en="Any comments submitted by the user are permanently deleted."
+                        data-fr="Tous les commentaires soumis par l'utilisateur sont définitivement supprimés.">
+                        Any comments submitted by the user are permanently deleted.
+                    </div>
+                </div>
+                <div class="data-row">
+                    <div class="data-key" data-en="Contributions" data-fr="Contributions">Contributions</div>
+                    <div class="data-val"
+                        data-en="Word entries or corrections contributed by the user are removed from the database."
+                        data-fr="Les entrées ou corrections contribuées par l'utilisateur sont supprimées de la base de données.">
+                        Word entries or corrections contributed by the user are removed from the database.
+                    </div>
+                </div>
+                <div class="data-row">
+                    <div class="data-key" data-en="Suggestions" data-fr="Suggestions">Suggestions</div>
+                    <div class="data-val"
+                        data-en="Any suggestions submitted through the application are permanently removed."
+                        data-fr="Toutes les suggestions soumises via l'application sont définitivement supprimées.">
+                        Any suggestions submitted through the application are permanently removed.
+                    </div>
+                </div>
+                <div class="data-row">
+                    <div class="data-key" data-en="Synonyms" data-fr="Synonymes">Synonyms</div>
+                    <div class="data-val" data-en="Synonyms added by the user, if any, are deleted from the database."
+                        data-fr="Les synonymes ajoutés par l'utilisateur, le cas échéant, sont supprimés de la base de données.">
+                        Synonyms added by the user, if any, are deleted from the database.
+                    </div>
+                </div>
+                <div class="data-row">
+                    <div class="data-key" data-en="Timeline" data-fr="Délai">Timeline</div>
+                    <div class="data-val"
+                        data-en="In-app deletion is immediate. Email requests are processed within 30 days."
+                        data-fr="La suppression depuis l'application est immédiate. Les demandes par email sont traitées dans un délai de 30 jours.">
+                        In-app deletion is immediate. Email requests are processed within 30 days.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. WARNING -->
+        <section class="article-section">
+            <h2>
+                <span class="num">IV.</span>
+                <span data-en="Important Notice" data-fr="Avis Important">Important Notice</span>
+            </h2>
+            <p data-en="Before proceeding, please be aware of the following:"
+                data-fr="Avant de continuer, veuillez prendre note de ce qui suit :">
+                Before proceeding, please be aware of the following:
+            </p>
+            <div class="warning-box">
+                <div class="warning-box-title" data-en="This action cannot be undone"
+                    data-fr="Cette action est irréversible">This action cannot be undone</div>
+                <ul>
+                    <li data-en="Account deletion is permanent — it cannot be reversed or recovered."
+                        data-fr="La suppression du compte est permanente — elle ne peut pas être annulée ou récupérée.">
+                        Account deletion is permanent — it cannot be reversed or recovered.
+                    </li>
+                    <li data-en="You will lose access to all account-only features immediately."
+                        data-fr="Vous perdrez immédiatement l'accès à toutes les fonctionnalités réservées aux comptes.">
+                        You will lose access to all account-only features immediately.
+                    </li>
+                    <li data-en="Your email address cannot be recovered once the account is deleted."
+                        data-fr="Votre adresse email ne peut pas être récupérée une fois le compte supprimé.">
+                        Your email address cannot be recovered once the account is deleted.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. CONTINUE WITHOUT ACCOUNT -->
+        <section class="article-section">
+            <h2>
+                <span class="num">V.</span>
+                <span data-en="Continue Without an Account" data-fr="Continuer Sans Compte">Continue Without an
+                    Account</span>
+            </h2>
+            <p data-en="After deleting your account, you may continue using the core dictionary freely and without restriction. The following features remain fully available:"
+                data-fr="Après avoir supprimé votre compte, vous pouvez continuer à utiliser le dictionnaire principal librement et sans restriction. Les fonctionnalités suivantes restent entièrement disponibles :">
+                After deleting your account, you may continue using the core dictionary freely and without restriction.
+                The following features remain fully available:
+            </p>
+            <ul class="check-list">
+                <li data-en="Looking up English and Kirundi words and definitions"
+                    data-fr="Recherche de mots et définitions en anglais et kirundi">
+                    Looking up English and Kirundi words and definitions
+                </li>
+                <li data-en="Phonetic transcriptions and pronunciation guides"
+                    data-fr="Transcriptions phonétiques et guides de prononciation">
+                    Phonetic transcriptions and pronunciation guides
+                </li>
+                <li data-en="Full offline access — no internet required"
+                    data-fr="Accès hors ligne complet — sans connexion internet">
+                    Full offline access — no internet required
+                </li>
+                <li data-en="Your theme, font size, preferences, and search history remain on your device — they are stored locally and are unaffected by account deletion"
+                    data-fr="Votre thème, taille de police, préférences et historique de recherche restent sur votre appareil — stockés localement, ils ne sont pas affectés par la suppression du compte">
+                    Your theme, font size, preferences, and search history remain on your device — they are stored
+                    locally and are unaffected by account deletion
+                </li>
+                <li data-en="The dictionary is and will always remain free"
+                    data-fr="Le dictionnaire est et restera toujours gratuit">
+                    The dictionary is and will always remain free
+                </li>
+            </ul>
+        </section>
+
+        <footer class="colophon">
+            <p>© <span id="yr"></span> HelixNova™ · English–Kirundi Dictionary</p>
+            <a href="privacy.html" data-en="← Privacy Policy" data-fr="← Politique de Confidentialité">← Privacy
+                Policy</a>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var lang = window._lang || 'en';
+            document.querySelectorAll('[data-en]').forEach(function (el) {
+                var txt = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+                if (txt) el.innerHTML = txt;
+            });
+            var yr = document.getElementById('yr');
+            if (yr) yr.textContent = window._year || new Date().getFullYear();
+        });
+    </script>
+
+</body>
+
+</html>
